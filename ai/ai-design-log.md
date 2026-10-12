@@ -60,6 +60,9 @@ Screen 2: SCR-04 Việc cần làm (Tasks & Deadline)
 - Bottom Navigation Bar: Tab "Việc cần làm" [Selected].
 ```
 
-### 2.2. Kết quả Ban đầu từ Stitch (Ảnh chụp Bằng chứng)
-- **Màn hình SCR-01 Trang chủ:** `![SCR-01 Initial UI](../assets/stitch/initial-scr01.png)`
-- **Màn hình SCR-04 Việc cần làm:** `![SCR-04 Initial UI](../assets/stitch/initial-scr04.png)`
+### 2.2. Kết quả từ Google Stitch (Ảnh chụp bằng chứng)
+- Giao diện ban đầu SCR-01 Trang chủ:
+  ![SCR-01 Initial UI](../assets/stitch/initial-scr01.png)
+
+- Giao diện ban đầu SCR-04 Việc cần làm:
+  ![SCR-04 Initial UI](../assets/stitch/initial-scr04.png)
