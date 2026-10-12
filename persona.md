@@ -60,6 +60,7 @@ Sinh viên ngành Kỹ thuật Phần mềm FPTU khi học nhiều môn chuyên 
 ## 5. Tiêu chí Thành công Đo được (Measurable Target Metrics)
 Các tiêu chí dưới đây được xác định làm mục tiêu đo lường khi thực hiện bài kiểm tra khả năng sử dụng (Usability Testing) trên bản mẫu Figma Prototype với 5 sinh viên:
 
-1. **Tốc độ tra cứu thông tin môn học (Mô phỏng ngoại tuyến):** Từ màn hình chính, người thử nghiệm mở được danh sách đầu điểm đánh giá và nội dung buổi học của một môn bất kỳ trong **≤ 8 giây** và qua **không quá 3 lần chạm**.
-2. **Tốc độ tạo deadline mới:** Người thử nghiệm hoàn thành thao tác mở khung ghi chú nhanh, nhập tên bài tập, chọn môn học và hạn nộp trong **≤ 15 giây**.
-3. **Khả năng phục hồi thao tác nhầm lẫn:** 5/5 người thử nghiệm thực hiện hoàn tác (Undo) thành công một tác vụ vừa lỡ tay đánh dấu hoàn thành thông qua thanh thông báo (Snackbar) có thời gian hiển thị **8 giây** (thời lượng đủ dài để người thao tác một tay kịp phản xạ).
+1. **M1 — Tốc độ tra cứu thông tin môn học (Mô phỏng ngoại tuyến):** Từ màn hình chính, người thử nghiệm mở được danh sách đầu điểm đánh giá và nội dung buổi học của một môn bất kỳ trong **≤ 8 giây** và qua **không quá 3 lần chạm**.
+2. **M2 — Tốc độ tạo deadline mới:** Người thử nghiệm hoàn thành thao tác mở khung ghi chú nhanh, nhập tên bài tập, chọn môn học và hạn nộp trong **≤ 15 giây**.
+3. **M3 — Khả năng phục hồi thao tác nhầm lẫn:** 5/5 người thử nghiệm thực hiện hoàn tác (Undo) thành công một tác vụ vừa lỡ tay đánh dấu hoàn thành thông qua thanh thông báo (Snackbar) có thời gian hiển thị **8 giây**.
+4. **M4 — Nhận diện và phục hồi sự cố AI:** 5/5 người thử nghiệm hiểu rõ nguyên nhân lỗi khi mất kết nối mạng lúc hỏi trợ lý AI và biết cách chạm "Thử lại" để tiếp tục mà không làm mất nội dung câu hỏi đã gõ.
