@@ -109,6 +109,33 @@ DANH SÁCH 8 MÀN HÌNH CHI TIẾT:
 - Phần 2 (Bộ nhớ): "Đã lưu trữ 42 ghi chú, 4 đề cương môn học (Tổng: 18.4 MB)", nút "Xóa cache tạm".
 - Phần 3 (Thông tin): Phiên bản app "v1.0.0-offline", liên kết "Về tác giả & Báo lỗi".
 ```
+### 2.2. Kết quả từ Google Stitch (Ảnh chụp bằng chứng 8 màn hình hệ thống)
+
+Dưới đây là ảnh chụp thực tế toàn bộ 8 màn hình do Google Stitch tạo ra dựa trên Design System và Prompt hệ thống:
+
+- **SCR-01: Trang chủ (Dashboard)**
+  ![SCR-01 Trang chủ](../assets/stitch/initial/initial-scr01.png)
+
+- **SCR-02: Lộ trình môn học (Timeline)**
+  ![SCR-02 Lộ trình](../assets/stitch/initial/initial-scr02.png)
+
+- **SCR-03: Chi tiết môn học (Course Details)**
+  ![SCR-03 Chi tiết môn học](../assets/stitch/initial/initial-scr03.png)
+
+- **SCR-04: Việc cần làm (Tasks & Deadlines)**
+  ![SCR-04 Việc cần làm](../assets/stitch/initial/initial-scr04.png)
+
+- **SCR-05: Soạn thảo ghi chú nhanh (Quick Note Editor)**
+  ![SCR-05 Soạn thảo ghi chú](../assets/stitch/initial/initial-scr05.png)
+
+- **SCR-06: Danh sách ghi chú Vault (Vault Explorer)**
+  ![SCR-06 Danh sách ghi chú](../assets/stitch/initial/initial-scr06.png)
+
+- **SCR-07: Trợ lý AI môn học (AI Tutor Chat)**
+  ![SCR-07 Trợ lý AI](../assets/stitch/initial/initial-scr07.png)
+
+- **SCR-08: Cài đặt & Đồng bộ Vault (Settings & Sync)**
+  ![SCR-08 Cài đặt & Đồng bộ](../assets/stitch/initial/initial-scr08.png)
 
 ### 2.2. Kết quả từ Google Stitch (Ảnh chụp bằng chứng)
 - Ảnh tổng quan toàn bộ 8 màn hình ban đầu do Google Stitch tạo ra:
