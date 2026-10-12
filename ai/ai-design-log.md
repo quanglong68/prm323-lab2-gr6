@@ -5,17 +5,17 @@ Tài liệu này ghi lại toàn bộ quá trình làm việc với công cụ t
 - **Dự án:** FPTU Second Brain Mobile (Ứng dụng đồng hành cho sinh viên SE Đại học FPT)
 - **Persona:** Nguyễn Minh Đức (20 tuổi, SV SE, thao tác một tay trên xe bus, mạng chập chờn)
 - **Công cụ AI sử dụng:**
-  - **Google Stitch:** Tạo UI ban đầu và thực hiện các vòng lặp tinh chỉnh giao diện[cite: 11, 14].
-  - **Gemini:** Trợ lý AI phản biện UX độc lập theo 10 Usability Heuristics (Nielsen), tiêu chuẩn Accessibility (WCAG 2.1 AA) và Persona[cite: 11, 14].
+  - **Google Stitch:** Tạo UI ban đầu và thực hiện các vòng lặp tinh chỉnh giao diện.
+  - **Trợ lý AI phản biện độc lập:** Đánh giá UX theo 10 Usability Heuristics (Nielsen), tiêu chuẩn Accessibility (WCAG 2.1 AA) và Persona.
 
 ---
 
 ## 1. Thiết lập Ngữ cảnh & Khởi tạo Design System trong Google Stitch
 
-Thay vì để Stitch tự do chọn phong cách ngẫu nhiên (dễ bị lệch sang nền tối Cyberpunk của bản desktop), dự án sử dụng tính năng nạp trực tiếp tài liệu quy chuẩn **`design/DESIGN.md`** vào Stitch để trích xuất và cố định hệ thống Design System ngay từ đầu[cite: 16].
+Dự án sử dụng tính năng nạp trực tiếp tài liệu quy chuẩn **`design/DESIGN.md`** vào Stitch để trích xuất và cố định hệ thống Design System ngay từ đầu.
 
 ### 1.1. Phương thức Thiết lập
-1. **Nạp Design Spec:** Chọn `Start with your design` trong Stitch và nhập toàn bộ nội dung từ file `design/DESIGN.md`[cite: 16].
+1. **Nạp Design Spec:** Chọn `Start with your design` trong Stitch và nạp toàn bộ nội dung từ file `design/DESIGN.md`.
 2. **Trích xuất Design System:** Stitch tự động phân tích và tạo bộ quy chuẩn `FPTU Second Brain Mobile Design System` gồm:
    - **Bảng màu:** Cố định `Primary Blue` (`#1D4ED8`), `Secondary Teal` (`#0F766E`), nền sáng `Surface` (`#F8FAFC`).
    - **Typography:** Khóa font chữ `Inter` hỗ trợ đầy đủ tiếng Việt có dấu.
@@ -28,78 +28,88 @@ Thay vì để Stitch tự do chọn phong cách ngẫu nhiên (dễ bị lệch
 
 ---
 
-## 2. Tạo UI Ban Đầu (Initial UI Generation)
+## 2. Tạo UI Ban Đầu (Initial UI Generation) - Toàn bộ 8 Màn hình
 
 ### 2.1. Prompt Nguyên văn gửi Google Stitch
-Prompt tạo 2 màn hình bao phủ flow chính (SCR-01 Trang chủ thuộc Flow 1 và SCR-04 Việc cần làm & Snackbar Hoàn tác thuộc Flow 2)[cite: 14, 19]:
+Prompt tạo đồng thời 8 màn hình hệ thống bao phủ trọn vẹn Kiến trúc thông tin và 3 User Flows:
 
 ```text
-Thiết kế giao diện ứng dụng di động Android mang tên "FPTU Second Brain Mobile" dành cho sinh viên ngành Kỹ thuật Phần mềm.
+Thiết kế toàn bộ hệ thống 8 màn hình cho ứng dụng di động Android mang tên "FPTU Second Brain Mobile" dành cho sinh viên ngành Kỹ thuật Phần mềm.
 
 Quy tắc thiết kế cốt lõi (Material Design 3):
 - Khung màn hình: 360 x 800 dp.
-- Giao diện: Chỉ dùng giao diện SÁNG (Light Theme), nền chính #F8FAFC, bề mặt Card #FFFFFF, xanh dương chủ đạo #1D4ED8, xanh Teal phụ #0F766E, nền cảnh báo #FEF3C7, nền lỗi #FEE2E2. Tuyệt đối không dùng Dark mode, không phong cách Cyberpunk neon.
+- Giao diện: Toàn bộ sử dụng Giao diện SÁNG (Light Theme), nền chính #F8FAFC, bề mặt Card #FFFFFF, xanh dương chủ đạo #1D4ED8, xanh Teal phụ #0F766E, nền cảnh báo #FEF3C7, nền lỗi #FEE2E2. Tuyệt đối không dùng Dark mode, không dùng phong cách Cyberpunk neon.
 - Typography: Phông chữ Inter, toàn bộ chữ nội dung bắt buộc >= 14 sp. Chiều cao dòng thoáng để hiển thị rõ dấu tiếng Việt.
-- Công thái học cảm ứng: Các vùng tương tác (nút bấm, checkbox, chip, icon tab) phải đạt tối thiểu 48 x 48 dp.
+- Công thái học cảm ứng: Các vùng tương tác (nút bấm, checkbox, chip lọc, icon tab) phải đạt diện tích chạm tối thiểu 48 x 48 dp.
+- Thanh điều hướng đáy (Bottom Navigation Bar 80 dp) cố định trên 4 màn hình chính cấp cao nhất: Trang chủ, Lộ trình, Việc làm, Ghi chú.
 
-Màn hình 1: SCR-01 Trang chủ
+DANH SÁCH 8 MÀN HÌNH CHI TIẾT:
+
+1. SCR-01: Trang chủ (Dashboard)
 - Top App Bar (56 dp): Tiêu đề "Kỹ thuật Phần mềm", icon Cài đặt ở góc phải (48x48 dp) dẫn đến SCR-08.
 - Phần 1 (Carousel hạn chót khẩn cấp): Danh sách cuộn ngang tối đa 3 thẻ cho các việc có hạn <= 3 ngày. Mỗi thẻ hiển thị: mã môn "PRM323", tên việc "Figma Prototype Lab 2", huy hiệu gồm icon đồng hồ + chữ "Hôm nay" (nền vàng #FEF3C7, chữ #92400E). Nút chữ "Xem tất cả" căn phải.
 - Phần 2 (Thẻ môn gần đây): Thẻ hiển thị "PRM323 - Lập trình Di động Đa nền tảng", tiến độ "Slot 12/30", nút "Xem đề cương".
 - Phần 3 (Banner trợ lý AI): Nền xanh nhạt #DBEAFE, chữ "Hỏi trợ lý AI về môn học", icon auto_awesome, nút chính "Đặt câu hỏi".
-- Phần 4: Thanh tiến độ (65% kiến thức đã đồng bộ).
-- Thanh điều hướng đáy (80 dp): 4 tab (Trang chủ [Đang chọn], Lộ trình, Việc cần làm, Ghi chú).
-- Nút hành động nổi (FAB): 56x56 dp ở góc dưới bên phải với icon cây bút chỉnh sửa.
+- Phần 4: Thanh tiến độ đồng bộ Vault 65%.
+- Bottom Navigation Bar (80 dp): Tab "Trang chủ" đang chọn. FAB tròn (56x56 dp) ở góc phải đáy với icon cây bút ghi chú.
 
-Màn hình 2: SCR-04 Việc cần làm
+2. SCR-02: Lộ trình môn học (Timeline / Semester Courses)
+- Top App Bar: Tiêu đề "Lộ trình học tập", chip chọn kỳ "Học kỳ Fall 2024 (Kỳ 5)" [Đang chọn].
+- Thống kê tóm tắt: Thẻ thông tin "4 môn học • 11 tín chỉ • 100% đã tải đề cương offline".
+- Danh sách môn học dạng thẻ dọc:
+  * Môn 1: "PRM323 - Lập trình Di động Đa nền tảng" (3 tín chỉ), tiến độ Slot 12/30, huy hiệu "Đã tải về" (xanh lá #DCFCE7).
+  * Môn 2: "SWP391 - Dự án Phát triển Phần mềm" (5 tín chỉ), tiến độ Sprint 2/4.
+  * Môn 3: "ITE302c - Đạo đức Nghề nghiệp CNTT" (3 tín chỉ), tiến độ Slot 6/20.
+- Bottom Navigation Bar: Tab "Lộ trình" đang chọn.
+
+3. SCR-03: Chi tiết môn học (Course Details / FLM Syllabus)
+- Top App Bar: Nút Back mũi tên trái (48x48 dp), tiêu đề "PRM323", icon góc phải auto_awesome "Hỏi AI môn này".
+- Thẻ đầu trang: Tên môn "Lập trình Di động Đa nền tảng", 3 tín chỉ, huy hiệu "Đã tải về".
+- Banner ngoại tuyến: Nền vàng nhạt #FEF3C7: "Đang ngoại tuyến • Dữ liệu đề cương lưu cục bộ".
+- Thanh 3 Tab: "Lịch slot" [Đang chọn], "Đánh giá", "Tổng quan".
+- Danh sách Slot:
+  * Slot 11: "Kiến trúc State Management" (Đã xong, icon check xanh).
+  * Slot 12: "Thiết kế UI Material 3 & Figma" (Hôm nay, chữ đậm).
+  * Slot 13: "Lab 2: Usability & Handoff" (Sắp tới).
+- Thanh đáy cố định: Nút chính "Xem ghi chú môn PRM323" (dẫn đến SCR-06).
+
+4. SCR-04: Việc cần làm (Tasks & Deadlines)
 - Top App Bar: Tiêu đề "Việc cần làm", hàng chip lọc: "Hôm nay" [Đang chọn], "Sắp tới", "Đã hoàn thành".
 - Danh sách việc:
-  * Việc 1 (Quá hạn): Checkbox bên trái (vùng chạm 48x48 dp). Ở giữa: tên việc "Nộp báo cáo Lab 1", môn "SWP391", huy hiệu gồm icon lỗi + chữ "Quá hạn" (nền đỏ #FEE2E2, chữ #991B1B).
-  * Việc 2 (Hôm nay): Checkbox 48x48 dp. Tên việc "Hoàn thiện Figma Prototype Lab 2", môn "PRM323", huy hiệu "Hôm nay" (nền vàng #FEF3C7, chữ #92400E).
-- Thanh thông báo nổi (Snackbar SN-01) neo phía trên thanh điều hướng đáy: Nền tối #1E293B, chữ "Đã hoàn thành task", nút chữ màu xanh "HOÀN TÁC".
-- Thanh điều hướng đáy: Tab "Việc cần làm" [Đang chọn].
+  * Việc 1 (Quá hạn): Checkbox bên trái (48x48 dp, cách chữ 8 dp). Tên "Nộp báo cáo Lab 1", môn "SWP391", huy hiệu icon lỗi + chữ "Quá hạn" (nền đỏ #FEE2E2, chữ #991B1B).
+  * Việc 2 (Hôm nay): Checkbox 48x48 dp. Tên "Hoàn thiện Figma Prototype Lab 2", môn "PRM323", huy hiệu "Hôm nay" (nền vàng #FEF3C7, chữ #92400E).
+- Thanh thông báo nổi (Snackbar SN-01) neo phía trên Bottom Nav: Nền tối #1E293B, chữ "Đã hoàn thành task", nút chữ màu xanh "HOÀN TÁC" (48x48 dp).
+- Bottom Navigation Bar: Tab "Việc làm" đang chọn.
+
+5. SCR-05: Soạn thảo ghi chú nhanh (Quick Note / Markdown Editor)
+- Top App Bar: Nút Đóng 'X' góc trái (48x48 dp), tiêu đề "Ghi chú mới", nút góc phải "Lưu" (Primary Blue).
+- Trạng thái lưu: Dòng chữ nhỏ "Đã tự động lưu vào Vault cục bộ • 1 phút trước".
+- Vùng soạn thảo: Ô nhập tiêu đề "Tiêu chuẩn chấm điểm Lab 2 PRM323", ô soạn thảo nội dung Markdown bên dưới.
+- Thanh công cụ định dạng neo trên bàn phím: Các icon nút bấm (48x48 dp) gồm Đậm (B), Nghiêng (I), Tiêu đề (H), Checkbox [ ], Chèn liên kết, Chèn ảnh.
+
+6. SCR-06: Danh sách ghi chú Vault (Vault Notes Explorer)
+- Top App Bar: Tiêu đề "Ghi chú của tôi", ô tìm kiếm nhanh "Tìm trong Obsidian Vault...".
+- Hàng thư mục môn học (Chips cuộn ngang): "Tất cả" [Đang chọn], "PRM323", "SWP391", "ITE302c".
+- Danh sách ghi chú:
+  * Note 1: "PRM323 - Tổng hợp Flutter & M3.md", sửa lúc "Hôm nay 09:30", đoạn trích 2 dòng.
+  * Note 2: "SWP391 - Biên bản họp Sprint 2.md", sửa lúc "Hôm qua".
+- Bottom Navigation Bar: Tab "Ghi chú" đang chọn. FAB góc phải với icon dấu cộng (+) để tạo ghi chú mới.
+
+7. SCR-07: Trợ lý AI môn học (AI Tutor Chat)
+- Top App Bar: Nút Back mũi tên trái (48x48 dp), tiêu đề "Trợ lý AI", chip phụ "Ngữ cảnh: PRM323".
+- Khung hội thoại:
+  * Tin nhắn sinh viên (bên phải, nền xanh #1D4ED8, chữ trắng): "Cho mình hỏi Lab 2 PRM323 cần nộp những gì?".
+  * Tin nhắn AI (bên trái, nền trắng #FFFFFF, viền xám nhạt, chữ tối): Trả lời gạch đầu dòng Markdown.
+  * Thẻ trích dẫn nguồn (Citation Chip) dưới tin nhắn AI: Nền Teal nhạt #CCFBF1, icon tài liệu + chữ "Nguồn: PRM323_Syllabus.md", chạm được (48x48 dp).
+- Thanh nhập liệu đáy: Ô nhập "Hỏi về môn học hoặc ghi chú...", nút tròn gửi icon Send màu xanh #1D4ED8.
+
+8. SCR-08: Cài đặt & Đồng bộ Vault (Settings & Sync)
+- Top App Bar: Nút Back mũi tên trái (48x48 dp), tiêu đề "Cài đặt & Đồng bộ".
+- Phần 1 (Đồng bộ Obsidian Vault): Đường dẫn thư mục "/storage/emulated/0/Documents/ObsidianVault", nút "Chọn thư mục khác", Switch bật tắt "Tự động đồng bộ một chiều khi có mạng".
+- Phần 2 (Bộ nhớ): "Đã lưu trữ 42 ghi chú, 4 đề cương môn học (Tổng: 18.4 MB)", nút "Xóa cache tạm".
+- Phần 3 (Thông tin): Phiên bản app "v1.0.0-offline", liên kết "Về tác giả & Báo lỗi".
 ```
 
 ### 2.2. Kết quả từ Google Stitch (Ảnh chụp bằng chứng)
-- Giao diện ban đầu SCR-01 Trang chủ:
-  ![SCR-01 Initial UI](../assets/stitch/initial-scr01.png)
-
-- Giao diện ban đầu SCR-04 Việc cần làm:
-  ![SCR-04 Initial UI](../assets/stitch/initial-scr04.png)
-
----
-
-## 3. Phản biện UX & Accessibility bằng AI (AI Critique)
-
-### 3.1. Prompt Yêu cầu AI Phản biện
-```text
-Bạn là chuyên gia thẩm định UX/UI di động. Hãy đánh giá 2 màn hình ban đầu (SCR-01 Trang chủ và SCR-04 Việc cần làm) do Google Stitch vừa tạo ra cho ứng dụng "FPTU Second Brain Mobile".
-Tiêu chuẩn đánh giá bắt buộc:
-1. 10 Heuristics Usability của Jakob Nielsen.
-2. Quy chuẩn Trợ năng (WCAG 2.1 AA): Contrast, Touch target >= 48x48 dp, Chữ nội dung >= 14 sp, Không dùng màu đơn độc.
-3. Hồ sơ Persona: Nguyễn Minh Đức (20 tuổi, SV SE FPTU, thao tác một tay trên xe bus, mạng chập chờn, app đọc Obsidian Vault ngoại tuyến).
-
-Yêu cầu: Chỉ ra ít nhất 5 phát hiện lỗi cụ thể gắn trực tiếp với các thành phần trên 2 màn hình này.
-```
-
-### 3.2. Bản Phản biện Chi tiết từ AI (5 Phát hiện Cụ thể)
-
-| STT | Màn hình vi phạm | Tiêu chuẩn vi phạm | Phát hiện thực tế trên giao diện Stitch | Mức độ nghiêm trọng |
-| :---: | :--- | :--- | :--- | :---: |
-| **1** | **SCR-04** (Việc cần làm) | **Heuristic #3:** User Control & Freedom<br>**Heuristic #5:** Error Prevention | **Mất hoàn toàn thanh Snackbar Hoàn tác (SN-01):** Stitch hoàn toàn không vẽ thanh Snackbar nổi có nút "HOÀN TÁC" 8 giây khi tick task như yêu cầu[cite: 16]. Khi Đức di chuyển trên xe bus bị rung lắc, nếu lỡ tay chạm nhầm task, người dùng không thể phục hồi ngay lập tức (vi phạm tiêu chí đo lường M3). | **Nghiêm trọng (Critical)** |
-| **2** | **SCR-01 & SCR-04** | **Heuristic #8:** Aesthetic & Minimalist Design<br>**Persona Goal:** G1 & G2 | **Nhiễu thị giác do tự ý thêm tính năng ngoài phạm vi:** Stitch tự ý chèn các card ngoài luồng: *"Chuỗi 14 ngày tập trung"*, *"GPA 3.65"*, *"Sprint Fall 2024"*, *"Flashcards"*, *"Lịch học"*, *"Mẹo nhỏ học tập"*. Chúng chiếm diện tích lớn, đẩy phần quan trọng nhất (Carousel deadline khẩn cấp và đề cương) xuống khuất màn hình. | **Cao (High)** |
-| **3** | **SCR-01 & SCR-04** | **WCAG 2.1 AA:** Content Presentation<br>**Heuristic #7:** Flexibility & Efficiency | **Lỗi cắt cụt nhãn trên Navigation Bar:** Ở màn hình 360 dp, nhãn Tab 3 bị cắt cụt thành `"Việc cần l..."` kèm dấu ba chấm. Điều này gây khó nhận diện khi sinh viên nhìn lướt nhanh trên đường đi[cite: 16]. | **Cao (High)** |
-| **4** | **SCR-01** (Trang chủ) | **Heuristic #4:** Consistency & Standards<br>**IA & Scope** | **App Bar sai cấu trúc và xuất hiện nút ngoài phạm vi:** App Bar tự sinh cụm Tìm kiếm, Chuông thông báo và Avatar người dùng (trong khi app chỉ đọc Vault offline cục bộ); làm mất icon Cài đặt (SCR-08) ở góc phải. Trên thẻ deadline còn tự thêm nút "Nộp bài" (nộp LMS) không thuộc phạm vi app. | **Trung bình (Medium)** |
-| **5** | **SCR-04** (Việc cần làm) | **WCAG Accessibility:** Touch Target Size (Min 48x48 dp)<br>**Heuristic #5:** Error Prevention | **Vùng chạm Checkbox quá nhỏ và dính liền thân Card:** Ô Checkbox để đánh dấu task có diện tích thực tế chỉ khoảng 20x20 dp và nằm sát chữ[cite: 16]. Thao tác một tay bằng ngón cái rất dễ bấm trượt vào thân thẻ (mở trình soạn thảo) thay vì tick xong task. | **Nghiêm trọng (Critical)** |
-
----
-
-## 4. Bảng Ghi nhận Quyết định của Sinh viên (Student Decision Matrix)
-
-| Phát hiện AI | Quyết định của sinh viên | Lý do lập luận cụ thể (Gắn với Persona & Ràng buộc)[cite: 14, 20] |
-| :--- | :---: | :--- |
-| **1. Thiếu Snackbar Hoàn tác (SN-01)** | **CHẤP NHẬN (Accept)** | Đây là tính năng cốt lõi của Flow 2 và là tiêu chí đo lường bắt buộc **M3** trong `ux/persona.md`. Bắt buộc phải thêm Snackbar nổi với nút "HOÀN TÁC" hiển thị 8 giây vào SCR-04[cite: 16]. |
-| **2. Tự sinh các card rác (GPA, Streak, Flashcard)** | **CHẤP NHẬN (Accept)** | Persona Đức chỉ cần mở app nhanh 30–60 giây để tra cứu. Các tính năng này nằm ngoài phạm vi đã nêu trong `ux/user-flow.md`. Cần loại bỏ hoàn toàn để trả lại diện tích cho Carousel deadline và môn học. |
-| **3. Cắt cụt chữ "Việc cần l..." trên Navigation Bar** | **CHỈNH SỬA (Modify)** | Do chiều ngang 360 dp bị giới hạn. Rút ngắn nhãn Tab 3 thành **"Việc làm"** để vừa vặn, đảm bảo hiển thị trọn vẹn chữ tiếng Việt không bị dấu ba chấm[cite: 16]. |
-| **4. App Bar sai icon & có nút "Nộp bài"** | **CHẤP NHẬN (Accept)** | App chạy ngoại tuyến không kết nối tài khoản. Thay cụm chuông/avatar bằng đúng **icon Cài đặt** (dẫn đến SCR-08) và xóa nút "Nộp bài". |
-| **5. Checkbox bé dưới 48 dp, dễ bấm nhầm** | **CHẤP NHẬN (Accept)** | Persona Đức thao tác bằng ngón cái khi di chuyển. Cần mở rộng bounding box của Checkbox đạt chuẩn **48 × 48 dp**, tạo khoảng cách tối thiểu 8 dp với thân thẻ để tránh chạm nhầm[cite: 16]. |
+- Ảnh tổng quan toàn bộ 8 màn hình ban đầu do Google Stitch tạo ra:
+  ![Overview 8 Screens Initial UI](../assets/stitch/initial-all-screens.png)
