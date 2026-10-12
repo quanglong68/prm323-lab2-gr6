@@ -213,3 +213,22 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 - **Trước:** Dữ liệu lệch nhau giữa các màn, AppBar SCR-08 ghi sai thành "Chi Tiết Môn Học", xuất hiện các thẻ streak và spaced repetition ngoài luồng.
 - **Sau:** Dữ liệu đã đồng nhất tuyệt đối (deadline 15/10/2024, Fall 2024, LMS); AppBar SCR-08 đã hiển thị đúng tên "Cài đặt & Đồng bộ"; các thẻ rác trên màn hình chính đã được dọn sạch.
 - **Ảnh bằng chứng sau Vòng lặp 1:** Lưu tại thư mục `assets/stitch/iteration-1/` (1.jpg đến 8_2.png).
+- ### Vòng lặp 2: Sửa tiêu đề SCR-07, Xử lý chồng lấp Snackbar/FAB & Bổ sung Gemini API Key
+
+- **Vấn đề cụ thể cần giải quyết:** Khắc phục lỗi tiêu đề App Bar ở SCR-07 bị trùng ("Chi Tiết Môn Học" → "Trợ lý AI"), giải quyết xung đột vị trí che khuất chữ "HOÀN TÁC" trên thanh Snackbar SCR-04 do bị nút FAB đè lên (đảm bảo tiêu chí Undo - M3 của persona), và bổ sung trường Gemini API Key trên SCR-08 (khớp với phát hiện A1, A3, A4 trong bản phản biện).
+
+- **Prompt gửi Google Stitch:**
+
+  ```text
+  Hãy tinh chỉnh 3 điểm sau trên hệ thống giao diện:
+  1. SCR-07: Sửa tiêu đề Top App Bar từ "Chi Tiết Môn Học" thành "Trợ lý AI".
+  2. SCR-04: Điều chỉnh bố cục để thanh thông báo nổi (Snackbar) "Đã hoàn thành task" hiển thị phía trên nút hành động nổi (FAB) hoặc tạm ẩn FAB khi Snackbar xuất hiện, đảm bảo nút "HOÀN TÁC" không bị che khuất bất kỳ phần nào.
+  3. SCR-08: Bổ sung ô nhập "Gemini API Key" vào phần cấu hình hệ thống trợ lý AI.
+  ```
+
+### Kết quả trước và sau (Before & After)
+
+- **Trước:** Top App Bar SCR-07 vẫn bị ghi sai tiêu đề; nút "HOÀN TÁC" trên SCR-04 bị FAB đè lên chữ "HOÀN..."; SCR-08 thiếu ô nhập Gemini API Key.
+- **Sau:** App Bar SCR-07 đổi thành "Trợ lý AI" chuẩn xác; Snackbar trên SCR-04 nằm nổi hoàn toàn phía trên FAB, giúp hiển thị trọn vẹn nút "HOÀN TÁC"; SCR-08 đã có khối cấu hình "Gemini API Key" chuyên nghiệp.
+
+- **Ảnh bằng chứng sau Vòng lặp 2:** Lưu tại thư mục `assets/stitch/iteration-2/`.
