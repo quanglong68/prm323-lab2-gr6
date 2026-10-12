@@ -66,3 +66,40 @@ Screen 2: SCR-04 Việc cần làm (Tasks & Deadline)
 
 - Giao diện ban đầu SCR-04 Việc cần làm:
   ![SCR-04 Initial UI](../assets/stitch/initial-scr04.png)
+
+  ---
+
+## 3. Phản biện UX & Accessibility bằng AI (AI Critique)
+
+### 3.1. Prompt Yêu cầu AI Phản biện
+```text
+Bạn là chuyên gia thẩm định UX/UI di động. Hãy đánh giá 2 màn hình ban đầu (SCR-01 Trang chủ và SCR-04 Việc cần làm) do Google Stitch vừa tạo ra cho ứng dụng "FPTU Second Brain Mobile".
+Tiêu chuẩn đánh giá bắt buộc:
+1. 10 Heuristics Usability của Jakob Nielsen.
+2. Quy chuẩn Trợ năng (WCAG 2.1 AA): Contrast, Touch target >= 48x48 dp, Chữ nội dung >= 14 sp, Không dùng màu đơn độc.
+3. Hồ sơ Persona: Nguyễn Minh Đức (20 tuổi, SV SE FPTU, thao tác một tay trên xe bus, mạng chập chờn, app đọc Obsidian Vault ngoại tuyến).
+
+Yêu cầu: Chỉ ra ít nhất 5 phát hiện lỗi cụ thể gắn trực tiếp với các thành phần trên 2 màn hình này.
+```
+
+### 3.2. Bản Phản biện Chi tiết từ AI (5 Phát hiện Cụ thể)
+
+| STT | Màn hình vi phạm | Tiêu chuẩn vi phạm | Phát hiện thực tế trên giao diện Stitch | Mức độ nghiêm trọng |
+| :---: | :--- | :--- | :--- | :---: |
+| **1** | **SCR-04** (Việc cần làm) | **Heuristic #3:** User Control & Freedom<br>**Heuristic #5:** Error Prevention | **Mất hoàn toàn thanh Snackbar Hoàn tác (SN-01):** Stitch hoàn toàn không vẽ thanh Snackbar nổi có nút "HOÀN TÁC" 8 giây khi tick task như yêu cầu. Khi Đức di chuyển trên xe bus bị rung lắc, nếu lỡ tay chạm nhầm task, người dùng không thể phục hồi ngay lập tức (vi phạm tiêu chí đo lường M3). | **Nghiêm trọng (Critical)** |
+| **2** | **SCR-01 & SCR-04** | **Heuristic #8:** Aesthetic & Minimalist Design<br>**Persona Goal:** G1 & G2 | **Nhiễu thị giác do tự ý thêm tính năng ngoài phạm vi:** Stitch tự ý chèn các card ngoài luồng: *"Chuỗi 14 ngày tập trung"*, *"GPA 3.65"*, *"Sprint Fall 2024"*, *"Flashcards"*, *"Lịch học"*, *"Mẹo nhỏ học tập"*. Chúng chiếm diện tích lớn, đẩy phần quan trọng nhất (Carousel deadline khẩn cấp và đề cương) xuống khuất màn hình. | **Cao (High)** |
+| **3** | **SCR-01 & SCR-04** | **WCAG 2.1 AA:** Content Presentation<br>**Heuristic #7:** Flexibility & Efficiency | **Lỗi cắt cụt nhãn trên Navigation Bar:** Ở màn hình 360 dp, nhãn Tab 3 bị cắt cụt thành `"Việc cần l..."` kèm dấu ba chấm. Điều này gây khó nhận diện khi sinh viên nhìn lướt nhanh trên đường đi. | **Cao (High)** |
+| **4** | **SCR-01** (Trang chủ) | **Heuristic #4:** Consistency & Standards<br>**IA & Scope** | **App Bar sai cấu trúc và xuất hiện nút ngoài phạm vi:** App Bar tự sinh cụm Tìm kiếm, Chuông thông báo và Avatar người dùng (trong khi app chỉ đọc Vault offline cục bộ); làm mất icon Cài đặt (SCR-08) ở góc phải. Trên thẻ deadline còn tự thêm nút "Nộp bài" (nộp LMS) không thuộc phạm vi app. | **Trung bình (Medium)** |
+| **5** | **SCR-04** (Việc cần làm) | **WCAG Accessibility:** Touch Target Size (Min 48x48 dp)<br>**Heuristic #5:** Error Prevention | **Vùng chạm Checkbox quá nhỏ và dính liền thân Card:** Ô Checkbox để đánh dấu task có diện tích thực tế chỉ khoảng 20x20 dp và nằm sát chữ. Thao tác một tay bằng ngón cái rất dễ bấm trượt vào thân thẻ (mở trình soạn thảo) thay vì tick xong task. | **Nghiêm trọng (Critical)** |
+
+---
+
+## 4. Bảng Ghi nhận Quyết định của Sinh viên (Student Decision Matrix)
+
+| Phát hiện AI | Quyết định của sinh viên | Lý do lập luận cụ thể (Gắn với Persona & Ràng buộc) |
+| :--- | :---: | :--- |
+| **1. Thiếu Snackbar Hoàn tác (SN-01)** | **CHẤP NHẬN (Accept)** | Đây là tính năng cốt lõi của Flow 2 và là tiêu chí đo lường bắt buộc **M3** trong `ux/persona.md`. Bắt buộc phải thêm Snackbar nổi với nút "HOÀN TÁC" hiển thị 8 giây vào SCR-04. |
+| **2. Tự sinh các card rác (GPA, Streak, Flashcard)** | **CHẤP NHẬN (Accept)** | Persona Đức chỉ cần mở app nhanh 30–60 giây để tra cứu. Các tính năng này nằm ngoài phạm vi đã nêu trong `ux/user-flow.md`. Cần loại bỏ hoàn toàn để trả lại diện tích cho Carousel deadline và môn học. |
+| **3. Cắt cụt chữ "Việc cần l..." trên Navigation Bar** | **CHỈNH SỬA (Modify)** | Do chiều ngang 360 dp bị giới hạn. Rút ngắn nhãn Tab 3 thành **"Việc làm"** để vừa vặn, đảm bảo hiển thị trọn vẹn chữ tiếng Việt không bị dấu ba chấm. |
+| **4. App Bar sai icon & có nút "Nộp bài"** | **CHẤP NHẬN (Accept)** | App chạy ngoại tuyến không kết nối tài khoản. Thay cụm chuông/avatar bằng đúng **icon Cài đặt** (dẫn đến SCR-08) và xóa nút "Nộp bài". |
+| **5. Checkbox bé dưới 48 dp, dễ bấm nhầm** | **CHẤP NHẬN (Accept)** | Persona Đức thao tác bằng ngón cái khi di chuyển. Cần mở rộng bounding box của Checkbox đạt chuẩn **48 × 48 dp**, tạo khoảng cách tối thiểu 8 dp với thân thẻ để tránh chạm nhầm. |
