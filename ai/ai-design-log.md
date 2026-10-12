@@ -137,6 +137,4 @@ Dưới đây là ảnh chụp thực tế toàn bộ 8 màn hình do Google Sti
 - **SCR-08: Cài đặt & Đồng bộ Vault (Settings & Sync)**
   ![SCR-08 Cài đặt & Đồng bộ](../assets/stitch/initial/initial-scr08.png)
 
-### 2.2. Kết quả từ Google Stitch (Ảnh chụp bằng chứng)
-- Ảnh tổng quan toàn bộ 8 màn hình ban đầu do Google Stitch tạo ra:
-  ![Overview 8 Screens Initial UI](../assets/stitch/initial-all-screens.png)
+
