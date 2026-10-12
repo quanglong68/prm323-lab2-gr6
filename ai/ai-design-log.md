@@ -136,5 +136,67 @@ Dưới đây là ảnh chụp thực tế toàn bộ 8 màn hình do Google Sti
 
 - **SCR-08: Cài đặt & Đồng bộ Vault (Settings & Sync)**
   ![SCR-08 Cài đặt & Đồng bộ](../assets/stitch/initial/initial-scr08.png)
+---
 
+## 3. Phản biện UX & Accessibility bằng AI (AI Critique)
+
+### 3.1. Prompt Yêu cầu AI Phản biện
+```text
+Bạn là chuyên gia thẩm định UX/UI di động. Hãy đánh giá tổng quan toàn bộ hệ thống 8 màn hình ban đầu của ứng dụng "FPTU Second Brain Mobile" (từ SCR-01 Trang chủ đến SCR-08 Cài đặt) do Google Stitch vừa tạo ra.
+Tiêu chuẩn đánh giá bắt buộc:
+1. 10 Heuristics Usability của Jakob Nielsen.
+2. Quy chuẩn Trợ năng WCAG 2.1 AA: Độ tương phản màu sắc, vùng chạm cảm ứng tối thiểu 48x48 dp, cỡ chữ nội dung tối thiểu 14 sp, không dùng màu đơn độc để truyền đạt thông tin.
+3. Hồ sơ Persona: Nguyễn Minh Đức (20 tuổi, sinh viên Kỹ thuật Phần mềm FPTU, thao tác một tay trên xe bus, mạng chập chờn, ứng dụng đọc Obsidian Vault ngoại tuyến).
+
+Yêu cầu: Chỉ ra ít nhất 5 phát hiện lỗi cụ thể gắn trực tiếp với các thành phần, màn hình hoặc luồng điều hướng trong 8 màn hình này.
+```
+
+### 3.2. Bản Phản biện Chi tiết từ AI (Toàn bộ các Phát hiện)
+
+#### Nhận định chung từ AI phản biện
+Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đạt mức bàn giao do có ba vấn đề lớn:
+1. Dữ liệu mâu thuẫn giữa các màn hình.
+2. Lệch spec ở những điểm trực tiếp ảnh hưởng đến Đức: Undo, Lưu ghi chú, quyền riêng tư và thao tác một tay.
+3. Thêm tính năng ngoài phạm vi (Spaced Repetition, streak, nodes, chuông thông báo, avatar), làm loãng định vị “ứng dụng đọc Vault ngoại tuyến”.
+
+#### Nhóm A: Nghiêm trọng (Chặn bàn giao)
+* **A1. Tiêu đề màn hình sai ở SCR-07 và SCR-08:** AppBar của màn Trợ lý AI và màn Cài đặt đều ghi “Chi Tiết Môn Học”, trùng SCR-03 (Vi phạm Heuristic H1, H4). Đức sẽ không biết mình đang ở đâu.
+* **A2. Deadline và dữ liệu mâu thuẫn giữa các màn hình:** 
+  - Lab 2 PRM323: SCR-01, SCR-04, SCR-07 ghi hạn 23:59 hôm nay (15/10), nhưng SCR-03 lại ghi Slot 13 hạn 18/10.
+  - Học kỳ hiện tại: SCR-01 ghi “Kỳ Summer 2024”, các màn khác ghi Fall 2024.
+  - Nơi nộp bài: Bốn tên khác nhau (“CMS”, “FAP / LMS”, “FAP / Edunext”, “LMS”).
+  - Số liệu đồng bộ mâu thuẫn giữa SCR-01, SCR-02 và SCR-08. (Vi phạm H4, H5, H2).
+* **A3. Nút HOÀN TÁC bị FAB che (SCR-04):** Snackbar “Đã hoàn thành task” bị FAB đè lên phần nhãn “HOÀN…”, vi phạm Heuristic H9, H3 và tiêu chí M3 của persona. FAB còn đè lên chữ ở SCR-01 và SCR-06.
+* **A4. Tuyên bố riêng tư sai và thiếu cấu hình AI (SCR-07, SCR-08):** SCR-08 ghi xử lý 100% trong máy nhưng app lại gọi Gemini API qua mạng; SCR-07 nhãn model “Llama 3” không khớp spec; thiếu ô Gemini API Key (Vi phạm H2, H9, rủi ro đạo đức).
+* **A5. Hứa hẹn chức năng không tồn tại:** SCR-01 có nút “Nộp bài ngay” (ngoài phạm vi app offline); SCR-08 có công tắc đồng bộ FLM trái quyết định thiết kế; SCR-06 hướng dẫn gõ [[Tên ghi chú]] trong khi ngoài phạm vi (Vi phạm H2, H5, H8).
+
+#### Nhóm B: Mức độ Cao
+* **B1. Hành động chính nằm ngoài vùng ngón cái (Thao tác một tay trên xe bus):** Nút “Lưu” ở SCR-05, nút AI ở SCR-03, bánh răng Cài đặt ở SCR-01, dãy tìm kiếm/chuông/avatar đều đặt ở nửa trên màn hình, vi phạm trực tiếp `DESIGN.md` và persona.
+* **B2. SCR-05 không hỗ trợ Quick Capture đúng spec:** Thiếu nút tạo task; vùng chạm thanh công cụ dưới 48 dp; màn hình tách đôi bị cuộn lồng nhau; trạng thái tự động lưu mâu thuẫn với nút Lưu; tiêu đề bị tràn không xuống dòng.
+* **B2b. Header kép:** Hai mũi tên Back xếp chồng trong SCR-03; SCR-05 có AppBar rồi lại đến thanh thứ hai.
+* **B3. Không nhất quán thành phần giữa các tab:** Navigation Bar dùng hai bộ icon khác nhau; AppBar có hai kiểu dáng khác nhau; FAB đổi icon liên tục; màu badge không đồng nhất giữa các màn hình.
+* **B4. Chữ cắt mất thông tin cốt lõi:** SCR-04 cắt ngày hạn và tên phòng học; SCR-07 cắt nút Gửi; SCR-08 cắt đường dẫn Vault (Vi phạm H1, H6).
+* **B5. Tương phản và cỡ chữ (WCAG 1.4.3, 1.4.1):** Nút “Xóa cache tạm” ở SCR-08 chỉ đạt 3.95:1 (dưới chuẩn 4.5:1); chữ đỏ sáng trên nền tím SCR-07; các tab không chọn bị làm mờ; dòng phụ dưới 14 sp.
+* **B6. “Xóa cache tạm” không có Dialog xác nhận (SCR-08):** Dễ khiến Đức vô tình bấm nhầm xóa mất dữ liệu ngoại tuyến trước khi lên xe bus (Vi phạm H5).
+
+#### Nhóm C: Mức độ Trung bình
+* **C1:** Tính năng thừa làm loãng định vị (Spaced Repetition, Streak 4 ngày, Lịch học, 128 nodes, chuông thông báo, avatar online).
+* **C2:** Màn hình Home và Tasks tự mâu thuẫn (nhiều nút hành động chính cạnh tranh nhau, số liệu trên vòng tròn tiến độ lệch với text).
+* **C3:** SCR-02 lệch spec (Timeline 9 kỳ bị thay bằng chip chọn kỳ; nút “Chi tiết môn học” lặp 4 lần).
+* **C4:** SCR-06 trùng lặp điều khiển lọc/sắp xếp, thiếu nút “Hỏi AI”, hiển thị đuôi file `.md` kỹ thuật.
+* **C5:** Lỗi render icon (glyph vỡ, nút phát video không tồn tại).
+* **C6:** AI không báo trước cần mạng khi mất kết nối (Vi phạm H1).
+
+---
+
+## 4. Bảng Ghi nhận Quyết định của Sinh viên (Student Decision Matrix)
+
+| Phát hiện AI | Quyết định của sinh viên | Lý do lập luận cụ thể (Gắn với Persona & Ràng buộc) |
+| :--- | :---: | :--- |
+| **1. Che khuất nút HOÀN TÁC & FAB đè chữ** | **CHẤP NHẬN (Accept)** | Lưới an toàn Hoàn tác (SN-01) là tiêu chí đo lường **M3** bắt buộc trong `ux/persona.md`. Sửa lại cấu trúc Scaffold để Snackbar đẩy FAB lên hoặc ẩn FAB khi Snackbar xuất hiện. |
+| **2. Dữ liệu mâu thuẫn & Sai AppBar SCR-07/08** | **CHẤP NHẬN (Accept)** | Đảm bảo tính nhất quán (Heuristic #4). Chuẩn hóa toàn bộ tiêu đề AppBar, thống nhất deadline Lab 2 về 15/10/2024, học kỳ Fall 2024 và cổng nộp bài LMS. |
+| **3. Nút hành động chính ở góc trên ngoài vùng ngón cái** | **CHẤP NHẬN (Accept)** | Đức thao tác một tay trên xe bus. Dời nút "Lưu" (SCR-05) xuống thanh công cụ sát bàn phím và đưa các nút chức năng chính về nửa dưới màn hình. |
+| **4. Cam kết riêng tư sai & Thiếu Gemini API Key** | **CHỈNH SỬA (Modify)** | Sửa thông điệp riêng tư đúng bản chất gọi API qua mạng và bổ sung ô nhập Gemini API Key vào SCR-08 để phục vụ Flow 4. |
+| **5. Card rác ngoài luồng (Streak, Spaced Repetition)** | **CHẤP NHẬN (Accept)** | Loại bỏ toàn bộ các tính năng không thuộc phạm vi app offline để tối ưu thời gian mở app 30–60 giây của sinh viên. |
+| **6. Nút "Xóa cache" thiếu Dialog & Vi phạm tương phản** | **CHẤP NHẬN (Accept)** | Thêm Dialog xác nhận khi bấm xóa cache để phòng ngừa mất dữ liệu (Heuristic #5) và điều chỉnh mã màu chữ đạt chuẩn tương phản WCAG 4.5:1. |
 
