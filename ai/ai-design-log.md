@@ -199,4 +199,17 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 | **4. Cam kết riêng tư sai & Thiếu Gemini API Key** | **CHỈNH SỬA (Modify)** | Sửa thông điệp riêng tư đúng bản chất gọi API qua mạng và bổ sung ô nhập Gemini API Key vào SCR-08 để phục vụ Flow 4. |
 | **5. Card rác ngoài luồng (Streak, Spaced Repetition)** | **CHẤP NHẬN (Accept)** | Loại bỏ toàn bộ các tính năng không thuộc phạm vi app offline để tối ưu thời gian mở app 30–60 giây của sinh viên. |
 | **6. Nút "Xóa cache" thiếu Dialog & Vi phạm tương phản** | **CHẤP NHẬN (Accept)** | Thêm Dialog xác nhận khi bấm xóa cache để phòng ngừa mất dữ liệu (Heuristic #5) và điều chỉnh mã màu chữ đạt chuẩn tương phản WCAG 4.5:1. |
+## 5. Các Vòng lặp Tinh chỉnh với AI (AI Iteration Loops)
 
+### Vòng lặp 1: Thống nhất Dữ liệu, Chuẩn hóa AppBar & Dọn dẹp Card rác
+- **Vấn đề cụ thể cần giải quyết:** Xử lý các điểm mâu thuẫn dữ liệu nghiêm trọng giữa các màn hình (deadline Lab 2, tên học kỳ, cổng nộp bài), sửa lỗi tiêu đề App Bar ở SCR-08 bị trùng lặp, và dọn sạch các tính năng ngoài phạm vi (card rác) để tập trung định vị app đọc Vault offline (Khớp với phát hiện A1, A2, C1 trong bản phản biện).
+- **Prompt gửi Google Stitch:**
+  ```text
+  Hãy tinh chỉnh lại toàn bộ hệ thống 8 màn hình để khắc phục các lỗi mâu thuẫn dữ liệu và chuẩn hóa giao diện:
+  1. Đồng bộ hóa dữ liệu toàn hệ thống: Thống nhất hạn chót bài Lab 2 PRM323 trên tất cả các màn hình (SCR-01, SCR-02, SCR-03, SCR-04, SCR-05, SCR-06, SCR-07) là "23:59 Hôm nay (15/10/2024)". Thống nhất học kỳ "Học kỳ Fall 2024 (Kỳ 5)" và cổng nộp bài duy nhất qua "Hệ thống LMS".
+  2. Sửa lỗi tiêu đề Top App Bar: SCR-07 thành "Trợ lý AI", SCR-08 thành "Cài đặt & Đồng bộ".
+  3. Dọn dẹp tính năng thừa ngoài phạm vi: Xóa bỏ hoàn toàn "Spaced Repetition", "Streak 4 ngày", "Lịch học FPTU", "128 nodes" để trả lại không gian tối giản.
+  ### Kết quả trước và sau (Before & After):
+- **Trước:** Dữ liệu lệch nhau giữa các màn, AppBar SCR-08 ghi sai thành "Chi Tiết Môn Học", xuất hiện các thẻ streak và spaced repetition ngoài luồng.
+- **Sau:** Dữ liệu đã đồng nhất tuyệt đối (deadline 15/10/2024, Fall 2024, LMS); AppBar SCR-08 đã hiển thị đúng tên "Cài đặt & Đồng bộ"; các thẻ rác trên màn hình chính đã được dọn sạch.
+- **Ảnh bằng chứng sau Vòng lặp 1:** Lưu tại thư mục `assets/stitch/iteration-1/` (1.jpg đến 8_2.png).
