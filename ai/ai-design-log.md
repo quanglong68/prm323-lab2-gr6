@@ -232,3 +232,69 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 - **Sau:** App Bar SCR-07 đổi thành "Trợ lý AI" chuẩn xác; Snackbar trên SCR-04 nằm nổi hoàn toàn phía trên FAB, giúp hiển thị trọn vẹn nút "HOÀN TÁC"; SCR-08 đã có khối cấu hình "Gemini API Key" chuyên nghiệp.
 
 - **Ảnh bằng chứng sau Vòng lặp 2:** Lưu tại thư mục `assets/stitch/iteration-2/`.
+### Vòng lặp 3: Hoàn thiện Tính nhất quán Offline/AI, Công thái học một tay & Trạng thái Giao diện
+
+- **Vấn đề cụ thể cần giải quyết:** Xử lý ranh giới minh bạch giữa dữ liệu cục bộ (Offline) và dịch vụ AI (cần mạng); chuẩn hóa tên mô hình Gemini 1.5 Flash và bổ sung banner phục hồi lỗi mất kết nối (Error State / Retry) trên SCR-07[cite: 51, 60]; tối ưu hóa công thái học một tay bằng cách đưa nút "Lưu vào Vault" xuống thanh công cụ đáy trên SCR-05[cite: 58]; hoàn thiện Quick Capture tạo task từ checklist và chuẩn hóa tuyên bố quyền riêng tư trên SCR-08[cite: 58, 61] (khớp với phát hiện A4, B1, B2, C6 trong bản phản biện).
+
+- **Prompt gửi Google Stitch:**
+
+  ```text
+  Vòng lặp 3: Hoàn thiện tính nhất quán, Offline/AI, Accessibility và trạng thái giao diện
+  Hãy rà soát và tinh chỉnh toàn bộ 8 màn hình SCR-01 đến SCR-08 của ứng dụng FPTU Second Brain Mobile dựa trên giao diện hiện tại sau vòng lặp 2. Đây là vòng lặp tinh chỉnh cuối cùng, vì vậy hãy tập trung xử lý các vấn đề UX còn tồn đọng thay vì tạo lại giao diện từ đầu.
+  Giữ nguyên những phần đã sửa đúng ở vòng lặp 1 và 2, đặc biệt:
+  - Tiêu đề SCR-07 là “Trợ lý AI”, SCR-08 là “Cài đặt & Đồng bộ”.
+  - Snackbar “Đã hoàn thành task” và nút “HOÀN TÁC” không bị FAB che khuất.
+  - SCR-08 có cấu hình Gemini API Key.
+  - Giữ nguyên phong cách Material Design 3, Light Theme, font Inter, màu chủ đạo #1D4ED8, màu phụ #0F766E và nền #F8FAFC.
+  - Giữ đúng phạm vi ứng dụng đồng hành học tập, quản lý ghi chú Obsidian Vault và sử dụng offline.
+
+  1. Sửa tính nhất quán giữa Offline và AI
+  - SCR-07 phải thể hiện đúng mô hình AI đang được sử dụng. Nếu hệ thống sử dụng Gemini API, hãy thay nhãn Llama 3 bằng tên mô hình Gemini phù hợp với cấu hình thực tế.
+  - SCR-08 không được tuyên bố xử lý 100% trên thiết bị nếu câu hỏi và dữ liệu được gửi đến Gemini API.
+  - Phân biệt rõ chức năng đọc ghi chú cục bộ có thể sử dụng offline với chức năng AI cần mạng.
+  - Khi mất mạng, hiển thị thông báo dễ hiểu, trạng thái gửi thất bại và hành động thử lại phù hợp.
+  - Không tự ý bổ sung tính năng hoặc cam kết kỹ thuật mà hệ thống không hỗ trợ.
+
+  2. Hoàn thiện hành động và phòng ngừa lỗi
+  - SCR-08: Bổ sung dialog xác nhận trước khi “Xóa cache tạm”, nêu rõ hậu quả và cung cấp lựa chọn hủy.
+  - SCR-05: Hoàn thiện Quick Capture, giúp người dùng tạo ghi chú nhanh, quản lý nội dung Markdown và tạo task nếu chức năng này thuộc phạm vi thiết kế.
+  - Làm rõ trạng thái tự động lưu, đang lưu và lưu thất bại; tránh mâu thuẫn giữa tự động lưu và nút Lưu.
+  - Kiểm tra hành vi bàn phím, thanh công cụ và các nút quan trọng khi sử dụng bằng một tay.
+  - Giữ nguyên cơ chế Undo của SCR-04.
+
+  3. Sửa bố cục và dữ liệu
+  - SCR-01 và SCR-02: Rà soát các khối trống lớn; chỉ sử dụng skeleton khi đang tải dữ liệu và phải có nội dung thay thế khi dữ liệu rỗng hoặc tải lỗi.
+  - Thống nhất học kỳ Fall 2024 (Kỳ 5), deadline Lab 2 PRM323 là 23:59 ngày 15/10/2024 và cổng nộp bài là Hệ thống LMS trên tất cả màn hình có liên quan.
+  - Kiểm tra sự nhất quán của số liệu tiến độ, số ghi chú, đề cương và dung lượng Vault.
+  - Không cắt mất deadline, địa điểm, tên môn học hoặc nội dung quan trọng. Cho phép xuống dòng hoặc mở rộng nội dung.
+  - Loại bỏ tùy chọn đồng bộ FLM nếu nó mâu thuẫn với phạm vi đã chốt; không tự thêm chức năng ngoài phạm vi.
+
+  4. Hoàn thiện tính nhất quán và Accessibility
+  - Chuẩn hóa AppBar, icon, Bottom Navigation, FAB, badge, nút và khoảng cách giữa các màn hình.
+  - Văn bản thường đạt contrast tối thiểu 4.5:1; chữ lớn và thành phần giao diện đạt tiêu chuẩn tương ứng.
+  - Cỡ chữ nội dung tối thiểu 14 sp; vùng chạm tối thiểu 48 × 48 dp.
+  - Không dùng màu sắc làm phương tiện duy nhất truyền tải trạng thái.
+  - Đảm bảo hành động chính dễ tiếp cận khi thao tác một tay.
+  - Giữ nguyên nội dung tiếng Việt và hiển thị đầy đủ dấu.
+
+  5. Hoàn thiện các trạng thái và luồng
+  - Xác định rõ trạng thái loading, empty, error và populated cho những màn hình phù hợp.
+  - Kiểm tra điều hướng Back, mở chi tiết môn học, mở ghi chú, hỏi AI, gửi câu hỏi và thử lại khi lỗi.
+  - Mọi nút hiển thị phải có mục đích rõ ràng và dẫn đến đúng hành động.
+  - Không tạo nút giả, icon lỗi hoặc thành phần chỉ mang tính trang trí nhưng trông như có thể bấm.
+
+  Yêu cầu đầu ra:
+  1. Cập nhật các màn hình bị ảnh hưởng nhưng giữ nguyên các phần đã đúng.
+  2. Đảm bảo thiết kế thống nhất trên toàn bộ 8 màn hình.
+  3. Ghi rõ từng vấn đề đã sửa và màn hình liên quan.
+  4. Nếu một vấn đề không thể xác minh hoặc cần quyết định từ sinh viên, hãy nêu rõ thay vì tự suy đoán.
+  5. Xuất ảnh trước và sau của những màn hình được sửa để làm bằng chứng cho vòng lặp 3.
+  Ưu tiên tính đúng đắn, khả năng sử dụng, accessibility và tính nhất quán. Không chỉ thay đổi màu sắc, bo góc hoặc trang trí bề ngoài.
+  ```
+
+### Kết quả trước và sau (Before & After)
+
+- **Trước:** SCR-07 gắn nhãn Llama 3 và không cảnh báo khi mất mạng[cite: 51]; SCR-08 tuyên bố riêng tư sai bản chất gọi API[cite: 52]; nút "Lưu" ở SCR-05 nằm ở góc trên ngoài tầm ngón cái[cite: 49]; thiếu tính năng Quick Capture tạo task từ checklist[cite: 49].
+- **Sau:** SCR-07 đồng bộ model Gemini 1.5 Flash và có banner báo mất mạng kèm nút "Thử lại"[cite: 60]; SCR-08 có cam kết riêng tư minh bạch và chính xác[cite: 61]; SCR-05 đưa nút "Lưu vào Vault" xuống góc phải thanh công cụ đáy hỗ trợ thao tác một tay hoàn hảo, kèm nút "+ Tạo việc cần làm từ checklist này"[cite: 58]; toàn bộ 8 màn hình đạt độ nhất quán cao về bố cục, màu sắc và dữ liệu[cite: 54, 55, 56, 57, 58, 59, 60, 61].
+
+- **Ảnh bằng chứng sau Vòng lặp 3:** Lưu tại thư mục `assets/stitch/iteration-3/`.
