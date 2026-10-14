@@ -23,9 +23,9 @@ Tài liệu này tổng hợp 10 quyết định thiết kế cốt lõi nhất 
 
 ## 2. Bảng Checklist Kiểm tra Trợ năng (WCAG 2.1 AA)
 
-| Tiêu chuẩn WCAG | Yêu cầu kỹ thuật | Trạng thái | Bằng chứng thực tế đo lường trên 8 màn hình Stitch |
+| Tiêu chuẩn WCAG | Yêu cầu kỹ thuật | Trạng thái | Đối chiếu theo cặp màu token trong `design/DESIGN.md` |
 | :--- | :--- | :---: | :--- |
-| **1.4.3 Contrast (Minimum)** | Độ tương phản văn bản thường ≥ **4.5:1**; chữ lớn & điều khiển ≥ **3.0:1** | **ĐẠT** | - Chữ nội dung `#0F172A` trên nền trắng `#FFFFFF`: Tỉ lệ **15.4:1**.<br>- Nút chính Primary Blue `#1D4ED8` với chữ trắng: Tỉ lệ **8.6:1**.<br>- Badge cảnh báo hạn chót: Chữ `#92400E` trên nền vàng `#FEF3C7`: Tỉ lệ **5.2:1**.<br>- Badge quá hạn: Chữ `#991B1B` trên nền đỏ nhạt `#FEE2E2`: Tỉ lệ **6.8:1**.<br>- Nút `Xóa cache tạm` (SCR-08): Chữ đỏ `#B91C1C` trên nền hồng `#FEE2E2`: Tỉ lệ **4.8:1**. |
+| **1.4.3 Contrast (Minimum)** | Độ tương phản văn bản thường ≥ **4.5:1**; chữ lớn & điều khiển ≥ **3.0:1** | **ĐẠT THEO TOKEN** | Các cặp màu đại diện, tính theo WCAG 2.x: chữ `#0F172A` trên trắng `#FFFFFF` **17.85:1**; primary `#1D4ED8` với chữ trắng **6.70:1**; badge cảnh báo `#92400E` trên `#FEF3C7` **6.37:1**; badge lỗi `#991B1B` trên `#FEE2E2` **6.80:1**; nút nguy hiểm `#B91C1C` trên `#FEE2E2` **5.30:1**. Đây là phép tính theo token, không phải báo cáo đo từng pixel của mọi màn hình. |
 | **2.5.5 Target Size** | Vùng chạm cảm ứng tối thiểu **48 × 48 dp** | **ĐẠT** | - 4 Tab Bottom Navigation Bar: Chiều cao 80 dp, mỗi ô rộng 90 dp.<br>- Floating Action Button (FAB): Đường kính tiêu chuẩn 56 × 56 dp.<br>- Checkbox trên SCR-04 & SCR-05: Icon 24 dp nhưng vùng đệm chạm đạt **48 × 48 dp**.<br>- Các nút chính (Filled Button) và hàng phím định dạng SCR-05 đều đạt chiều cao chuẩn 48 dp. |
 | **1.4.1 Use of Color** | Không truyền đạt trạng thái chỉ bằng màu sắc | **ĐẠT** | Toàn bộ trạng thái (Quá hạn, Hôm nay, Đang diễn ra, Đã hoàn thành, Sẵn sàng offline) đều kết hợp cả Icon đặc thù và nhãn Text rõ ràng. |
 | **1.4.4 Resize Text** | Cỡ chữ nội dung tối thiểu **14 sp**, phông chữ Inter rõ dấu | **ĐẠT** | - Tiêu đề màn hình: 20–22 sp bold.<br>- Tiêu đề thẻ: 16 sp semi-bold.<br>- Nội dung ghi chú, mô tả slot, chi tiết deadline: 14 sp regular (chiều cao dòng 20 sp), hiển thị tiếng Việt có dấu trọn vẹn. |
