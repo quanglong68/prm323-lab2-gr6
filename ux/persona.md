@@ -1,6 +1,6 @@
 # UX RESEARCH: USER PERSONA & PROBLEM STATEMENT
 
-> Tài liệu này được chuẩn hóa theo quy định tại **PRM393 Persona Guideline v1.0** (đầy đủ 12 trường lõi, nhóm trường bắt buộc của Lab 2, phát biểu vấn đề, tiêu chí thành công đo được và bảng ánh xạ quyết định thiết kế) và đồng bộ xuyên suốt với `ux/user-flow.md`, `ai/ai-design-log.md` cùng bản thiết kế Figma.
+
 
 ---
 
