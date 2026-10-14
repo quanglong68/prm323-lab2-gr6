@@ -145,4 +145,4 @@ Mỗi mục nêu đủ Layout, Components, States, Interactions, Navigation và 
 
 ## Kiểm tra khi triển khai
 
-Đối chiếu Figma page 06 và `design/screen-spec.md`; kiểm tra back navigation, giữ input khi lỗi, retry, trạng thái loading, semantics, contrast và overflow tại các độ rộng đã nêu. Prototype thị giác không chứng minh backend/API hoạt động.
+Đối chiếu Figma page 06 và `design/screen-spec.md`; kiểm tra back navigation, giữ input khi lỗi, retry, trạng thái loading, semantics, contrast và overflow tại các độ rộng đã nêu. 
