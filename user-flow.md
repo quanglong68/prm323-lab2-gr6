@@ -1,18 +1,18 @@
 # UX ANALYSIS: INFORMATION ARCHITECTURE & USER FLOWS
 
-> Tài liệu này bám theo `ux/persona.md`. Các mục tiêu của persona được ký hiệu **G1–G4**:
+> Tài liệu này bám theo `ux/persona.md` (`P01 · Nguyễn Minh Đức`). Các mục tiêu của persona được ký hiệu **G1–G4**:
 > G1 = Nắm cấu trúc và nội dung slot môn học · G2 = Tổng hợp công việc cần làm · G3 = Tra cứu ghi chú bài học · G4 = Ghi chép nhanh (Quick Capture).
-> Các tiêu chí đo được **M1–M3** là ba tiêu chí trong mục 5 của persona (M1 = tra cứu ≤ 8 giây và ≤ 3 chạm, M2 = tạo deadline ≤ 15 giây, M3 = Undo trong Snackbar 8 giây).
+> Các tiêu chí đo được **M1–M4** là bốn tiêu chí trong mục 5 của persona (M1 = tra cứu ≤ 8 giây và ≤ 3 chạm, M2 = tạo/lưu ghi chú deadline ≤ 15 giây, M3 = Undo trong Snackbar 8 giây & phục hồi lỗi đồng bộ, M4 = nhận diện lỗi mất mạng khi hỏi AI và chạm Thử lại giữ nguyên câu hỏi).
 
 ---
 
 ## 0. Phạm vi và Giả định của bản Mobile
 
-- **Vai trò của app:** ứng dụng đồng hành, **đọc và ghi trực tiếp** vào thư mục Obsidian Vault đã được đồng bộ sẵn giữa laptop và điện thoại (giả định trong persona).
-- **Việc chạy trên desktop, không có trên mobile:** cào dữ liệu FLM (đăng nhập cổng trường), vector hóa kho tri thức, tạo ngành/kỳ/môn, Hard Reset AI. Vì vậy mobile **không có màn hình đăng nhập FLM**; đề cương xuất hiện trong Vault dưới dạng file đã đồng bộ (nhãn `FLM SYNC`).
-- **Ngoại tuyến:** xem đề cương, xem và tick task, soạn ghi chú đều dùng được vì chỉ đọc/ghi file cục bộ. **Trợ lý AI cần mạng.**
+- **Vai trò của app:** ứng dụng đồng hành, **đọc và ghi trực tiếp** vào thư mục Obsidian Vault (`/storage/emulated/0/Documents/Obsidian/FPTU`) đã được đồng bộ sẵn giữa laptop và điện thoại (giả định trong persona).
+- **Việc chạy trên desktop, không có trên mobile:** cào dữ liệu FLM (đăng nhập cổng trường), vector hóa kho tri thức, tạo ngành/kỳ/môn, Hard Reset AI. Vì vậy mobile **không có màn hình đăng nhập FLM**; đề cương xuất hiện trong Vault dưới dạng file đã đồng bộ (nhãn `FLM SYNC` / `Đã tải về`).
+- **Ngoại tuyến:** xem đề cương, xem và tick task, soạn ghi chú và quét lại chỉ mục Vault cục bộ đều dùng được vì chỉ đọc/ghi file trên thiết bị. **Trợ lý AI (`Gemini 1.5 Flash`) cần mạng để giải đáp câu hỏi mới.**
 - **Ngoài phạm vi (ghi nhận để tránh bị hỏi khó):** xử lý xung đột khi một file bị sửa đồng thời trên laptop và điện thoại (do dịch vụ đồng bộ đảm nhiệm); thông báo nhắc deadline ngoài app; dark theme; chèn liên kết `[[...]]`.
-- **Số lượng:** 8 màn hình độc lập (không tính dialog, bottom sheet, snackbar và các biến thể trạng thái), 4 user flow.
+- **Số lượng:** 8 màn hình độc lập (`SCR-01_Home` đến `SCR-08_SyncVault`, không tính dialog overlay `D-01_SyncConfirmation`, snackbar và biến thể trạng thái lỗi `SCR-08_SyncError`), 4 user flow.
 
 ---
 
@@ -22,126 +22,129 @@
 
 | Mã | Tên hiển thị trên UI | Cấp | Nội dung chính (theo thứ tự ưu tiên thị giác) | Trạng thái cần thiết kế |
 | :--- | :--- | :---: | :--- | :--- |
-| **SCR-01** | Trang chủ | L1 (Tab 1) | (1) Carousel **deadline gấp** (≤ 3 ngày hoặc quá hạn, tối đa 3 thẻ, nhãn chữ "Quá hạn" / "Hôm nay" / "Còn N ngày", nút "Xem tất cả" → SCR-04); (2) "Môn gần đây" mở nhanh SCR-03; (3) thẻ "Hỏi trợ lý AI" → SCR-07; (4) thanh tiến độ thu thập kiến thức (thông tin phụ). AppBar có tên ngành và icon Cài đặt → SCR-08. | populated, loading (skeleton), empty (chưa kết nối Vault), banner ngoại tuyến |
-| **SCR-02** | Lộ trình | L1 (Tab 2) | Timeline dọc 9 học kỳ; mỗi ô môn có mã môn, tên môn và trạng thái dữ liệu. Trạng thái luôn có **icon + nhãn chữ**, không chỉ màu: "Chưa có tài liệu", "Đã tải về", "AI đã phân tích". | populated, loading, empty |
-| **SCR-03** | Chi tiết môn học | L2 | Tab nội bộ: **Lịch slot** (mặc định) · **Đánh giá** (Assignment, Progress Test, PE, FE) · **Tổng quan** (chuẩn đầu ra, giáo trình). Hai nút hành động: "Xem ghi chú môn" → SCR-06 (lọc theo môn) và "Hỏi AI về môn này" → SCR-07 (gắn sẵn mã môn). | populated, empty (môn chưa có đề cương), banner ngoại tuyến |
-| **SCR-04** | Việc cần làm | L1 (Tab 3) | Bộ lọc: Hôm nay · Sắp tới · Đã hoàn thành. Nhóm "Quá hạn" luôn nằm đầu danh sách. Mỗi dòng: checkbox (vùng chạm 48 × 48 dp, tách khỏi vùng chạm của dòng), tên việc, môn, hạn và nhãn chữ trạng thái. Chạm vào nội dung dòng mở file chứa việc đó. | populated, loading (skeleton), empty theo từng bộ lọc |
-| **SCR-05** | Soạn ghi chú | L2 (toàn màn hình, modal) | Chế độ **Tạo mới / Sửa**. Ô tên file (tự gợi ý `<MãMôn>_Note_N`), chip chọn môn, vùng soạn Markdown. Thanh công cụ nằm sát bàn phím (vùng ngón cái): "Tạo Task" (mở bottom sheet chọn ngày) và "Lưu vào Vault". Tự gắn tag `#USER_NOTE` và `#<MãMôn>` khi lưu nếu chưa có. | mới, sửa, lỗi tên file, lưu thất bại |
-| **SCR-06** | Ghi chú | L1 (Tab 4) | Ô tìm kiếm ghi chú và nút "Hỏi AI". Danh sách file có huy hiệu chữ **FLM SYNC** hoặc **USER NOTE**. Khi mở từ SCR-03 màn này tự lọc theo một môn (hiện chip môn). | populated, đang lọc theo môn, kết quả tìm rỗng, empty (chưa có ghi chú) |
-| **SCR-07** | Trợ lý AI | L2 | Hội thoại hỏi đáp (RAG): ô nhập, bong bóng chat, câu trả lời Markdown kèm **thẻ trích dẫn file nguồn**. Chip ngữ cảnh môn khi mở từ SCR-03. | trống (gợi ý câu hỏi), đang tìm, có câu trả lời, không tìm thấy, lỗi mạng, lỗi cấu hình AI |
-| **SCR-08** | Cài đặt & Đồng bộ Vault | L2 | Đường dẫn Vault và thời điểm quét gần nhất; nút "Quét lại Vault" (loading → "Đã cập nhật N file"); ô Gemini API Key (ẩn/hiện); thông tin phiên bản. **Không có** đăng nhập FLM. | mặc định, đang quét, quét xong, lỗi (không tìm thấy thư mục) |
+| **SCR-01** (`SCR-01_Home`) | FPTU Second Brain Mobile (Trang chủ) | L1 (Tab 1) | (1) Thẻ chào Minh Đức & trạng thái kết nối 42 ghi chú Offline; (2) Danh sách **Hạn chót khẩn cấp** (`Lab 1 SWP391` Quá hạn, `Lab 2 PRM323` Hôm nay 23:59, nút "Xem tất cả hạn chót" → SCR-04); (3) Thẻ "Obsidian Vault Sẵn Sàng (42 Ghi chú)". AppBar có icon Đồng bộ/Cài đặt → SCR-08. | populated, loading (skeleton), empty (chưa kết nối Vault), banner ngoại tuyến |
+| **SCR-02** (`SCR-02_Roadmap`) | Lộ trình môn học | L1 (Tab 2) | (1) Chip chọn kỳ (`Fall 2024 (Kỳ 5)`, `Kỳ 4 (Summer 2024)`) và ô tìm kiếm môn học; (2) Biểu đồ cột "Tiến độ học tập tuần" (`MiniChart`); (3) Danh sách thẻ môn học (`CourseCard`: `PRM323 - Lập trình Di động Đa nền tảng`, trạng thái **icon + nhãn chữ** "Đã tải về", tiến độ `Slot 12/30 (40%)`) → mở SCR-03. | populated, loading, empty, pressed state |
+| **SCR-03** (`SCR-03_CourseDetail`) | PRM323 (Chi tiết môn học) | L2 | Thẻ thông tin môn học kèm thanh tiến độ `12/30 Slot (40%)` và banner vàng "Đang ngoại tuyến". Tab nội bộ: **Lịch slot** (mặc định) · **Đánh giá** (Assignment, Progress Test, PE, FE) · **Tổng quan**. Hai nút hành động đáy: "Hỏi trợ lý AI về môn này" → SCR-07 (gắn sẵn mã môn) và "Tài liệu" → SCR-06 (lọc theo môn). | populated, empty (môn chưa có đề cương), banner ngoại tuyến |
+| **SCR-04** (`SCR-04_Tasks`) | Việc Cần Làm | L1 (Tab 3) | Bộ lọc: `Hôm nay (3)` · `Sắp tới (5)` · `Đã xong`. Thẻ tiến độ Sprint học kỳ `67%`. Nhóm "Khẩn cấp & Quá hạn" luôn nằm đầu danh sách. Mỗi dòng (`TaskItem`): checkbox (vùng chạm 48 × 48 dp, tách khỏi vùng chạm của dòng), tên việc, môn, hạn và nhãn chữ trạng thái. Chạm vào nội dung dòng mở SCR-05 chứa việc đó. | populated, loading (skeleton), empty theo từng bộ lọc, Snackbar hoàn tác |
+| **SCR-05** (`SCR-05_NoteEditor`) | Soạn Thảo Ghi Chú | L2 (toàn màn hình, modal) | Chế độ **Tạo mới / Sửa**. Trạng thái "Tự động lưu vào Vault cục bộ · Đã đồng bộ offline", chip môn (`Môn: PRM323`) và tag (`#lab2 #figma`), vùng soạn thảo checklist Markdown. Thanh công cụ định dạng nằm sát đáy màn hình (vùng ngón cái) kèm nút chính **"Lưu vào Vault"** → SCR-06. | mới, sửa, đã tự động lưu, lỗi tên file, lưu thất bại |
+| **SCR-06** (`SCR-06_Notes`) | Ghi chú | L1 (Tab 4) | Thẻ trạng thái "Obsidian Vault · 42 ghi chú · Sẵn sàng offline", ô tìm kiếm ghi chú và hàng chip lọc môn (`Tất cả (42)`, `PRM323 (14)`, `SWP391`). Danh sách `NoteCard` có huy hiệu chữ **USER NOTE** hoặc **FLM SYNC**. Chạm vào thẻ mở SCR-05. | populated, đang lọc theo môn, kết quả tìm rỗng, empty (chưa có ghi chú) |
+| **SCR-07** (`SCR-07_AskAI`) | Trợ lý AI | L2 | Chip ngữ cảnh `PRM323 · Gemini 1.5 Flash (Google AI)`. Hội thoại hỏi đáp (RAG): bong bóng câu hỏi của sinh viên, câu trả lời Markdown kèm **thẻ trích dẫn nguồn** ("Theo đề cương PRM323"), ô nhập câu hỏi và banner cảnh báo "Mất kết nối Internet" kèm nút "Thử lại". | trống (gợi ý câu hỏi), đang tìm, có câu trả lời, không tìm thấy, lỗi mất mạng, lỗi cấu hình AI |
+| **SCR-08** (`SCR-08_SyncVault`) | Cài đặt & Đồng bộ | L2 | Trạng thái kết nối 42 ghi chú & 4 đề cương FLM; đường dẫn thư mục Vault cục bộ (`/storage/emulated/0/Documents/Obsidian/FPTU`) và nút "Chọn thư mục khác"; công tắc `Switch` "Tự động quét lại Vault"; nút chính **"Đồng bộ ngay bây giờ"** (mở dialog xác nhận `D-01_SyncConfirmation`); mục "Cấu hình AI & API Key" (`Đã cấu hình`). **Không có** đăng nhập FLM. | mặc định (`SCR-08_SyncVault`), hộp thoại xác nhận (`D-01_SyncConfirmation`), lỗi không thể truy cập Vault (`SCR-08_SyncError`) |
 
 ### 1.2. Cấu trúc Điều hướng
 
-Điều hướng chính dùng **Navigation Bar 4 điểm đến**. Nút **Ghi chú nhanh (FAB)** nằm góc dưới bên phải, ngay phía trên thanh điều hướng.
+Điều hướng chính dùng **Bottom Navigation Bar 4 điểm đến** cố định ở đáy 4 màn hình cấp 1 (`SCR-01`, `SCR-02`, `SCR-04`, `SCR-06`). Trên bản Figma cuối cùng, thao tác mở nhanh trình soạn thảo (`SCR-05`) được tích hợp trực tiếp khi chạm vào thẻ công việc/ghi chú (hoặc FAB tùy biến theo ngữ cảnh) để tránh đè lên thanh thông báo Snackbar `HOÀN TÁC` ở đáy màn hình 360 dp.
 
 ```text
 App Root
 ├── [Navigation Bar - Cấp 1]  (nhãn hiển thị trên UI)
-│   ├── Tab 1  Trang chủ       → SCR-01   (mặc định)
-│   ├── Tab 2  Lộ trình        → SCR-02
-│   ├── Tab 3  Việc cần làm    → SCR-04
-│   ├── Tab 4  Ghi chú         → SCR-06
-│   └── [FAB Ghi chú nhanh]    → SCR-05 (hiện trên 4 tab, ẩn ở màn cấp 2)
+│   ├── Tab 1  Trang chủ       → SCR-01_Home     (mặc định)
+│   ├── Tab 2  Lộ trình        → SCR-02_Roadmap
+│   ├── Tab 3  Việc cần làm    → SCR-04_Tasks
+│   └── Tab 4  Ghi chú         → SCR-06_Notes
 │
-└── [Màn hình cấp 2 - push lên trên tab]
-    ├── SCR-01 / SCR-02  ──► SCR-03 Chi tiết môn học
-    │       ├── "Xem ghi chú môn"     ──► SCR-06 (lọc theo môn)
-    │       ├── "Hỏi AI về môn này"   ──► SCR-07 (kèm mã môn)
-    │       └── "Tạo ghi chú" (môn chưa có dữ liệu) ──► SCR-05
-    ├── SCR-01 (thẻ Hỏi AI) / SCR-06 (nút Hỏi AI) ──► SCR-07 Trợ lý AI
-    │       ├── Chạm thẻ trích dẫn           ──► SCR-05 (mở file nguồn)
-    │       └── Lỗi cấu hình AI "Mở Cài đặt" ──► SCR-08
-    ├── SCR-04 (chạm nội dung việc) / SCR-06 (chạm file) ──► SCR-05
-    └── SCR-01 (icon Cài đặt trên AppBar) ──► SCR-08
+└── [Màn hình cấp 2 & Overlay - push lên trên tab]
+    ├── SCR-01 / SCR-02 (chạm thẻ môn PRM323) ──► SCR-03_CourseDetail
+    │       ├── "Hỏi trợ lý AI về môn này"    ──► SCR-07_AskAI (kèm mã môn PRM323)
+    │       └── "Tài liệu" / "Xem ghi chú"    ──► SCR-06_Notes (lọc theo môn)
+    ├── SCR-01 ("Xem tất cả hạn chót")        ──► SCR-04_Tasks
+    ├── SCR-04 (chạm nội dung việc) / SCR-06 (chạm NoteCard) ──► SCR-05_NoteEditor
+    │       └── Nút "Lưu vào Vault"           ──► SCR-06_Notes
+    └── SCR-01 (icon Đồng bộ/Cài đặt trên AppBar) ──► SCR-08_SyncVault
+            └── Nút "Đồng bộ ngay bây giờ"    ──► [Overlay] D-01_SyncConfirmation
+                    ├── Nút "Hủy"             ──► Đóng Overlay, giữ nguyên SCR-08_SyncVault
+                    └── Nút "Xác nhận"        ──► SCR-08_SyncError (nếu lỗi quyền truy cập)
+                            └── Nút "Thử lại" ──► Phục hồi về SCR-08_SyncVault
 ```
 
 ### 1.3. Quy tắc nút Back (dùng cho prototype và handoff)
 
 | Tình huống | Hành vi Back |
 | :--- | :--- |
-| Đang ở tab chính khác Trang chủ | Về Trang chủ |
-| Đang ở Trang chủ | Thoát app |
-| Màn cấp 2 (SCR-03, 07, 08) | Về đúng màn hình đã mở nó |
-| SCR-05 chưa có nội dung | Đóng, về màn hình trước |
-| SCR-05 đã có nội dung chưa lưu | Hiện dialog xác nhận **D-01 "Bỏ ghi chú này?"** |
-| SCR-08 mở từ lỗi AI | Về SCR-07, **giữ nguyên câu hỏi đã gõ** |
+| Đang ở tab chính khác Trang chủ (`SCR-02`, `SCR-04`, `SCR-06`) | Về `SCR-01_Home` (Trang chủ) |
+| Đang ở Trang chủ (`SCR-01_Home`) | Thoát app |
+| Màn cấp 2 (`SCR-03`, `SCR-05`, `SCR-07`, `SCR-08`) | Về đúng màn hình đã mở nó |
+| Đang mở Overlay `D-01_SyncConfirmation` trên `SCR-08` | Chạm "Hủy" hoặc chạm vùng nền mờ bên ngoài → Đóng Overlay |
+| Đang ở màn hình lỗi `SCR-08_SyncError` | Chạm "Thử lại" → Phục hồi về `SCR-08_SyncVault`; chạm Back → Về `SCR-01_Home` |
+| `SCR-07_AskAI` khi mất mạng hoặc quay lại từ Cài đặt | Giữ nguyên câu hỏi đã gửi và ngữ cảnh môn học `PRM323` |
 
 ### 1.4. Quyết định về IA (có lý do bám persona)
 
-1. **Cài đặt không chiếm một tab.** Đây là màn ít dùng (đặt một lần), trong khi persona mở app 5–8 lần/ngày chỉ để xem việc và tra cứu. Cài đặt chuyển thành icon trên AppBar của Trang chủ.
-2. **Ghi chú lên thành Tab 4.** Mục tiêu G3 ("tìm lại ghi chú mà không mở từng file") cần một điểm vào cấp cao nhất kèm tìm kiếm. Ghi chú nhanh không có môn (mã `QUICK` bên desktop) cũng có chỗ hiển thị.
-3. **FAB đặt góc dưới bên phải thay vì giữa.** Nằm trong vùng ngón cái khi cầm một tay, và triển khai được bằng `Scaffold.floatingActionButton` cùng `NavigationBar` chuẩn (không cần widget tùy biến).
-4. **Bỏ đăng nhập FLM khỏi mobile.** Phù hợp giả định của persona: Vault đã đồng bộ, app mobile chỉ đọc kết quả. Việc này loại bỏ luôn rủi ro hết phiên đăng nhập trên điện thoại.
-5. **Trợ lý AI có 3 điểm vào** (Trang chủ, Ghi chú, Chi tiết môn), vì đây là tính năng nằm sâu ở cấp 2 và cần dễ tìm thấy.
+1. **Cài đặt & Đồng bộ không chiếm một tab đáy.** Đây là màn hình thiết lập đường dẫn Vault và đồng bộ chỉ mục, trong khi persona mở app 5–8 lần/ngày chỉ để xem việc khẩn cấp và tra cứu slot học. Cài đặt & Đồng bộ được đặt thành icon góc phải trên AppBar.
+2. **Ghi chú lên thành Tab 4.** Mục tiêu G3 ("tìm lại ghi chú mà không mở từng file") cần một điểm vào cấp cao nhất kèm thanh tìm kiếm và chip lọc môn học (`PRM323`, `SWP391`).
+3. **Các nút hành động chính đặt ở cạnh đáy màn hình (Vùng ngón cái).** Nút "Hỏi trợ lý AI về môn này" (`SCR-03`), "Lưu vào Vault" (`SCR-05`) và "Đồng bộ ngay bây giờ" (`SCR-08`) đều nằm ở nửa dưới màn hình, giúp thao tác một tay trên xe bus dễ dàng và không che khuất thanh Snackbar `HOÀN TÁC`.
+4. **Bỏ đăng nhập FLM khỏi mobile.** Phù hợp giả định của persona: Vault đã đồng bộ sẵn 42 ghi chú và 4 đề cương FLM, app mobile chỉ đọc/ghi cục bộ. Việc này loại bỏ hoàn toàn rủi ro hết phiên đăng nhập (session timeout) trên điện thoại.
+5. **Trợ lý AI giữ ngữ cảnh môn học.** Khi mở từ `SCR-03_CourseDetail`, màn hình `SCR-07_AskAI` tự động gắn sẵn chip `PRM323 · Gemini 1.5 Flash`, giúp sinh viên hỏi ngay mà không cần gõ lại tên môn.
 
 ---
 
 ## 2. Chi tiết 4 User Flow
 
-Mỗi flow tương ứng một mục tiêu của persona (G1 → Flow 1, G2 → Flow 2, G4 → Flow 3, G3 → Flow 4).
+Mỗi flow tương ứng với các mục tiêu và tiêu chí đo của persona (`G1, M1` → Flow 1; `G2, M3` → Flow 2; `G4, M2` → Flow 3; `G3, M4` → Flow 4).
 
 ---
 
 ### Flow 1: Tra cứu Slot & Đầu điểm của Môn học (Syllabus Lookup) — G1, M1
 
-- **Điểm bắt đầu:** mở app tại SCR-01 Trang chủ.
-- **Mục tiêu:** xem số slot, nội dung từng slot và các đầu điểm đánh giá của một môn học.
-- **Điểm kết thúc:** nắm được thông tin và quay lại màn hình trước, hoặc sang ghi chú của môn.
+- **Điểm bắt đầu:** mở app tại `SCR-01_Home` (Trang chủ).
+- **Mục tiêu:** xem tiến độ slot, nội dung từng slot và các đầu điểm đánh giá của môn học `PRM323`.
+- **Điểm kết thúc:** nắm được thông tin tại `SCR-03_CourseDetail` và chuyển sang hỏi AI / xem tài liệu môn, hoặc quay lại màn hình trước.
 
 ```mermaid
 flowchart TD
-    Start(["Bắt đầu: mở app tại SCR-01 Trang chủ"]) --> Source{"Môn cần tra nằm ở đâu?"}
-    Source -->|Môn gần đây| TapRecent["Chạm thẻ Môn gần đây"]
-    Source -->|Môn ở kỳ khác| TabRoute["Chạm tab Lộ trình, SCR-02"]
-    TabRoute --> PickSubject["Cuộn tới kỳ học và chạm ô môn"]
-    TapRecent --> Details["SCR-03 Chi tiết môn học"]
+    Start(["Bắt đầu: mở app tại SCR-01_Home"]) --> Source{"Cách mở môn cần tra?"}
+    Source -->|Môn gần đây| TapRecent["Chạm thẻ môn học"]
+    Source -->|Từ Lộ trình học kỳ| TabRoute["Chạm tab Lộ trình, mở SCR-02_Roadmap"]
+    TabRoute --> PickSubject["Xem tiến độ tuần và chạm CourseCard PRM323"]
+    TapRecent --> Details["SCR-03_CourseDetail: Chi tiết môn học PRM323"]
     PickSubject --> Details
     Details --> HasData{"Môn có dữ liệu đề cương?"}
     HasData -->|Chưa có| EmptyState["Empty state: Chưa có đề cương, nút Tạo ghi chú cho môn này"]
-    EmptyState --> NewNote["SCR-05 mở sẵn với mã môn đã điền"]
+    EmptyState --> NewNote["SCR-05_NoteEditor mở sẵn với mã môn PRM323"]
     NewNote --> End1
     HasData -->|Có| Tabs{"Chọn thông tin cần xem"}
-    Tabs -->|Tab Lịch slot| Slots["Cuộn danh sách slot và chủ đề"]
-    Tabs -->|Tab Đánh giá| Assess["Xem đầu điểm: Assignment, PT, PE, FE"]
+    Tabs -->|Tab Lịch slot| Slots["Xem tiến độ 12/30 Slot (40%) và chi tiết Slot 11, 12"]
+    Tabs -->|Tab Đánh giá / Tổng quan| Assess["Xem đầu điểm: Assignment, PT, PE, FE"]
     Slots --> Next{"Hành động tiếp theo?"}
     Assess --> Next
-    Next -->|Cần xem ghi chú| Notes["Chạm Xem ghi chú môn, SCR-06 lọc theo môn"]
-    Next -->|Đã đủ thông tin| Back["Chạm Back, về màn hình trước đó"]
-    Notes --> End1(["Kết thúc Flow 1"])
+    Next -->|Cần hỏi AI về môn này| AskAI["Chạm 'Hỏi trợ lý AI về môn này' → Mở SCR-07_AskAI"]
+    Next -->|Cần xem ghi chú môn| Notes["Chạm 'Tài liệu' → Mở SCR-06_Notes lọc theo PRM323"]
+    Next -->|Đã đủ thông tin| Back["Chạm Back, về SCR-02_Roadmap / SCR-01_Home"]
+    AskAI --> End1(["Kết thúc Flow 1"])
+    Notes --> End1
     Back --> End1
 ```
 
-- **Happy path (M1):** Trang chủ → chạm thẻ môn (1 chạm) → SCR-03 → chạm tab "Đánh giá" (2 chạm). Đạt ≤ 3 chạm.
-- **Alternate A:** Trang chủ → tab Lộ trình (1) → ô môn (2) → tab "Đánh giá" (3). Vẫn ≤ 3 chạm.
-- **Alternate B (môn chưa có dữ liệu):** SCR-03 hiện empty state với một hành động "Tạo ghi chú cho môn này" → SCR-05.
-- **Alternate C (ngoại tuyến):** khi mất mạng, Trang chủ và SCR-03 hiện banner "Đang ngoại tuyến, dữ liệu cập nhật lần cuối dd/mm" nhưng nội dung đề cương vẫn đầy đủ. Đây là cách mô phỏng ngoại tuyến cho phép đo M1 trên prototype.
+- **Happy path (M1):** `SCR-01_Home` → chạm tab "Lộ trình" (1 chạm) → `SCR-02_Roadmap` → chạm thẻ môn `PRM323` (2 chạm) → xem chi tiết slot và đánh giá tại `SCR-03_CourseDetail` (≤ 3 chạm, ≤ 8 giây).
+- **Alternate A:** từ đáy `SCR-03_CourseDetail`, chạm nút "Hỏi trợ lý AI về môn này" → mở `SCR-07_AskAI` (gắn sẵn ngữ cảnh `PRM323`), hoặc chạm "Tài liệu" → mở `SCR-06_Notes`.
+- **Alternate B (môn chưa có dữ liệu):** `SCR-03` hiện empty state với một hành động tạo ghi chú mới → `SCR-05_NoteEditor`.
+- **Alternate C (ngoại tuyến):** khi mất mạng, `SCR-03_CourseDetail` hiện banner vàng "Đang ngoại tuyến · Dữ liệu đề cương lưu cục bộ trong Vault" nhưng nội dung đề cương và tiến độ `12/30 Slot (40%)` vẫn hiển thị đầy đủ để kiểm thử tiêu chí M1.
 
 ---
 
 ### Flow 2: Quản lý Deadline & Phục hồi khi Chạm nhầm (Task & Undo) — G2, M3
 *(Flow có nhánh lỗi và phục hồi theo yêu cầu đề bài)*
 
-- **Điểm bắt đầu:** mở app tại SCR-01 Trang chủ.
-- **Mục tiêu:** xem việc cần làm trong ngày và đánh dấu hoàn thành.
-- **Điểm kết thúc:** danh sách việc được cập nhật đúng, hoặc việc lỡ tick được khôi phục.
+- **Điểm bắt đầu:** mở app tại `SCR-01_Home` hoặc `SCR-04_Tasks`.
+- **Mục tiêu:** xem việc cần làm trong ngày, mở xem/cập nhật nội dung công việc hoặc đánh dấu hoàn thành (kèm cơ chế hoàn tác nếu chạm nhầm).
+- **Điểm kết thúc:** danh sách việc được cập nhật đúng, hoặc việc lỡ tick nhầm được khôi phục.
 
 ```mermaid
 flowchart TD
-    Start(["Bắt đầu: mở app tại SCR-01 Trang chủ"]) --> Entry{"Cách vào danh sách việc?"}
-    Entry -->|Chạm thẻ deadline gấp| ToTasks["SCR-04 Việc cần làm, mở sẵn bộ lọc Hôm nay"]
+    Start(["Bắt đầu: mở app tại SCR-01_Home"]) --> Entry{"Cách vào danh sách việc?"}
+    Entry -->|Chạm 'Xem tất cả hạn chót'| ToTasks["SCR-04_Tasks: Việc Cần Làm, bộ lọc Hôm nay (3)"]
     Entry -->|Chạm tab Việc cần làm| ToTasks
     ToTasks --> Loading["Hiện skeleton trong lúc đọc Vault"]
     Loading --> HasTasks{"Có việc trong bộ lọc?"}
     HasTasks -->|Không| EmptyState["Empty state: Hôm nay không có deadline, nút Xem sắp tới"]
     EmptyState --> EndEmpty(["Kết thúc Flow 2: không có việc cần làm"])
     HasTasks -->|Có| Pick{"Đức làm gì với một việc?"}
-    Pick -->|Chạm vào nội dung việc| OpenFile["SCR-05 mở file chứa việc đó"]
-    OpenFile --> BackList["Chạm Back, về SCR-04"]
+    Pick -->|Chạm vào nội dung việc 'Hoàn thiện Figma Prototype Lab 2'| OpenFile["SCR-05_NoteEditor mở ghi chú chứa checklist việc đó"]
+    OpenFile --> BackList["Chạm Lưu vào Vault hoặc Back"]
     BackList --> Pick
-    Pick -->|Chạm checkbox| Done["Việc gạch ngang và chuyển xuống nhóm Đã hoàn thành"]
+    Pick -->|Chạm checkbox 48x48 dp| Done["Việc gạch ngang và chuyển xuống nhóm Đã xong"]
     Done --> Write["Ghi trạng thái hoàn thành vào file Markdown gốc"]
-    Write --> Snack["Snackbar: Đã hoàn thành, nút HOÀN TÁC, hiển thị 8 giây"]
+    Write --> Snack["Snackbar SN-01: Đã hoàn thành, nút HOÀN TÁC, hiển thị 8 giây"]
     Snack --> Intent{"Chạm có chủ đích không?"}
     Intent -->|Có| Auto["Snackbar tự ẩn sau 8 giây"]
     Auto --> EndOk(["Kết thúc Flow 2: thành công"])
@@ -151,128 +154,107 @@ flowchart TD
     Toast --> EndRecover(["Kết thúc Flow 2: đã phục hồi"])
 ```
 
-- **Happy path:** Trang chủ → chạm thẻ deadline gấp → SCR-04 → chạm checkbox → Snackbar tự ẩn sau 8 giây → thay đổi được giữ.
-- **Alternate A:** vào bằng tab "Việc cần làm" thay vì thẻ trên Trang chủ.
-- **Alternate B:** chạm nội dung một việc → SCR-05 mở đúng file chứa việc đó → Back về SCR-04.
-- **Alternate C (empty):** bộ lọc không có việc → empty state kèm hành động "Xem sắp tới".
-- **Error & Recovery (M3):** do rung lắc trên xe bus, Đức chạm nhầm checkbox → Snackbar neo đáy trong **8 giây** → chạm **HOÀN TÁC** (1 chạm) → việc quay về đúng vị trí, trạng thái chưa xong.
-- **Quy tắc ghi file:** thay đổi được ghi vào file **ngay khi tick**; HOÀN TÁC ghi ngược lại. Cách này tránh mất dữ liệu nếu app bị tắt trong lúc Snackbar còn hiển thị.
-- **Phòng ngừa chạm nhầm:** checkbox có vùng chạm 48 × 48 dp và cách vùng chạm của dòng tối thiểu 8 dp; chạm vào dòng **không** tick việc.
+- **Happy path:** `SCR-01_Home` → chạm "Xem tất cả hạn chót" (hoặc tab Việc cần làm) → `SCR-04_Tasks` → chạm checkbox → Snackbar tự ẩn sau 8 giây → thay đổi được giữ.
+- **Alternate A:** chạm vào nội dung dòng việc "Hoàn thiện Figma Prototype Lab 2" → mở `SCR-05_NoteEditor` hiển thị checklist tiêu chuẩn chấm điểm Lab 2 → bấm "Lưu vào Vault" sang `SCR-06_Notes` (hoặc Back về `SCR-04_Tasks`).
+- **Alternate B (empty):** bộ lọc không có việc → empty state kèm hành động "Xem sắp tới".
+- **Error & Recovery (M3):** do rung lắc trên xe bus, Đức chạm nhầm checkbox → Snackbar `SN-01` neo đáy trong **8 giây** → chạm **HOÀN TÁC** (1 chạm) → việc quay về đúng vị trí cũ, trạng thái chưa xong.
+- **Phòng ngừa chạm nhầm:** checkbox có vùng chạm 48 × 48 dp và tách biệt khỏi vùng chạm mở chi tiết của dòng.
 
 ---
 
-### Flow 3: Ghi chú Nhanh kèm Deadline (Quick Capture) — G4, M2
+### Flow 3: Soạn Ghi chú Nhanh, Đồng bộ Vault & Phục hồi Lỗi (Quick Capture & Vault Sync) — G4, M2, M3
 
-- **Điểm bắt đầu:** đang ở một trong 4 tab chính (SCR-01, 02, 04 hoặc 06).
-- **Mục tiêu:** lưu nhanh một ghi chú, có thể kèm một việc có hạn nộp.
-- **Điểm kết thúc:** file được lưu an toàn vào Vault (không ghi đè file gốc), hoặc người dùng chủ động hủy.
+- **Điểm bắt đầu:** mở `SCR-05_NoteEditor` từ danh sách công việc/ghi chú, hoặc mở `SCR-08_SyncVault` từ icon góc phải AppBar trên `SCR-01_Home`.
+- **Mục tiêu:** lưu nhanh nội dung checklist Markdown vào Vault cục bộ, và xác nhận quét đồng bộ chỉ mục Vault an toàn (có hộp thoại Overlay `D-01_SyncConfirmation` và nhánh phục hồi lỗi `SCR-08_SyncError`).
+- **Điểm kết thúc:** file ghi chú được lưu vào `SCR-06_Notes` và kho lưu trữ tại `SCR-08_SyncVault` được đồng bộ thành công.
 
 ```mermaid
 flowchart TD
-    Start(["Bắt đầu: đang ở một tab chính"]) --> TapFab["Chạm FAB Ghi chú nhanh"]
-    TapFab --> Editor["SCR-05 Soạn ghi chú, tự điền môn gợi ý và tên file"]
-    Editor --> Content["Gõ nội dung, chọn môn nếu cần"]
-    Content --> NeedTask{"Có hạn nộp cần ghi nhớ?"}
-    NeedTask -->|Có| AddTask["Chạm Tạo Task, mở Bottom Sheet chọn ngày"]
-    AddTask --> PickDate["Chọn Hôm nay, Ngày mai, Tuần sau hoặc mở lịch"]
-    PickDate --> Insert["Chèn dòng việc kèm hạn nộp vào vị trí con trỏ"]
-    Insert --> Save["Chạm Lưu vào Vault"]
-    NeedTask -->|Không| Save
-    Save --> Validate{"Kiểm tra tên file"}
-    Validate -->|Để trống| ErrEmpty["Lỗi dưới ô tên: Tên file không được để trống"]
-    Validate -->|Trùng mã môn gốc hoặc file đã tồn tại| ErrDup["Lỗi dưới ô tên, nút Dùng tên gợi ý, ví dụ PRM323_Note_1"]
-    ErrEmpty --> Content
-    ErrDup --> Content
-    Validate -->|Hợp lệ| Write{"Ghi file thành công?"}
-    Write -->|Không| ErrDialog["Dialog lỗi: Không thể ghi vào Vault, nút Thử lại và Hủy"]
-    ErrDialog -->|Thử lại| Save
-    ErrDialog -->|Hủy| Content
-    Write -->|Có| Ok["Tự gắn tag USER_NOTE và mã môn, đóng SCR-05"]
-    Ok --> Snack["Về màn hình trước, Snackbar: Đã lưu, nút Xem"]
-    Snack -->|Chạm Xem| ViewList["SCR-06 hiện file mới ở đầu danh sách"]
-    Snack -->|Bỏ qua| EndOk(["Kết thúc Flow 3: đã lưu"])
-    ViewList --> EndOk
-    Editor -->|Back khi đã có nội dung| Discard["Dialog xác nhận: Bỏ ghi chú này?"]
-    Discard -->|Tiếp tục soạn| Content
-    Discard -->|Bỏ| EndDiscard(["Kết thúc Flow 3: đã hủy"])
+    Start(["Bắt đầu: mở trình soạn thảo hoặc màn hình Đồng bộ Vault"]) --> ActionType{"Tác vụ cần thực hiện?"}
+    ActionType -->|Soạn & cập nhật ghi chú môn học| Editor["SCR-05_NoteEditor: Chế độ Markdown, gắn sẵn Môn: PRM323"]
+    Editor --> Content["Soạn thảo nội dung & tích checklist (Tự động lưu cục bộ)"]
+    Content --> TapSave["Chạm nút chính 'Lưu vào Vault' ở đáy màn hình"]
+    TapSave --> ViewList["Chuyển sang SCR-06_Notes: Hiển thị 42 ghi chú đã đồng bộ"]
+    ViewList --> EndNote(["Kết thúc nhánh Lưu ghi chú (Đạt M2)"])
+    ActionType -->|Quét & đồng bộ lại chỉ mục Vault tại SCR-08_SyncVault| SyncScreen["SCR-08_SyncVault: Kiểm tra đường dẫn thư mục & Switch Tự động quét"]
+    SyncScreen --> TapSyncNow["Chạm nút chính 'Đồng bộ ngay bây giờ'"]
+    TapSyncNow --> ConfirmOverlay["Mở OVERLAY Dialog D-01_SyncConfirmation: 'Đồng bộ Obsidian Vault?'"]
+    ConfirmOverlay -->|Chạm 'Hủy' hoặc chạm ra ngoài| CancelSync["Đóng Overlay, giữ nguyên SCR-08_SyncVault"]
+    ConfirmOverlay -->|Chạm 'Xác nhận'| CheckAccess{"Truy cập thư mục Vault thành công?"}
+    CheckAccess -->|Thành công| SyncDone["Cập nhật chỉ mục: Đã kết nối 42 ghi chú, 4 đề cương FLM"]
+    CheckAccess -->|Lỗi quyền truy cập / thư mục| SyncError["Chuyển sang SCR-08_SyncError: 'Không thể truy cập Vault'"]
+    SyncError --> RetryTap["Chạm nút 'Thử lại' (hoặc 'Chọn lại thư mục Vault')"]
+    RetryTap --> SyncDone
+    CancelSync --> EndSync(["Kết thúc Flow 3: Đã đồng bộ & phục hồi an toàn (Đạt M3)"])
+    SyncDone --> EndSync
 ```
 
-- **Happy path (M2):** FAB (1) → gõ tên việc → chạm "Tạo Task" và chọn "Ngày mai" (2) → "Lưu vào Vault" (3). Môn học được điền sẵn theo ngữ cảnh nên không tốn thao tác chọn.
-- **Alternate:** lưu ghi chú không kèm việc; hoặc bấm Back giữa chừng và chọn "Bỏ" / "Tiếp tục soạn" ở dialog xác nhận **D-01**.
-- **Nhánh lỗi & phục hồi:**
-  - *Tên file không hợp lệ:* để trống, trùng mã môn gốc của trường (ví dụ `PRM323`, chống ghi đè đề cương FLM) hoặc trùng file đã có → lỗi hiển thị ngay dưới ô tên, kèm nút "Dùng tên gợi ý" (`PRM323_Note_1`). **Nội dung đã gõ không bị mất.**
-  - *Ghi file thất bại:* dialog lỗi **D-02** với "Thử lại" và "Hủy"; nội dung vẫn được giữ trong trình soạn.
-- **Ngoại tuyến:** toàn bộ flow dùng được khi mất mạng vì chỉ ghi file cục bộ.
+- **Happy path — Lưu ghi chú nhanh (M2):** Từ `SCR-04_Tasks` (hoặc `SCR-06_Notes`) mở `SCR-05_NoteEditor` → kiểm tra/gõ nội dung checklist Markdown (tự động lưu cục bộ) → chạm nút **"Lưu vào Vault"** ở cạnh đáy màn hình → chuyển sang `SCR-06_Notes` (hoàn thành ≤ 15 giây).
+- **Tương tác Overlay bắt buộc (`D-01_SyncConfirmation`):** Tại `SCR-08_SyncVault`, chạm nút **"Đồng bộ ngay bây giờ"** sẽ mở hộp thoại **`D-01_SyncConfirmation`** (*"Đồng bộ Obsidian Vault?"*) dưới dạng **Centered Overlay** với 2 lựa chọn **"Hủy"** (đóng overlay) và **"Xác nhận"**.
+- **Nhánh lỗi & phục hồi trực quan (`SCR-08_SyncError` — M3):**
+  - Khi chạm **"Xác nhận"**, nếu xảy ra lỗi đọc thư mục, hệ thống chuyển sang màn hình **`SCR-08_SyncError`** (*"Không thể truy cập Vault"*).
+  - Màn hình giải thích rõ nguyên nhân bằng ngôn ngữ dễ hiểu, cam kết *"Dữ liệu cục bộ được giữ nguyên (42 ghi chú, 4 đề cương đã lưu vẫn dùng offline)"* và cung cấp nút chính **"Thử lại"** để người dùng bấm phục hồi quay về `SCR-08_SyncVault`.
+- **Ngoại tuyến:** toàn bộ quá trình đọc/ghi ghi chú và quét chỉ mục Vault trên thiết bị hoạt động 100% không cần Internet.
 
 ---
 
-### Flow 4: Hỏi Trợ lý AI về Ghi chú (AI Knowledge Retrieval) — G3
+### Flow 4: Hỏi Trợ lý AI về Ghi chú & Phục hồi khi Mất mạng (AI Knowledge Retrieval) — G3, M4
 
-- **Điểm bắt đầu:** cần tra lại kiến thức đã ghi; vào SCR-07 từ Trang chủ, tab Ghi chú hoặc Chi tiết môn.
-- **Mục tiêu:** nhận câu trả lời trích từ ghi chú của chính mình, có dẫn nguồn.
-- **Điểm kết thúc:** có câu trả lời (và có thể mở file nguồn), hoặc rời đi sau khi gặp lỗi.
+- **Điểm bắt đầu:** cần tra lại kiến thức đã ghi; vào `SCR-07_AskAI` từ nút "Hỏi trợ lý AI về môn này" trên `SCR-03_CourseDetail` (hoặc từ Trang chủ / Ghi chú).
+- **Mục tiêu:** nhận câu trả lời trích từ đề cương và ghi chú của chính mình (có dẫn nguồn), và xử lý phục hồi khi mất kết nối mạng.
+- **Điểm kết thúc:** có câu trả lời kèm thẻ nguồn trích dẫn, hoặc bấm "Thử lại" / quay về đọc ghi chú ngoại tuyến.
 
 ```mermaid
 flowchart TD
-    Start(["Bắt đầu: cần tra lại kiến thức đã ghi"]) --> Entry{"Vào trợ lý AI từ đâu?"}
-    Entry -->|Thẻ Hỏi AI trên Trang chủ| Chat["SCR-07 Trợ lý AI"]
-    Entry -->|Nút Hỏi AI trên tab Ghi chú| Chat
-    Entry -->|Nút Hỏi AI về môn này trên SCR-03| ChatCtx["SCR-07 với chip môn đã gắn sẵn"]
-    Chat --> Ask["Gõ câu hỏi và chạm Gửi"]
-    ChatCtx --> Ask
-    Ask --> Result{"Kết quả gửi yêu cầu?"}
-    Result -->|Mất mạng| ErrNet["Error state: Không có kết nối, nút Thử lại, giữ nguyên câu hỏi"]
-    Result -->|Thiếu API Key, key sai hoặc hết hạn mức| ErrKey["Error state: AI chưa sẵn sàng, nút Mở Cài đặt"]
-    Result -->|Gửi được| Loading["Chỉ báo: AI đang tìm trong ghi chú của bạn"]
-    ErrNet -->|Thử lại| Ask
-    ErrNet -->|Rời đi| Leave["Chạm Back, về màn hình trước, vẫn xem được dữ liệu ngoại tuyến"]
-    ErrKey --> Settings["SCR-08 Cài đặt, nhập hoặc sửa API Key"]
-    Settings --> BackChat["Chạm Back, về SCR-07, câu hỏi còn nguyên"]
-    BackChat --> Ask
-    Loading --> Found{"Tìm thấy nội dung liên quan?"}
-    Found -->|Có| Answer["Câu trả lời Markdown kèm thẻ trích dẫn file nguồn"]
-    Found -->|Không| NoResult["Thông báo: Không tìm thấy trong ghi chú của bạn, gợi ý cách hỏi khác"]
-    Answer --> Cite{"Muốn xem nguồn?"}
-    Cite -->|Chạm thẻ trích dẫn| OpenSrc["SCR-05 mở file nguồn"]
+    Start(["Bắt đầu: cần tra lại kiến thức môn PRM323"]) --> Entry{"Vào trợ lý AI từ đâu?"}
+    Entry -->|Nút 'Hỏi trợ lý AI về môn này' trên SCR-03| ChatCtx["SCR-07_AskAI với chip 'PRM323 · Gemini 1.5 Flash'"]
+    Entry -->|Từ Trang chủ / Ghi chú| ChatCtx
+    ChatCtx --> Ask["Gõ câu hỏi: 'Cho mình hỏi Lab 2 PRM323 cần nộp những gì và hạn chót là khi nào?'"]
+    Ask --> Result{"Trạng thái kết nối Internet?"}
+    Result -->|Mất mạng| ErrNet["Banner cảnh báo: 'Mất kết nối Internet', nút 'Thử lại', giữ nguyên câu hỏi đã gửi"]
+    Result -->|Thiếu hoặc cần kiểm tra cấu hình AI| Settings["Mở SCR-08_SyncVault kiểm tra mục 'Cấu hình AI & API Key: Đã cấu hình'"]
+    Result -->|Gửi thành công| Answer["AI Tutor phản hồi kèm thẻ trích dẫn nguồn: 'Theo đề cương PRM323'"]
+    ErrNet -->|Chạm 'Thử lại' khi có mạng| Answer
+    ErrNet -->|Chạm Back để học offline| Leave["Về SCR-03 / SCR-06, vẫn tra cứu được 42 ghi chú cục bộ trong Vault"]
+    Settings --> ChatCtx
+    Answer --> Cite{"Muốn xem tài liệu nguồn?"}
+    Cite -->|Chạm thẻ trích dẫn / xem ghi chú| OpenSrc["Mở SCR-05_NoteEditor / SCR-06_Notes"]
     Cite -->|Không| EndOk(["Kết thúc Flow 4: có câu trả lời"])
     OpenSrc --> EndOk
-    NoResult --> EndNo(["Kết thúc Flow 4: không có kết quả"])
-    Leave --> EndLeave(["Kết thúc Flow 4: rời đi"])
+    Leave --> EndLeave(["Kết thúc Flow 4: tiếp tục học ngoại tuyến (Đạt M4)"])
 ```
 
-- **Happy path:** Trang chủ → thẻ "Hỏi trợ lý AI" → SCR-07 → gửi câu hỏi → chỉ báo đang tìm → câu trả lời có thẻ nguồn.
-- **Alternate A:** vào từ SCR-03 bằng "Hỏi AI về môn này" (mã môn đã gắn sẵn, tránh phải gõ lại ngữ cảnh).
-- **Alternate B:** chạm thẻ trích dẫn → mở file nguồn trong SCR-05.
-- **Alternate C (không có nội dung liên quan):** AI báo không tìm thấy trong ghi chú của người dùng và gợi ý cách hỏi khác, **không tự bịa câu trả lời**.
-- **Nhánh lỗi & phục hồi:**
-  - *Mất mạng:* error state nêu rõ nguyên nhân, có nút "Thử lại", **không mất câu hỏi đã gõ**.
-  - *API Key thiếu/sai hoặc hết hạn mức:* error state có nút "Mở Cài đặt" → SCR-08 → sửa key → Back về SCR-07 và thử lại.
+- **Happy path:** Từ `SCR-03_CourseDetail` → chạm "Hỏi trợ lý AI về môn này" → `SCR-07_AskAI` → gửi câu hỏi → nhận câu trả lời từ `AI Tutor · Gemini 1.5 Flash` kèm thẻ nguồn **"Theo đề cương PRM323"**.
+- **Nhánh lỗi & phục hồi khi mất mạng (Đạt tiêu chí M4):**
+  - Khi mất kết nối Internet trên xe bus, `SCR-07_AskAI` hiển thị rõ banner vàng **"Mất kết nối Internet"** (*"Trợ lý AI cần mạng để giải đáp câu hỏi mới. Bạn vẫn có thể tra cứu 42 ghi chú cục bộ trong Vault"*), **không làm mất câu hỏi đã gửi** và cung cấp nút **"Thử lại"** ngay bên dưới để kết nối lại nhanh chóng.
 
 ---
 
 ## 3. Bảng Ánh xạ User Flow sang Màn hình
 
-| Mã | Màn hình | Cấp | Flow 1 Tra cứu | Flow 2 Deadline & Undo | Flow 3 Ghi chú nhanh | Flow 4 Hỏi AI |
+| Mã Frame | Màn hình | Cấp | Flow 1 Tra cứu | Flow 2 Deadline & Undo | Flow 3 Ghi chú & Đồng bộ Vault | Flow 4 Hỏi AI |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SCR-01** | Trang chủ | L1 | **X** (Start) | **X** (Start) | **X** (điểm xuất phát) | **X** (điểm vào) |
-| **SCR-02** | Lộ trình | L1 | **X** | | **X** (điểm xuất phát) | |
-| **SCR-03** | Chi tiết môn học | L2 | **X** (Goal) | | | **X** (điểm vào) |
-| **SCR-04** | Việc cần làm | L1 | | **X** (Goal) | **X** (điểm xuất phát) | |
-| **SCR-05** | Soạn ghi chú | L2 | **X** (nhánh môn trống) | **X** (nhánh mở file) | **X** (Goal) | **X** (xem nguồn) |
-| **SCR-06** | Ghi chú | L1 | **X** (End) | | **X** (End, nhánh Xem) | **X** (điểm vào) |
-| **SCR-07** | Trợ lý AI | L2 | | | | **X** (Goal) |
-| **SCR-08** | Cài đặt & Đồng bộ Vault | L2 | | | | **X** (nhánh phục hồi) |
+| **SCR-01** (`SCR-01_Home`) | Trang chủ | L1 | **X** (Start) | **X** (Điểm vào) | **X** (Điểm vào AppBar) | |
+| **SCR-02** (`SCR-02_Roadmap`) | Lộ trình môn học | L1 | **X** | | | |
+| **SCR-03** (`SCR-03_CourseDetail`) | Chi tiết môn học | L2 | **X** (Goal) | | | **X** (Điểm vào) |
+| **SCR-04** (`SCR-04_Tasks`) | Việc Cần Làm | L1 | | **X** (Start / Goal) | **X** (Điểm xuất phát) | |
+| **SCR-05** (`SCR-05_NoteEditor`) | Soạn Thảo Ghi Chú | L2 | **X** (Nhánh môn trống) | **X** (Nhánh mở file) | **X** (Goal) | **X** (Xem nguồn) |
+| **SCR-06** (`SCR-06_Notes`) | Ghi chú | L1 | **X** (End, nhánh Tài liệu) | | **X** (End, đã lưu) | **X** (Tra cứu offline) |
+| **SCR-07** (`SCR-07_AskAI`) | Trợ lý AI | L2 | **X** (Nhánh Hỏi AI) | | | **X** (Goal) |
+| **SCR-08** (`SCR-08_SyncVault`) | Cài đặt & Đồng bộ | L2 | | | **X** (Start / Goal) | **X** (Kiểm tra cấu hình AI) |
+| **`SCR-08_SyncError`** | Trạng thái lỗi đồng bộ | Biến thể | | | **X** (Nhánh lỗi & Phục hồi) | |
+| **`D-01_SyncConfirmation`** | Dialog xác nhận đồng bộ | Overlay | | | **X** (Overlay bắt buộc) | |
 
-Cả 8 màn hình đều được ít nhất một flow sử dụng và đều truy cập được từ điều hướng ở mục 1.2.
+Cả 8 màn hình chính cùng 2 khung biến thể/overlay đều được các flow sử dụng đầy đủ và đều truy cập được từ cấu trúc điều hướng ở mục 1.2.
 
 ### Truy vết từ Persona đến Flow
 
-| Mục tiêu persona | Flow | Tiêu chí đo liên quan |
+| Mục tiêu persona | Flow | Tiêu chí đo liên quan (trong `ux/persona.md`) |
 | :--- | :--- | :--- |
-| G1 Nắm cấu trúc và slot môn | Flow 1 | M1 (≤ 8 giây, ≤ 3 chạm) |
-| G2 Tổng hợp công việc | Flow 2 | M3 (Undo trong Snackbar 8 giây) |
-| G3 Tra cứu ghi chú | Flow 4 | (xem mục 5 để biết gợi ý bổ sung) |
-| G4 Ghi chép nhanh | Flow 3 | M2 (≤ 15 giây) |
+| **G1** Nắm cấu trúc và slot môn | **Flow 1** | **M1** (Tra cứu đề cương môn học ≤ 8 giây, ≤ 3 chạm ở chế độ ngoại tuyến) |
+| **G2** Tổng hợp công việc | **Flow 2** | **M3** (Hoàn tác thao tác nhầm qua Snackbar trong 8 giây) |
+| **G4** Ghi chép nhanh | **Flow 2 & Flow 3** | **M2** (Cập nhật checklist và bấm "Lưu vào Vault" ≤ 15 giây) |
+| **G3** Tra cứu ghi chú & hỏi AI | **Flow 3 & Flow 4** | **M3 & M4** (5/5 người thử xử lý đúng Overlay `D-01`, phục hồi lỗi `SCR-08_SyncError` và hiểu nguyên nhân mất mạng trên `SCR-07_AskAI` kèm nút "Thử lại") |
 
 ---
 
@@ -280,20 +262,11 @@ Cả 8 màn hình đều được ít nhất một flow sử dụng và đều t
 
 | Mã | Loại | Dùng ở | Ghi chú |
 | :--- | :--- | :--- | :--- |
-| **D-01** | Dialog xác nhận | Flow 3 | "Bỏ ghi chú này?" với hai nút "Tiếp tục soạn" và "Bỏ". **Overlay bắt buộc cho prototype.** |
-| **D-02** | Dialog lỗi | Flow 3 | "Không thể ghi vào Vault" với "Thử lại" và "Hủy" |
-| **BS-01** | Bottom sheet | Flow 3 | Chọn ngày: Hôm nay, Ngày mai, Tuần sau, mở lịch |
-| **SN-01** | Snackbar có hành động | Flow 2 | "Đã hoàn thành" kèm HOÀN TÁC, **8 giây** |
-| **SN-02** | Snackbar có hành động | Flow 3 | "Đã lưu" kèm "Xem" |
-| **LD-01** | Loading → kết quả | Flow 2 | Skeleton ở SCR-04 rồi hiện danh sách việc |
-| **LD-02** | Loading → kết quả | Flow 4 | "AI đang tìm trong ghi chú của bạn" rồi hiện câu trả lời |
-| **LD-03** | Loading → kết quả | SCR-08 | "Quét lại Vault" rồi hiện "Đã cập nhật N file" |
-| **EM-01…04** | Empty state | SCR-01 (chưa kết nối Vault), SCR-03 (môn chưa có đề cương), SCR-04 (không có việc), SCR-06 (chưa có ghi chú) | Mỗi cái có icon, thông báo và đúng một hành động |
-| **ER-01…03** | Error state | ER-01 mất mạng và ER-02 AI chưa sẵn sàng (Flow 4, SCR-07); ER-03 không tìm thấy thư mục Vault (SCR-08). Lỗi tên file ở Flow 3 dùng biến thể Error của Text Field | Có nguyên nhân dễ hiểu và hành động thử lại hoặc sửa |
+| **`D-01_SyncConfirmation`** | Dialog xác nhận (Overlay) | `SCR-08_SyncVault` (Flow 3) | **"Đồng bộ Obsidian Vault?"** với hai nút **"Hủy"** (Close overlay) và **"Xác nhận"** (chuyển sang `SCR-08_SyncError`). **Overlay bắt buộc trên Figma Prototype.** |
+| **`SCR-08_SyncError`** | Màn hình trạng thái lỗi | Đặt cạnh `SCR-08_SyncVault` (Flow 3) | **"Không thể truy cập Vault"** kèm thông báo giữ nguyên dữ liệu cục bộ và nút chính **"Thử lại"** (phục hồi về `SCR-08_SyncVault`). |
+| **SN-01** | Snackbar có hành động | `SCR-04_Tasks` (Flow 2) | "Đã hoàn thành" kèm nút **HOÀN TÁC**, hiển thị **8 giây**. |
+| **LD-01** | Loading → kết quả | Page `05 Components` / `SCR-04`, `SCR-08` | Component `LoadingState` (3 thanh skeleton) hiển thị trong lúc đọc/quét chỉ mục Vault. |
+| **EM-01…04** | Empty state | Page `05 Components` / `SCR-01`, `SCR-03`, `SCR-04`, `SCR-06` | Component `EmptyState` gồm icon, thông báo rõ ràng và đúng một nút hành động chính ("Tạo ghi chú"). |
+| **ER-01…03** | Error state | `ER-01`: Banner "Mất kết nối Internet" kèm nút "Thử lại" (`SCR-07_AskAI`); `ER-03`: Không thể truy cập thư mục Vault (`SCR-08_SyncError`); lỗi nhập liệu dùng biến thể `Error` của `SearchField`. | Nêu rõ nguyên nhân bằng ngôn ngữ dễ hiểu và luôn có nút hành động phục hồi ("Thử lại"). |
 
 ---
-
-## 5. Ghi chú cho bước kiểm tra tiếp theo
-
-- **Flow 4 chưa có tiêu chí đo riêng** trong persona. Có thể bổ sung một tiêu chí như "5/5 người thử hiểu nguyên nhân khi mất mạng lúc hỏi AI và biết cách tiếp tục" (đã nêu ở lần phản biện trước).
-- **Số màn hình đang đúng bằng mức tối thiểu (8).** Khi dựng Figma cần đảm bảo mỗi màn hình có bố cục thật sự khác nhau; SCR-06 có hai chế độ (toàn bộ và lọc theo môn) chỉ được tính là một màn hình.
