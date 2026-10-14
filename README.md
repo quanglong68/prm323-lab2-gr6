@@ -30,4 +30,4 @@ Prototype có 3 điểm bắt đầu: Flow 1 (tra cứu môn), Flow 2 (deadline/
 
 ## Phạm vi
 
-Android mobile-first, Material Design 3, light theme, Inter, khung chính 360 × 800 dp và kiểm tra tại 412 dp. Vault hỗ trợ đọc/ghi cục bộ offline; hỏi Gemini API cần mạng. Tên repo được giữ nguyên theo yêu cầu nhóm.
+Android mobile-first, Material Design 3, light theme, Inter, khung chính 360 × 800 dp và kiểm tra tại 412 dp. Vault hỗ trợ đọc/ghi cục bộ offline; hỏi Gemini API cần mạng. 
