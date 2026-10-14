@@ -201,7 +201,7 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 | **6. Nút "Xóa cache" thiếu Dialog & Vi phạm tương phản** | **CHẤP NHẬN (Accept)** | Thêm Dialog xác nhận khi bấm xóa cache để phòng ngừa mất dữ liệu (Heuristic #5) và điều chỉnh mã màu chữ đạt chuẩn tương phản WCAG 4.5:1. |
 ## 5. Các Vòng lặp Tinh chỉnh với AI (AI Iteration Loops)
 
-**Công cụ phản biện UX:** Claude (người thực hiện xác nhận; phiên bản model chưa được ghi nhận). Google Stitch được dùng để sinh và tinh chỉnh giao diện.
+**Công cụ phản biện UX:** Claude . Google Stitch được dùng để sinh và tinh chỉnh giao diện.
 
 ### Vòng lặp 1: Thống nhất Dữ liệu, Chuẩn hóa AppBar & Dọn dẹp Card rác
 - **Vấn đề cụ thể cần giải quyết:** Xử lý các điểm mâu thuẫn dữ liệu nghiêm trọng giữa các màn hình (deadline Lab 2, tên học kỳ, cổng nộp bài), sửa lỗi tiêu đề App Bar ở SCR-08 bị trùng lặp, và dọn sạch các tính năng ngoài phạm vi (card rác) để tập trung định vị app đọc Vault offline (Khớp với phát hiện A1, A2, C1 trong bản phản biện).
