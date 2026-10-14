@@ -25,7 +25,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 - **Thuộc User Flow:** Điểm bắt đầu (Starting Point) của **Flow 1** và **Flow 2**.
 - **Nội dung & Thành phần hiển thị chính:**
   - **Top App Bar (56 dp):** Tiêu đề ứng dụng "FPTU Second Brain Mobile", phụ đề "Học kỳ Fall 2024 (Kỳ 5)", icon bánh răng Cài đặt dẫn sang SCR-08.
-  - **Thẻ định danh sinh viên:** Lời chào cá nhân hóa "Chào Minh Đức 👋", nhãn ngành Kỹ thuật Phần mềm, chip trạng thái `Obsidian Vault: Đã kết nối 42 ghi chú (Offline)`.
+  - **Thẻ định danh sinh viên:** Lời chào cá nhân hóa "Chào Minh Đức ", nhãn ngành Kỹ thuật Phần mềm, chip trạng thái `Obsidian Vault: Đã kết nối 42 ghi chú (Offline)`.
   - **Khối hạn chót khẩn cấp (Urgent Deadlines):** Thẻ task ưu tiên cao nhất: Mã môn `SWP391`, tên task `Nộp báo cáo Lab 1`, badge đỏ `Quá hạn` kèm thời gian `Hôm qua 23:59 • Hệ thống LMS`. Nút hành động `Nộp bài qua LMS`.
   - **Thẻ trạng thái Vault:** Thông báo `Obsidian Vault Sẵn Sàng` (Hoạt động ngoại tuyến 100%, 42 ghi chú, 4 đề cương FLM).
   - **Thẻ môn học đang học:** Hiển thị môn `PRM323 - Lập trình Di động Đa nền tảng`, thanh tiến độ `Slot 12/30 (40%)`, giảng viên `Huỳnh Bảo Ân`, phòng `AL-R302`, nút `Xem đề cương môn học`.
@@ -71,8 +71,8 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
     - Slot 13: "Thực hành Lab • Lab 2: Usability & Handoff" (Badge đỏ nhạt `Hôm nay`, hạn nộp `23:59 Hôm nay (15/10/2024) trên Hệ thống LMS`).
     - Slot 14: "Lý thuyết • Networking & REST API" (Badge xám `Sắp tới`, dự kiến 21/10/2024).
   - **Thanh nút cố định đáy (Bottom Action Bar):** 
-    - Nút chính: `✨ Hỏi trợ lý AI về môn này` (Filled Primary Blue - dẫn sang SCR-07).
-    - Nút phụ: `📖 Tài liệu` (Outlined Button - dẫn sang SCR-06).
+    - Nút chính: ` Hỏi trợ lý AI về môn này` (Filled Primary Blue - dẫn sang SCR-07).
+    - Nút phụ: ` Tài liệu` (Outlined Button - dẫn sang SCR-06).
 - **Ý đồ thiết kế:** Đưa nút hành động chính xuống đáy màn hình hỗ trợ công thái học ngón cái khi di chuyển trên xe bus (Ergonomics).
 
 ---
@@ -112,7 +112,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
   - **Khung Xem trước trực tiếp (Live Preview):**
     - Hiển thị trực quan checklist đã render (2/4 hoàn thành), callout thông báo hạn chót nộp LMS.
     - Nút hành động: `+ Tạo việc cần làm từ checklist này` (Outlined Button bo tròn).
-  - **Thanh công cụ định dạng đáy (Keyboard Toolbar):** Các nút icon thao tác nhanh gồm **B** (Đậm), *I* (Nghiêng), **T** (Tiêu đề), [x] (Checklist), List (Danh sách), và nút chính màu xanh `📥 Lưu vào Vault` ở góc phải.
+  - **Thanh công cụ định dạng đáy (Keyboard Toolbar):** Các nút icon thao tác nhanh gồm **B** (Đậm), *I* (Nghiêng), **T** (Tiêu đề), [x] (Checklist), List (Danh sách), và nút chính màu xanh ` Lưu vào Vault` ở góc phải.
 - **Ý đồ thiết kế:** Dời nút Lưu xuống góc phải thanh công cụ đáy vừa vặn với ngón cái, loại bỏ sự lúng túng khi phải với tay lên góc trên màn hình.
 
 ---
@@ -147,7 +147,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
   - **Lịch sử hội thoại chat:**
     - Bong bóng hỏi của sinh viên (User bubble): Màu xanh `#1D4ED8`, chữ trắng: "Cho mình hỏi Lab 2 PRM323 cần nộp những gì và hạn chót là khi nào?".
     - Bong bóng trả lời của AI (Bot bubble): Tên người gửi `AI Tutor`, nhãn model `Gemini 1.5 Flash`, phân tích gạch đầu dòng rõ ràng về Sản phẩm nộp, Tiêu chí chấm, Hạn chót `23:59 Hôm nay (15/10/2024)`.
-    - Chip trích dẫn nguồn: Nền xanh ngọc nhạt `📖 Nguồn: PRM323_Syllabus.md` kèm icon mở file.
+    - Chip trích dẫn nguồn: Nền xanh ngọc nhạt ` Nguồn: PRM323_Syllabus.md` kèm icon mở file.
   - **Gợi ý câu hỏi tiếp theo (Chips):** "Check checklist nộp bài Lab 2", "Cách tính điểm".
   - **Thanh nhập liệu đáy:** Icon đính kèm tệp, ô nhập `Hỏi về môn học hoặc ghi chú...`, icon thu âm và nút tròn Gửi tin nhắn màu xanh.
 - **Ý đồ thiết kế:** Phân định rạch ròi giữa việc đọc tài liệu cục bộ và việc kết nối đám mây, giúp sinh viên luôn chủ động ngay cả khi rớt mạng trên đường.
@@ -163,9 +163,9 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
   - **Trạng thái kho lưu trữ:** Chấm xanh lá `● Obsidian Vault: Đã kết nối 42 ghi chú, 4 đề cương FLM (Sẵn sàng offline)`.
   - **Khối Đồng bộ Obsidian Vault:**
     - Hiển thị đường dẫn thư mục cục bộ `/storage/emulated/0/Documents/ObsidianVault`.
-    - Nút bấm `📁 Chọn thư mục khác`.
+    - Nút bấm ` Chọn thư mục khác`.
     - Switch gạt bật tắt `Tự động đồng bộ một chiều khi có Wi-Fi`.
-    - Nút chính màu xanh `🔄 Đồng bộ ngay bây giờ`.
+    - Nút chính màu xanh ` Đồng bộ ngay bây giờ`.
   - **Khối Cấu hình AI & API Key:**
     - Badge xanh lá `● Đã cấu hình`.
     - Nhãn `Gemini API Key` (Google AI Studio).
