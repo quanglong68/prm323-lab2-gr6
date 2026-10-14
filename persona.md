@@ -1,66 +1,90 @@
-# UX RESEARCH: PERSONA & PROBLEM STATEMENT
+# UX RESEARCH: USER PERSONA & PROBLEM STATEMENT
 
-## 1. Cơ sở Xây dựng Persona (Background & Observations)
-- **Phương pháp tiếp cận:** Dựa trên quá trình tự quan sát thói quen học tập của bản thân tác giả khi theo học các môn chuyên ngành Kỹ thuật Phần mềm (SE) tại Đại học FPT, kết hợp trao đổi nhanh với các bạn cùng lớp về những rào cản khi theo dõi tiến độ môn học trên điện thoại.
-- **Giả định kỹ thuật nền tảng (Technical Assumption):** Thư mục ghi chú Markdown (Obsidian Vault) được giả định đã được đồng bộ sẵn giữa máy tính và bộ nhớ điện thoại thông qua dịch vụ đám mây (Google Drive / Git / Obsidian Sync). Ứng dụng di động này đảm nhiệm việc đọc, phân loại, tìm kiếm và tạo nhanh ghi chú trực tiếp từ thư mục đó.
+> Tài liệu này được chuẩn hóa theo quy định tại **PRM393 Persona Guideline v1.0** (đầy đủ 12 trường lõi, nhóm trường bắt buộc của Lab 2, phát biểu vấn đề, tiêu chí thành công đo được và bảng ánh xạ quyết định thiết kế) và đồng bộ xuyên suốt với `ux/user-flow.md`, `ai/ai-design-log.md` cùng bản thiết kế Figma.
 
 ---
 
-## 2. Thông tin Chủ đề Dự án
+## 1. Thông tin Chủ đề & Lý do Xác định Số lượng Persona
+
 - **Tên dự án:** FPTU Second Brain Mobile
-- **Chủ đề đăng ký:** Study Planner (quản lý bài học theo đề cương, hạn nộp bài và kho tri thức môn học)
-- **Mô tả cụ thể:** Ứng dụng di động hỗ trợ sinh viên Kỹ thuật Phần mềm FPTU tra cứu nội dung slot học theo đề cương FLM đã lưu ngoại tuyến, tổng hợp các đầu việc cần làm (được ghi chú theo cú pháp Markdown) và hỗ trợ tra cứu nhanh kiến thức môn học trên thiết bị di động.
+- **Chủ đề đăng ký:** Study Planner (Ứng dụng đồng hành quản lý lộ trình học tập theo đề cương FLM, hạn nộp bài và kho ghi chú Markdown ngoại tuyến cho sinh viên ngành Kỹ thuật Phần mềm — ĐH FPT).
+- **Giả định kỹ thuật nền tảng:** Thư mục ghi chú Markdown (`Obsidian Vault`) và các file đề cương môn học (`FLM SYNC`) đã được đồng bộ sẵn giữa laptop và bộ nhớ trong của điện thoại (`/storage/emulated/0/Documents/Obsidian/FPTU`). Ứng dụng di động đóng vai trò đọc/ghi cục bộ trực tiếp trên thư mục này và gọi Gemini API khi có mạng.
+- **Lý do xây dựng 01 Primary Persona (`P01`):**
+  - Theo quy chuẩn Lab 2 (bài làm cá nhân), ứng dụng giải quyết một luồng tác vụ chuyên biệt cho một tập người dùng đồng nhất: **sinh viên Kỹ thuật Phần mềm (SE) tại FPTU đã có thói quen lưu trữ bài học bằng Markdown trên máy tính và cần công cụ đồng hành khi di chuyển bằng điện thoại**.
+  - Các hành vi tra cứu lịch slot, kiểm tra deadline khẩn cấp, ghi chú nhanh trên lớp và hỏi đáp AI đều diễn ra trên cùng một đối tượng người dùng trong ngày, không phân tách thành các vai trò (role) đối lập.
 
 ---
 
-## 3. Chân dung Người dùng Mục tiêu (Primary Persona)
+## 2. Hồ sơ Primary Persona Chuẩn hóa (12 Trường Lõi & Chi tiết Bắt buộc Lab 2)
 
-### Thông tin cơ bản
-- **Họ và tên:** Nguyễn Minh Đức (Nhân vật đại diện)
-- **Độ tuổi:** 20 tuổi
-- **Vai trò:** Sinh viên ngành Kỹ thuật Phần mềm (Software Engineering), Đại học FPT TP.HCM, đang trong giai đoạn theo học các môn chuyên ngành (Java Web, Cross-Platform Mobile, Database...).
-
-### Bối cảnh hằng ngày
-- Sử dụng máy tính xách tay để lập trình và ghi chép tài liệu học tập bằng các file Markdown trong thư mục cá nhân.
-- Thường xuyên di chuyển giữa các phòng học, phòng lab và đi lại bằng xe bus công cộng.
-- Trong lúc di chuyển hoặc nghỉ giữa các tiết học, Đức chủ yếu sử dụng điện thoại thông minh để kiểm tra công việc và thông tin bài học.
-- Mạng di động hoặc Wi-Fi trường đôi khi chập chờn hoặc mất kết nối khi di chuyển, gây khó khăn nếu phải truy cập các trang web yêu cầu mạng liên tục.
-
-### Thói quen sử dụng thiết bị (Giả định thiết kế)
-- **Thiết bị chính:** Điện thoại Android kích thước màn hình phổ biến (~412 dp chiều rộng viewport).
-- **Thao tác:** Phần lớn các thao tác tra cứu nhanh diễn ra khi đang đứng hoặc đi lại, chủ yếu thao tác bằng ngón tay cái của một tay.
-- **Tần suất:** Mở app nhanh nhiều lần trong ngày, mỗi lần chỉ kéo dài từ vài chục giây đến một phút để kiểm tra việc cần làm hoặc xem nội dung slot học tiếp theo.
-
-### Mục tiêu của người dùng (Goals)
-1. **Nắm cấu trúc và nội dung slot môn học:** Xem nhanh tổng số slot học, nội dung bài học từng slot và danh mục các đầu điểm đánh giá (Assignment, Progress Test, Practical Exam, Final Exam) từ dữ liệu đề cương đã tải về, xem được ngay cả khi không có mạng.
-2. **Tổng hợp công việc cần làm:** Có một nơi tập trung hiển thị các hạn nộp bài tập mà bản thân đã chủ động ghi chú (theo quy ước cá nhân `- [ ] Tên việc @due dd/mm/yyyy`) để không bị bỏ quên các bài tập thành phần.
-3. **Tra cứu ghi chú bài học:** Dễ dàng tìm lại các đoạn code mẫu, ghi chú bài giảng liên quan đến môn học mà không phải mở từng file Markdown riêng lẻ.
-4. **Ghi chép nhanh (Quick Capture):** Tạo nhanh một ghi chú bài học hoặc một đầu việc mới kèm hạn chót ngay trong lớp học chỉ với vài thao tác.
-
-### Nỗi đau & Rào cản (Pain Points)
-- **Tra cứu đề cương bất tiện:** Trang web FLM của trường hiển thị bảng biểu phức tạp, không tối ưu cho màn hình điện thoại và thường xuyên hết hạn phiên đăng nhập (session timeout), khiến việc tra cứu slot học rất mất thời gian.
-- **Dễ sót hạn nộp bài:** Các bài tập và deadline được ghi rải rác trong nhiều file bài học khác nhau, nếu không mở từng file thì dễ quên mất việc cần nộp trong ngày.
-- **Gián đoạn kết nối:** Khi mạng chập chờn hoặc mất mạng, việc tra cứu tài liệu học tập trên các cổng trực tuyến bị ngưng trệ hoàn toàn.
-- **Thao tác nhầm lẫn khi di chuyển:** Khi thao tác một tay trên đường đi, người dùng rất dễ bấm nhầm nút đánh dấu hoàn thành nhiệm vụ và làm mất dấu công việc chưa làm.
-
-### Ràng buộc Thiết kế & Trợ năng (Accessibility Constraints)
-- **Giao diện sáng (Light Theme chuẩn):** Thiết kế nền sáng làm giao diện chính theo đúng yêu cầu đề bài. Đảm bảo độ tương phản màu (contrast) đạt chuẩn WCAG: tối thiểu 4.5:1 với văn bản thường và 3:1 với chữ lớn và thành phần điều khiển. Chữ nội dung tối thiểu 14 sp. (Dark theme được xếp vào phạm vi mở rộng trong tương lai).
-- **Khu vực tương tác thuận tiện ngón cái:** Các hành động cốt lõi (chuyển tab, nút tạo ghi chú nhanh, thao tác hoàn thành task) được bố trí ưu tiên ở nửa dưới màn hình để dễ thao tác một tay.
-- **Kích thước vùng chạm:** Tất cả các nút bấm hành động (nút hoàn thành, nút sửa, icon điều hướng) đạt kích thước tối thiểu 48 × 48 dp, bố trí khoảng cách hợp lý để tránh chạm nhầm.
-- **Thông tin trực quan đa chiều:** Không biểu đạt trạng thái khẩn cấp chỉ bằng màu sắc đơn thuần; các hạn chót luôn có nhãn chữ đi kèm (ví dụ: "Quá hạn", "Hôm nay", "Còn 2 ngày").
-- **Kiểm thử đa kích thước:** Bố cục được thiết kế co giãn linh hoạt và kiểm tra hiển thị trên cả hai độ rộng màn hình 360 dp và 412 dp.
+### Tóm tắt Định danh
+- **Mã & Mức ưu tiên:** `P01 · Primary Persona` (Ưu tiên cao nhất — quyết định 100% kiến trúc thông tin và luồng tương tác cốt lõi).
+- **Họ và tên giả định:** Nguyễn Minh Đức
+- **Nhãn nhóm hành vi (Archetype):** *“Sinh viên SE tra cứu ngoại tuyến và ghi nhanh một tay khi di chuyển”*
+- **Câu nói đại diện (Quote):**
+  > *“Giữa hai ca học hoặc lúc đang đứng trên xe bus, mình chỉ có chưa tới một phút để xem hôm nay học slot mấy và tối nay có bài Lab nào đến hạn nộp trên LMS.”*
+  > *(Lưu ý: Câu nói giả lập để minh họa nhu cầu và bối cảnh sử dụng; không phải phát biểu nguyên văn từ transcript phỏng vấn).*
 
 ---
 
-## 4. Phát biểu Vấn đề (Problem Statement)
-Sinh viên ngành Kỹ thuật Phần mềm FPTU khi học nhiều môn chuyên ngành thường tốn nhiều thời gian tìm kiếm lại đề cương, hạn nộp bài và nội dung ghi chép do thông tin phân tán trên nhiều hệ thống và file cá nhân, trong khi thời gian tra cứu giữa các tiết học rất ngắn, thao tác chủ yếu bằng một tay trên điện thoại và trong điều kiện kết nối mạng không ổn định.
+### Bảng 12 Trường Lõi (Core Fields theo PRM393 Persona Guideline)
+
+| Trường (Field) | Nội dung chi tiết |
+| :--- | :--- |
+| **01. Identity & Archetype** | **Nguyễn Minh Đức** — Sinh viên năm 3 ngành Kỹ thuật Phần mềm (Học kỳ Fall 2024 - Kỳ 5), nhóm hành vi *“Học tập đa thiết bị, tra cứu ngoại tuyến và thao tác nhanh một tay khi di chuyển”*. |
+| **02. Persona Priority** | **Primary Persona.** Mọi quyết định về cấu trúc điều hướng 4 tab, chế độ đọc Offline-first, vị trí nút ở vùng ngón cái và cơ chế hoàn tác (Undo) đều phục vụ trực tiếp cho P01. |
+| **03. Usage Context** | - **Không gian & Thời gian:** Khi đang đứng/ngồi trên xe bus công cộng, đi bộ chuyển phòng giữa các ca học tại campus FPTU, hoặc 5 phút đầu giờ trong phòng lab.<br>- **Thiết bị:** Điện thoại Android màn hình phổ thông (~360–412 dp).<br>- **Sự chú ý:** Bị phân tán cao, môi trường rung lắc, thường chỉ cầm điện thoại bằng một tay, mỗi phiên mở app chỉ kéo dài **30–60 giây**. |
+| **04. Goals** | - **G1 — Nắm cấu trúc và nội dung slot môn học:** Xem nhanh tiến độ slot (VD: `Slot 12/30`), nội dung từng buổi và các đầu điểm đánh giá (`Assignment`, `PT`, `PE`, `FE`) từ đề cương FLM đã lưu ngoại tuyến.<br>- **G2 — Tổng hợp công việc cần làm:** Gom toàn bộ deadline rải rác trong các file Markdown về một danh sách tập trung có phân loại *Quá hạn / Hôm nay / Sắp tới*.<br>- **G3 — Tra cứu ghi chú bài học:** Tìm lại nhanh kiến thức và tóm tắt môn học (như `PRM323`, `SWP391`) bằng bộ lọc môn hoặc hỏi Trợ lý AI có trích dẫn nguồn.<br>- **G4 — Ghi chép nhanh (Quick Capture):** Tạo nhanh ghi chú Markdown hoặc thêm đầu việc mới kèm hạn nộp ngay trên lớp chỉ với vài chạm. |
+| **05. Job to Be Done (JTBD)** | - **JTBD 1 (Tra cứu & Deadline):** *“Khi đang di chuyển trên xe bus hoặc đổi phòng học với mạng 4G chập chờn, tôi muốn xem ngay nội dung slot học hôm nay và các bài Lab sắp hết hạn nộp mà không cần đăng nhập lại cổng trường, để chủ động chuẩn bị bài và không bị trễ deadline trên LMS.”*<br>- **JTBD 2 (Ghi nhanh & Hỏi AI):** *“Khi giảng viên vừa nhắc một lưu ý chấm điểm hoặc khi cần ôn nhanh kiến thức đã chép, tôi muốn ghi lại ngay bằng một tay hoặc đặt câu hỏi cho AI dựa trên chính kho Vault của mình, để tiết kiệm thời gian lục tìm từng file lẻ.”* |
+| **06. Current Behaviors** | - Trên laptop: Ghi chép bài giảng và việc cần làm bằng cú pháp Markdown (`- [ ] Tên việc`) trong Obsidian Vault.<br>- Trên điện thoại (5–8 lần/ngày): Mở trình duyệt vào web FLM/LMS để xem lịch học và mở ứng dụng đọc file để dò tìm deadline.<br>- **Workaround hiện tại:** Chụp ảnh màn hình lịch học/deadline lưu vào thư viện ảnh hoặc tự nhắn tin cho chính mình trên Zalo/Telegram, dẫn đến thông tin bị trôi và phân mảnh. |
+| **07. Pain Points** | 1. **Tra cứu đề cương FLM bất tiện trên mobile:** Web FLM nhiều bảng biểu nhỏ, không tối ưu màn hình dọc và liên tục hết phiên đăng nhập (session timeout) → *Hậu quả:* Tốn 2–3 phút chỉ để xem 1 slot học.<br>2. **Dễ bỏ sót hạn nộp bài (Deadline):** Các task nằm rải rác trong 42 file ghi chú của nhiều môn (`PRM323`, `SWP391`...) → *Hậu quả:* Quên nộp báo cáo Lab đúng hạn (23:59 trên LMS).<br>3. **Gián đoạn khi mất mạng:** Mạng 4G trên xe bus hoặc Wi-Fi phòng học chập chờn làm tê liệt các công cụ thuần đám mây → *Hậu quả:* Không xem được tài liệu và mất câu hỏi đang gõ cho AI.<br>4. **Chạm nhầm khi thao tác một tay:** Xe rung lắc dễ làm ngón cái bấm nhầm vào ô checkbox hoàn thành việc → *Hậu quả:* Mất dấu công việc quan trọng chưa làm. |
+| **08. Motivations** | - **Tốc độ & Tức thời:** Mở app là thấy ngay hạn chót khẩn cấp và slot học hiện tại.<br>- **Kiểm soát & An tâm (Offline-first):** Dữ liệu nằm trong máy, đọc/ghi không phụ thuộc Internet.<br>- **An toàn thao tác:** Có lưới an toàn (Undo / Dialog xác nhận) khi bấm nhầm. |
+| **09. Constraints** | - **Kỹ thuật & Quyền hạn:** App mobile chỉ đọc/ghi thư mục Vault cục bộ; không cào dữ liệu FLM trực tiếp (việc đồng bộ FLM thực hiện từ desktop).<br>- **Kết nối mạng:** Thường xuyên ngoại tuyến; tính năng Trợ lý AI (`Gemini 1.5 Flash`) bắt buộc cần mạng và API Key hợp lệ.<br>- **Công thái học:** Thao tác một tay bằng ngón cái trên màn hình 360–412 dp dưới ánh sáng ban ngày. |
+| **10. Key Scenarios** | - **Tình huống 1 (Trên xe bus - Flow 1 & Flow 2):** 07:15 sáng trên xe bus đến trường, mạng 4G yếu (*Tác nhân*), Đức mở app bằng một tay để kiểm tra hạn nộp bài tập trong ngày và xem trước nội dung Slot 12 môn PRM323 (*Mục đích*). Đức thấy ngay cảnh báo `"Hoàn thiện Figma Prototype Lab 2 · Hôm nay 23:59"` trên `SCR-01`, lỡ tay chạm nhầm checkbox trên `SCR-04` nhưng bấm kịp `"HOÀN TÁC"` trên thanh Snackbar trong 8 giây, sau đó mở `SCR-03` xem đề cương ngoại tuyến (*Kết quả*).<br>- **Tình huống 2 (Tại lớp học - Flow 3 & Flow 4):** Giảng viên vừa phổ biến tiêu chuẩn chấm điểm Lab 2 (*Tác nhân*), Đức mở `SCR-05` soạn nhanh checklist Markdown và bấm nút `"Lưu vào Vault"` ngay sát cạnh dưới màn hình (*Mục đích*). Khi cần ôn lại, Đức vào `SCR-07` hỏi AI và nhận câu trả lời trích dẫn trực tiếp từ đề cương `PRM323` (*Kết quả*). |
+| **11. Success Criteria** | Hoàn thành các tác vụ cốt lõi được chứng minh qua 4 chỉ số đo lường định lượng **M1, M2, M3, M4** quy định chi tiết tại **Mục 5** bên dưới. |
+| **12. Evidence & Status** | - **Phân loại:** `Proto-Persona` kết hợp quan sát định tính sơ bộ (chưa phải Statistical Persona diện rộng).<br>- **Cơ sở dữ liệu:** Tự quan sát quy trình học tập thực tế của tác giả tại kỳ 5 ngành SE ĐH FPT TP.HCM (`OBS-SELF-01`, 10/2026) và trao đổi nhanh với 3 sinh viên cùng lớp học môn PRM323 & SWP391 (`OBS-PEER-01..03`).<br>- **Giả định cần kiểm chứng thêm:** Tỷ lệ sinh viên duy trì cấu trúc thư mục Obsidian đồng nhất giữa laptop và điện thoại; ngưỡng thời gian 8 giây của thanh Snackbar Hoàn tác khi di chuyển thực tế. |
+
+---
+
+### Chi tiết Bắt buộc cho Lab 2 (Optional Details theo Guideline & Rubric)
+
+1. **Độ tuổi & Vai trò:** 20 tuổi — Sinh viên năm 3 chuyên ngành Kỹ thuật Phần mềm (SE), Đại học FPT TP.HCM (đang học song song các môn đồ án và lập trình di động như `SWP391`, `PRM323`).
+2. **Thói quen dùng thiết bị:** Dùng kết hợp Laptop (soạn thảo sâu, đồng bộ FLM) và Điện thoại Android (kiểm tra nhanh 5–8 lần/ngày, cầm một tay theo chiều dọc).
+3. **Nhu cầu & Ràng buộc Trợ năng (Accessibility & Responsive Constraints):**
+   - **Giao diện sáng (Light Theme chuẩn):** Nền sáng (`#F8FAFC` / `#FFFFFF`) chống lóa khi nhìn ngoài trời hoặc trên xe bus; độ tương phản màu đạt chuẩn **WCAG 2.1 AA** (tối thiểu **4.5:1** với văn bản thường và **3:1** với chữ lớn/điều khiển UI).
+   - **Cỡ chữ & Hiển thị tiếng Việt:** Chữ nội dung tối thiểu **14 sp** (font `Inter`), chiều cao dòng thoáng để không cắt dấu tiếng Việt.
+   - **Vùng chạm cảm ứng (Touch Target):** Mọi phần tử tương tác (nút bấm, checkbox hoàn thành việc, icon điều hướng, chip lọc) đạt tối thiểu **48 × 48 dp**; checkbox trên `SCR-04` tách rời khỏi vùng chạm mở file của dòng tối thiểu 8 dp để chống bấm nhầm.
+   - **Ưu tiên vùng ngón cái (Thumb Zone):** Các hành động chính (Bottom Navigation 4 tab, nút `"Lưu vào Vault"` ở `SCR-05`, nút `"Hỏi trợ lý AI"` ở `SCR-03`, thanh Snackbar `"HOÀN TÁC"`) đều đặt ở nửa dưới màn hình.
+   - **Không truyền đạt thông tin chỉ bằng màu sắc:** Mọi trạng thái hạn nộp và đồng bộ đều kết hợp **Icon + Nhãn chữ + Màu nền** (VD: `"Quá hạn · Hôm qua 23:59"`, `"Hôm nay · 23:59"`, `"Đã tải về"`, `"Đang ngoại tuyến"`).
+   - **Co giãn đa kích thước (Responsive):** Bố cục dùng Auto Layout (`Fill container`), đảm bảo hiển thị không tràn chữ trên cả chiều rộng **360 dp** và **412 dp**.
+
+---
+
+## 3. Phát biểu Vấn đề (Problem Statement)
+
+> Sinh viên ngành Kỹ thuật Phần mềm FPTU khi học nhiều môn chuyên ngành thường tốn nhiều thời gian tìm kiếm lại đề cương, hạn nộp bài và nội dung ghi chép do thông tin phân tán trên cổng FLM/LMS và nhiều file Markdown cá nhân, trong khi thời gian tra cứu giữa các tiết học rất ngắn (30–60 giây), thao tác chủ yếu bằng một tay trên điện thoại và trong điều kiện kết nối mạng không ổn định.
+
+---
+
+## 4. Từ Persona đến Quyết định Thiết kế & Giả thuyết Thử nghiệm
+
+Bảng dưới đây chuyển hóa trực tiếp các nhu cầu và rào cản của `P01 · Nguyễn Minh Đức` thành các quyết định thiết kế cụ thể trên 8 màn hình Figma:
+
+| Nhu cầu / Vấn đề của P01 | Ý tưởng / Quyết định thiết kế để thử nghiệm | Màn hình & Component áp dụng | Cách kiểm chứng (Validation) |
+| :--- | :--- | :--- | :--- |
+| **G1 / Pain Point 1 & 3:** Xem lịch slot và đầu điểm khi mạng yếu, không muốn đăng nhập lại FLM. | Lưu đề cương dưới dạng file cục bộ trong Vault; hiển thị rõ huy hiệu `"Đã tải về"` và banner `"Đang ngoại tuyến"` nhưng vẫn cho đọc đủ 3 tab *Lịch slot · Đánh giá · Tổng quan*. | `SCR-02_Roadmap`, `SCR-03_CourseDetail` (`CourseCard`, `Badge`, Banner Offline) | Đo thời gian và số lần chạm để mở đề cương môn `PRM323` từ Trang chủ (**Tiêu chí M1**). |
+| **G2 / Pain Point 2:** Dễ quên hạn nộp bài Lab nằm rải rác trong nhiều file. | Đưa khối `"Hạn chót khẩn cấp"` lên đầu `SCR-01` và gom nhóm `"Khẩn cấp & Quá hạn"` lên đầu `SCR-04` kèm nhãn chữ + thời gian cụ thể. | `SCR-01_Home`, `SCR-04_Tasks` (`TaskItem`, `Badge`) | Quan sát khả năng nhận diện ngay bài tập quá hạn/hôm nay trong 5 giây đầu mở app. |
+| **Pain Point 4:** Rung lắc trên xe bus dễ chạm nhầm ô hoàn thành việc hoặc bấm nhầm nút đồng bộ. | Tách vùng chạm checkbox (48×48 dp); hiển thị Snackbar `"Đã hoàn thành"` kèm nút `"HOÀN TÁC"` trong 8 giây (không bị FAB che); thêm Dialog xác nhận `D-01` trước khi quét/đồng bộ lại Vault. | `SCR-04_Tasks` (`SN-01`), `SCR-08_SyncVault` (`D-01_SyncConfirmation`, `SCR-08_SyncError`) | Test kịch bản chạm nhầm và phục hồi lỗi trên Prototype (**Tiêu chí M3**). |
+| **G4 / Constraint công thái học:** Soạn nhanh ghi chú bằng một tay, không với ngón cái lên góc trên màn hình. | Đặt thanh công cụ Markdown và nút chính `"Lưu vào Vault"` cố định ở cạnh đáy màn hình (`SCR-05`); tự động lưu nháp vào Vault cục bộ. | `SCR-05_NoteEditor` (`Button`, `SyncStatus`, Bottom Action Bar) | Đo thời gian tạo mới hoặc cập nhật ghi chú kèm checklist (**Tiêu chí M2**). |
+| **G3 / Pain Point 3:** Cần hỏi AI về môn học nhưng hay mất mạng hoặc lỗi truy cập. | Hiển thị rõ model `Gemini 1.5 Flash`, thẻ trích dẫn nguồn đề cương `PRM323`, và banner cảnh báo `"Mất kết nối Internet"` kèm nút `"Thử lại"` giữ nguyên câu hỏi. | `SCR-06_Notes`, `SCR-07_AskAI`, `SCR-08_SyncVault` (`ErrorState`, Citation Card) | Kiểm tra khả năng người dùng hiểu nguyên nhân lỗi mạng/Vault và bấm phục hồi (**Tiêu chí M4**). |
 
 ---
 
 ## 5. Tiêu chí Thành công Đo được (Measurable Target Metrics)
-Các tiêu chí dưới đây được xác định làm mục tiêu đo lường khi thực hiện bài kiểm tra khả năng sử dụng (Usability Testing) trên bản mẫu Figma Prototype với 5 sinh viên:
 
-1. **M1 — Tốc độ tra cứu thông tin môn học (Mô phỏng ngoại tuyến):** Từ màn hình chính, người thử nghiệm mở được danh sách đầu điểm đánh giá và nội dung buổi học của một môn bất kỳ trong **≤ 8 giây** và qua **không quá 3 lần chạm**.
-2. **M2 — Tốc độ tạo deadline mới:** Người thử nghiệm hoàn thành thao tác mở khung ghi chú nhanh, nhập tên bài tập, chọn môn học và hạn nộp trong **≤ 15 giây**.
-3. **M3 — Khả năng phục hồi thao tác nhầm lẫn:** 5/5 người thử nghiệm thực hiện hoàn tác (Undo) thành công một tác vụ vừa lỡ tay đánh dấu hoàn thành thông qua thanh thông báo (Snackbar) có thời gian hiển thị **8 giây**.
-4. **M4 — Nhận diện và phục hồi sự cố AI:** 5/5 người thử nghiệm hiểu rõ nguyên nhân lỗi khi mất kết nối mạng lúc hỏi trợ lý AI và biết cách chạm "Thử lại" để tiếp tục mà không làm mất nội dung câu hỏi đã gõ.
+Các tiêu chí dưới đây là thước đo định lượng khi kiểm thử khả năng sử dụng (Usability Testing) trên Figma Prototype với 5 sinh viên thuộc nhóm Persona P01:
+
+1. **M1 — Tốc độ tra cứu thông tin môn học (Mô phỏng ngoại tuyến):** Từ màn hình chính (`SCR-01`), người thử nghiệm mở được chi tiết môn học (`SCR-03`) để xem tiến độ slot và đầu điểm đánh giá của một môn bất kỳ trong **≤ 8 giây** và qua **không quá 3 lần chạm**.
+2. **M2 — Tốc độ tạo/lưu ghi chú và công việc mới:** Người thử nghiệm hoàn thành thao tác mở trình soạn thảo (`SCR-05`), kiểm tra/nhập nội dung checklist bài tập môn học và bấm `"Lưu vào Vault"` trong **≤ 15 giây**.
+3. **M3 — Khả năng phục hồi thao tác nhầm lẫn (Undo & Recovery):** **5/5 người thử nghiệm** thực hiện hoàn tác thành công một tác vụ vừa lỡ tay đánh dấu hoàn thành thông qua thanh thông báo (`Snackbar` hiển thị **8 giây**), hoặc xử lý đúng hộp thoại xác nhận (`D-01`) và nút `"Thử lại"` khi gặp lỗi đồng bộ Vault (`SCR-08_SyncError`).
+4. **M4 — Nhận diện và phục hồi sự cố kết nối AI:** **5/5 người thử nghiệm** hiểu rõ nguyên nhân khi mất kết nối mạng lúc hỏi trợ lý AI (`SCR-07`) — biết rằng vẫn tra cứu được 42 ghi chú ngoại tuyến — và biết cách chạm `"Thử lại"` để tiếp tục mà không làm mất câu hỏi đã gõ.
