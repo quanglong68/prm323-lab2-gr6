@@ -1,7 +1,5 @@
 # Flutter Handoff — FPTU Second Brain Mobile
 
-Đặc tả chuyển giao triển khai dựa trên Figma và `design/DESIGN.md`. Đây là hướng dẫn handoff, không phải mã ứng dụng hay cam kết rằng prototype có backend hoạt động.
-
 ## Quy tắc toàn cục
 
 - Android portrait; thiết kế chuẩn 360 × 800 dp, kiểm tra 412 dp. PNG tham chiếu cuối nằm trong `assets/figma/`.
