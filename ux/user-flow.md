@@ -1,6 +1,6 @@
 # UX ANALYSIS: INFORMATION ARCHITECTURE & USER FLOWS
 
-> Tài liệu này bám theo `ux/persona.md` (`P01 · Nguyễn Minh Đức`). Các mục tiêu của persona được ký hiệu **G1–G4**:
+> Tài liệu này bám theo `persona.md` (`P01 · Nguyễn Minh Đức`). Các mục tiêu của persona được ký hiệu **G1–G4**:
 > G1 = Nắm cấu trúc và nội dung slot môn học · G2 = Tổng hợp công việc cần làm · G3 = Tra cứu ghi chú bài học · G4 = Ghi chép nhanh (Quick Capture).
 > Các tiêu chí đo được **M1–M4** là bốn tiêu chí trong mục 5 của persona (M1 = tra cứu ≤ 8 giây và ≤ 3 chạm, M2 = tạo/lưu ghi chú deadline ≤ 15 giây, M3 = Undo trong Snackbar 8 giây & phục hồi lỗi đồng bộ, M4 = nhận diện lỗi mất mạng khi hỏi AI và chạm Thử lại giữ nguyên câu hỏi).
 
@@ -12,7 +12,7 @@
 - **Việc chạy trên desktop, không có trên mobile:** cào dữ liệu FLM (đăng nhập cổng trường), vector hóa kho tri thức, tạo ngành/kỳ/môn, Hard Reset AI. Vì vậy mobile **không có màn hình đăng nhập FLM**; đề cương xuất hiện trong Vault dưới dạng file đã đồng bộ (nhãn `FLM SYNC` / `Đã tải về`).
 - **Ngoại tuyến:** xem đề cương, xem và tick task, soạn ghi chú và quét lại chỉ mục Vault cục bộ đều dùng được vì chỉ đọc/ghi file trên thiết bị. **Trợ lý AI (`Gemini 1.5 Flash`) cần mạng để giải đáp câu hỏi mới.**
 - **Ngoài phạm vi (ghi nhận để tránh bị hỏi khó):** xử lý xung đột khi một file bị sửa đồng thời trên laptop và điện thoại (do dịch vụ đồng bộ đảm nhiệm); thông báo nhắc deadline ngoài app; dark theme; chèn liên kết `[[...]]`.
-- **Số lượng:** 8 màn hình độc lập (`SCR-01_Home` đến `SCR-08_SyncVault`, không tính dialog overlay `D-01_SyncConfirmation`, snackbar và biến thể trạng thái lỗi `SCR-08_SyncError`), 4 user flow.
+- **Số lượng:** 8 màn hình độc lập (`SCR-01_Home` đến `SCR-08_SyncVault`), 3 flow chính có prototype và 1 nhánh bổ sung Flow 1A về hỏi AI; không tính dialog overlay `D-01_SyncConfirmation`, snackbar và biến thể lỗi `SCR-08_SyncError`.
 
 ---
 
@@ -78,9 +78,9 @@ App Root
 
 ---
 
-## 2. Chi tiết 4 User Flow
+## 2. Ba User Flow chính và nhánh AI Retrieval bổ sung
 
-Mỗi flow tương ứng với các mục tiêu và tiêu chí đo của persona (`G1, M1` → Flow 1; `G2, M3` → Flow 2; `G4, M2` → Flow 3; `G3, M4` → Flow 4).
+Ba flow chính tương ứng với ba prototype start point trên Figma (`G1, M1` → Flow 1; `G2, M3` → Flow 2; `G4, M2` → Flow 3). Hỏi AI (`G3, M4`) là nhánh Flow 1A khởi chạy từ SCR-03, không phải prototype start point thứ tư.
 
 ---
 
@@ -198,7 +198,7 @@ flowchart TD
 
 ---
 
-### Flow 4: Hỏi Trợ lý AI về Ghi chú & Phục hồi khi Mất mạng (AI Knowledge Retrieval) — G3, M4
+### Nhánh Flow 1A: Hỏi Trợ lý AI về Ghi chú & Phục hồi khi Mất mạng (AI Knowledge Retrieval) — G3, M4
 
 - **Điểm bắt đầu:** cần tra lại kiến thức đã ghi; vào `SCR-07_AskAI` từ nút "Hỏi trợ lý AI về môn này" trên `SCR-03_CourseDetail` (hoặc từ Trang chủ / Ghi chú).
 - **Mục tiêu:** nhận câu trả lời trích từ đề cương và ghi chú của chính mình (có dẫn nguồn), và xử lý phục hồi khi mất kết nối mạng.
@@ -219,9 +219,9 @@ flowchart TD
     Settings --> ChatCtx
     Answer --> Cite{"Muốn xem tài liệu nguồn?"}
     Cite -->|Chạm thẻ trích dẫn / xem ghi chú| OpenSrc["Mở SCR-05_NoteEditor / SCR-06_Notes"]
-    Cite -->|Không| EndOk(["Kết thúc Flow 4: có câu trả lời"])
+    Cite -->|Không| EndOk(["Kết thúc Flow 1A: có câu trả lời"])
     OpenSrc --> EndOk
-    Leave --> EndLeave(["Kết thúc Flow 4: tiếp tục học ngoại tuyến (Đạt M4)"])
+    Leave --> EndLeave(["Kết thúc Flow 1A: tiếp tục học ngoại tuyến (Đạt M4)"])
 ```
 
 - **Happy path:** Từ `SCR-03_CourseDetail` → chạm "Hỏi trợ lý AI về môn này" → `SCR-07_AskAI` → gửi câu hỏi → nhận câu trả lời từ `AI Tutor · Gemini 1.5 Flash` kèm thẻ nguồn **"Theo đề cương PRM323"**.
@@ -232,7 +232,7 @@ flowchart TD
 
 ## 3. Bảng Ánh xạ User Flow sang Màn hình
 
-| Mã Frame | Màn hình | Cấp | Flow 1 Tra cứu | Flow 2 Deadline & Undo | Flow 3 Ghi chú & Đồng bộ Vault | Flow 4 Hỏi AI |
+| Mã Frame | Màn hình | Cấp | Flow 1 Tra cứu | Flow 2 Deadline & Undo | Flow 3 Ghi chú & Đồng bộ Vault | Flow 1A Hỏi AI (nhánh) |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
 | **SCR-01** (`SCR-01_Home`) | Trang chủ | L1 | **X** (Start) | **X** (Điểm vào) | **X** (Điểm vào AppBar) | |
 | **SCR-02** (`SCR-02_Roadmap`) | Lộ trình môn học | L1 | **X** | | | |
@@ -249,12 +249,12 @@ Cả 8 màn hình chính cùng 2 khung biến thể/overlay đều được các
 
 ### Truy vết từ Persona đến Flow
 
-| Mục tiêu persona | Flow | Tiêu chí đo liên quan (trong `ux/persona.md`) |
+| Mục tiêu persona | Flow | Tiêu chí đo liên quan (trong `persona.md`) |
 | :--- | :--- | :--- |
 | **G1** Nắm cấu trúc và slot môn | **Flow 1** | **M1** (Tra cứu đề cương môn học ≤ 8 giây, ≤ 3 chạm ở chế độ ngoại tuyến) |
 | **G2** Tổng hợp công việc | **Flow 2** | **M3** (Hoàn tác thao tác nhầm qua Snackbar trong 8 giây) |
 | **G4** Ghi chép nhanh | **Flow 2 & Flow 3** | **M2** (Cập nhật checklist và bấm "Lưu vào Vault" ≤ 15 giây) |
-| **G3** Tra cứu ghi chú & hỏi AI | **Flow 3 & Flow 4** | **M3 & M4** (5/5 người thử xử lý đúng Overlay `D-01`, phục hồi lỗi `SCR-08_SyncError` và hiểu nguyên nhân mất mạng trên `SCR-07_AskAI` kèm nút "Thử lại") |
+| **G3** Tra cứu ghi chú & hỏi AI | **Flow 1A** (nhánh từ Flow 1) | **M4** (nhận diện lỗi mất mạng trên `SCR-07_AskAI`, giữ câu hỏi và thử lại thành công). M3 và overlay đồng bộ Vault thuộc Flow 3. |
 
 ---
 

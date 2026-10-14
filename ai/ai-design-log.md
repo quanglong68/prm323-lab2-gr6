@@ -196,10 +196,12 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 | **1. Che khuất nút HOÀN TÁC & FAB đè chữ** | **CHẤP NHẬN (Accept)** | Lưới an toàn Hoàn tác (SN-01) là tiêu chí đo lường **M3** bắt buộc trong `ux/persona.md`. Sửa lại cấu trúc Scaffold để Snackbar đẩy FAB lên hoặc ẩn FAB khi Snackbar xuất hiện. |
 | **2. Dữ liệu mâu thuẫn & Sai AppBar SCR-07/08** | **CHẤP NHẬN (Accept)** | Đảm bảo tính nhất quán (Heuristic #4). Chuẩn hóa toàn bộ tiêu đề AppBar, thống nhất deadline Lab 2 về 15/10/2024, học kỳ Fall 2024 và cổng nộp bài LMS. |
 | **3. Nút hành động chính ở góc trên ngoài vùng ngón cái** | **CHẤP NHẬN (Accept)** | Đức thao tác một tay trên xe bus. Dời nút "Lưu" (SCR-05) xuống thanh công cụ sát bàn phím và đưa các nút chức năng chính về nửa dưới màn hình. |
-| **4. Cam kết riêng tư sai & Thiếu Gemini API Key** | **CHỈNH SỬA (Modify)** | Sửa thông điệp riêng tư đúng bản chất gọi API qua mạng và bổ sung ô nhập Gemini API Key vào SCR-08 để phục vụ Flow 4. |
+| **4. Cam kết riêng tư sai & Thiếu Gemini API Key** | **CHỈNH SỬA (Modify)** | Sửa thông điệp riêng tư đúng bản chất gọi API qua mạng và bổ sung ô nhập Gemini API Key vào SCR-08 để phục vụ nhánh Flow 1A (bản nháp lịch sử gọi là Flow 4). |
 | **5. Card rác ngoài luồng (Streak, Spaced Repetition)** | **CHẤP NHẬN (Accept)** | Loại bỏ toàn bộ các tính năng không thuộc phạm vi app offline để tối ưu thời gian mở app 30–60 giây của sinh viên. |
 | **6. Nút "Xóa cache" thiếu Dialog & Vi phạm tương phản** | **CHẤP NHẬN (Accept)** | Thêm Dialog xác nhận khi bấm xóa cache để phòng ngừa mất dữ liệu (Heuristic #5) và điều chỉnh mã màu chữ đạt chuẩn tương phản WCAG 4.5:1. |
 ## 5. Các Vòng lặp Tinh chỉnh với AI (AI Iteration Loops)
+
+**Công cụ phản biện UX:** Claude (người thực hiện xác nhận; phiên bản model chưa được ghi nhận). Google Stitch được dùng để sinh và tinh chỉnh giao diện.
 
 ### Vòng lặp 1: Thống nhất Dữ liệu, Chuẩn hóa AppBar & Dọn dẹp Card rác
 - **Vấn đề cụ thể cần giải quyết:** Xử lý các điểm mâu thuẫn dữ liệu nghiêm trọng giữa các màn hình (deadline Lab 2, tên học kỳ, cổng nộp bài), sửa lỗi tiêu đề App Bar ở SCR-08 bị trùng lặp, và dọn sạch các tính năng ngoài phạm vi (card rác) để tập trung định vị app đọc Vault offline (Khớp với phát hiện A1, A2, C1 trong bản phản biện).
@@ -209,11 +211,14 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
   1. Đồng bộ hóa dữ liệu toàn hệ thống: Thống nhất hạn chót bài Lab 2 PRM323 trên tất cả các màn hình (SCR-01, SCR-02, SCR-03, SCR-04, SCR-05, SCR-06, SCR-07) là "23:59 Hôm nay (15/10/2024)". Thống nhất học kỳ "Học kỳ Fall 2024 (Kỳ 5)" và cổng nộp bài duy nhất qua "Hệ thống LMS".
   2. Sửa lỗi tiêu đề Top App Bar: SCR-07 thành "Trợ lý AI", SCR-08 thành "Cài đặt & Đồng bộ".
   3. Dọn dẹp tính năng thừa ngoài phạm vi: Xóa bỏ hoàn toàn "Spaced Repetition", "Streak 4 ngày", "Lịch học FPTU", "128 nodes" để trả lại không gian tối giản.
+  ```
+
   ### Kết quả trước và sau (Before & After):
 - **Trước:** Dữ liệu lệch nhau giữa các màn, AppBar SCR-08 ghi sai thành "Chi Tiết Môn Học", xuất hiện các thẻ streak và spaced repetition ngoài luồng.
 - **Sau:** Dữ liệu đã đồng nhất tuyệt đối (deadline 15/10/2024, Fall 2024, LMS); AppBar SCR-08 đã hiển thị đúng tên "Cài đặt & Đồng bộ"; các thẻ rác trên màn hình chính đã được dọn sạch.
-- **Ảnh bằng chứng sau Vòng lặp 1:** Lưu tại thư mục `assets/stitch/iteration-1/` (1.jpg đến 8_2.png).
-- ### Vòng lặp 2: Sửa tiêu đề SCR-07, Xử lý chồng lấp Snackbar/FAB & Bổ sung Gemini API Key
+- **Ảnh bằng chứng sau Vòng lặp 1:** [assets/stitch/iteration-1](../assets/stitch/iteration-1/) có các ảnh `1.png` đến `8.png`.
+- **Đối chiếu trước/sau:** [Ảnh ban đầu](../assets/stitch/initial/) → [Vòng 1](../assets/stitch/iteration-1/).
+### Vòng lặp 2: Sửa tiêu đề SCR-07, Xử lý chồng lấp Snackbar/FAB & Bổ sung Gemini API Key
 
 - **Vấn đề cụ thể cần giải quyết:** Khắc phục lỗi tiêu đề App Bar ở SCR-07 bị trùng ("Chi Tiết Môn Học" → "Trợ lý AI"), giải quyết xung đột vị trí che khuất chữ "HOÀN TÁC" trên thanh Snackbar SCR-04 do bị nút FAB đè lên (đảm bảo tiêu chí Undo - M3 của persona), và bổ sung trường Gemini API Key trên SCR-08 (khớp với phát hiện A1, A3, A4 trong bản phản biện).
 
@@ -231,10 +236,11 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 - **Trước:** Top App Bar SCR-07 vẫn bị ghi sai tiêu đề; nút "HOÀN TÁC" trên SCR-04 bị FAB đè lên chữ "HOÀN..."; SCR-08 thiếu ô nhập Gemini API Key.
 - **Sau:** App Bar SCR-07 đổi thành "Trợ lý AI" chuẩn xác; Snackbar trên SCR-04 nằm nổi hoàn toàn phía trên FAB, giúp hiển thị trọn vẹn nút "HOÀN TÁC"; SCR-08 đã có khối cấu hình "Gemini API Key" chuyên nghiệp.
 
-- **Ảnh bằng chứng sau Vòng lặp 2:** Lưu tại thư mục `assets/stitch/iteration-2/`.
+- **Ảnh bằng chứng sau Vòng lặp 2:** [assets/stitch/iteration-2](../assets/stitch/iteration-2/).
+- **Đối chiếu trước/sau:** [Vòng 1](../assets/stitch/iteration-1/) → [Vòng 2](../assets/stitch/iteration-2/).
 ### Vòng lặp 3: Hoàn thiện Tính nhất quán Offline/AI, Công thái học một tay & Trạng thái Giao diện
 
-- **Vấn đề cụ thể cần giải quyết:** Xử lý ranh giới minh bạch giữa dữ liệu cục bộ (Offline) và dịch vụ AI (cần mạng); chuẩn hóa tên mô hình Gemini 1.5 Flash và bổ sung banner phục hồi lỗi mất kết nối (Error State / Retry) trên SCR-07[cite: 51, 60]; tối ưu hóa công thái học một tay bằng cách đưa nút "Lưu vào Vault" xuống thanh công cụ đáy trên SCR-05[cite: 58]; hoàn thiện Quick Capture tạo task từ checklist và chuẩn hóa tuyên bố quyền riêng tư trên SCR-08[cite: 58, 61] (khớp với phát hiện A4, B1, B2, C6 trong bản phản biện).
+- **Vấn đề cụ thể cần giải quyết:** Xử lý ranh giới minh bạch giữa dữ liệu cục bộ (Offline) và dịch vụ AI (cần mạng); chuẩn hóa tên mô hình Gemini 1.5 Flash và bổ sung banner phục hồi lỗi mất kết nối (Error State / Retry) trên SCR-07; tối ưu hóa công thái học một tay bằng cách đưa nút "Lưu vào Vault" xuống thanh công cụ đáy trên SCR-05; hoàn thiện Quick Capture tạo task từ checklist và chuẩn hóa tuyên bố quyền riêng tư trên SCR-08 (khớp với phát hiện A4, B1, B2, C6 trong bản phản biện).
 
 - **Prompt gửi Google Stitch:**
 
@@ -294,7 +300,8 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 
 ### Kết quả trước và sau (Before & After)
 
-- **Trước:** SCR-07 gắn nhãn Llama 3 và không cảnh báo khi mất mạng[cite: 51]; SCR-08 tuyên bố riêng tư sai bản chất gọi API[cite: 52]; nút "Lưu" ở SCR-05 nằm ở góc trên ngoài tầm ngón cái[cite: 49]; thiếu tính năng Quick Capture tạo task từ checklist[cite: 49].
-- **Sau:** SCR-07 đồng bộ model Gemini 1.5 Flash và có banner báo mất mạng kèm nút "Thử lại"[cite: 60]; SCR-08 có cam kết riêng tư minh bạch và chính xác[cite: 61]; SCR-05 đưa nút "Lưu vào Vault" xuống góc phải thanh công cụ đáy hỗ trợ thao tác một tay hoàn hảo, kèm nút "+ Tạo việc cần làm từ checklist này"[cite: 58]; toàn bộ 8 màn hình đạt độ nhất quán cao về bố cục, màu sắc và dữ liệu[cite: 54, 55, 56, 57, 58, 59, 60, 61].
+- **Trước:** SCR-07 gắn nhãn Llama 3 và không cảnh báo khi mất mạng; SCR-08 tuyên bố riêng tư sai bản chất gọi API; nút "Lưu" ở SCR-05 nằm ở góc trên ngoài tầm ngón cái; thiếu tính năng Quick Capture tạo task từ checklist.
+- **Sau:** SCR-07 đồng bộ model Gemini 1.5 Flash và có banner báo mất mạng kèm nút "Thử lại"; SCR-08 có cam kết riêng tư minh bạch và chính xác; SCR-05 đưa nút "Lưu vào Vault" xuống góc phải thanh công cụ đáy hỗ trợ thao tác một tay hoàn hảo, kèm nút "+ Tạo việc cần làm từ checklist này"; toàn bộ 8 màn hình đạt độ nhất quán cao về bố cục, màu sắc và dữ liệu.
 
-- **Ảnh bằng chứng sau Vòng lặp 3:** Lưu tại thư mục `assets/stitch/iteration-3/`.
+- **Ảnh bằng chứng sau Vòng lặp 3:** [assets/stitch/iteration-3](../assets/stitch/iteration-3/).
+- **Đối chiếu trước/sau:** [Vòng 2](../assets/stitch/iteration-2/) → [Vòng 3](../assets/stitch/iteration-3/).

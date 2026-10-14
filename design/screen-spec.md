@@ -10,11 +10,11 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 | :---: | :--- | :--- | :--- |
 | **SCR-01** | Trang chủ (Dashboard) | Màn hình cấp cao nhất (Top-level Tab 1) | Flow 1, Flow 2 |
 | **SCR-02** | Lộ trình môn học (Timeline / Semester Courses) | Màn hình cấp cao nhất (Top-level Tab 2) | Flow 1 |
-| **SCR-03** | Chi tiết môn học (Course Details / FLM Syllabus) | Màn hình chi tiết con (Pushed from SCR-01/02) | Flow 1, Flow 3 |
+| **SCR-03** | Chi tiết môn học (Course Details / FLM Syllabus) | Màn hình chi tiết con (Pushed from SCR-01/02) | Flow 1, Flow 1A |
 | **SCR-04** | Việc cần làm (Tasks & Deadlines) | Màn hình cấp cao nhất (Top-level Tab 3) | Flow 2 (Có nhánh phục hồi Undo) |
-| **SCR-05** | Soạn thảo ghi chú nhanh (Quick Note / Markdown Editor) | Màn hình độc lập (Modal / Fullscreen Editor) | Flow 3 |
-| **SCR-06** | Danh sách ghi chú Vault (Vault Notes Explorer) | Màn hình cấp cao nhất (Top-level Tab 4) | Flow 3 |
-| **SCR-07** | Trợ lý AI môn học (AI Tutor Chat) | Màn hình hội thoại chuyên sâu (Pushed) | Flow 3 (Có nhánh lỗi mất mạng) |
+| **SCR-05** | Soạn thảo ghi chú nhanh (Quick Note / Markdown Editor) | Màn hình độc lập (Modal / Fullscreen Editor) | Flow 2, Flow 3, Flow 1A (nguồn) |
+| **SCR-06** | Danh sách ghi chú Vault (Vault Notes Explorer) | Màn hình cấp cao nhất (Top-level Tab 4) | Flow 3, Flow 1A (tra cứu offline) |
+| **SCR-07** | Trợ lý AI môn học (AI Tutor Chat) | Màn hình hội thoại chuyên sâu (Pushed) | Flow 1A (Có nhánh lỗi mất mạng) |
 | **SCR-08** | Cài đặt & Đồng bộ Vault (Settings & Sync) | Màn hình cấu hình hệ thống (Pushed from Top Bar) | Cấu hình nền tảng / Flow 3 |
 
 ---
@@ -59,7 +59,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 ## 3. SCR-03: Chi tiết môn học (Course Details / FLM Syllabus)
 
 - **Mục đích:** Cung cấp toàn bộ lịch trình slot học chi tiết, tài liệu và đề cương FLM của môn học cụ thể được lưu cục bộ trong máy.
-- **Thuộc User Flow:** Điểm kết thúc của **Flow 1**, điểm bắt đầu của nhánh mở ghi chú/hỏi AI trong **Flow 3**.
+- **Thuộc User Flow:** Điểm kết thúc của **Flow 1**, điểm bắt đầu của nhánh mở ghi chú/hỏi AI trong **Flow 1A** (nhánh từ Flow 1).
 - **Nội dung & Thành phần hiển thị chính:**
   - **Top App Bar:** Nút Back, tiêu đề môn "PRM323", phụ đề phiên bản syllabus "FLM Syllabus v2.4", nút menu ba chấm.
   - **Thẻ đầu trang:** Tên môn đầy đủ "Lập trình Di động Đa nền tảng", 3 tín chỉ, mã môn PRM323, tiến độ giáo trình 12/30 Slot (40%).
@@ -137,7 +137,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 ## 7. SCR-07: Trợ lý AI môn học (AI Tutor Chat)
 
 - **Mục đích:** Cung cấp giao diện hỏi đáp với mô hình Gemini 1.5 Flash dựa trên ngữ cảnh đề cương môn học và ghi chú cá nhân, có khả năng phản hồi khi mất kết nối.
-- **Thuộc User Flow:** Màn hình tương tác AI trong **Flow 3** (Có nhánh xử lý lỗi mất kết nối).
+- **Thuộc User Flow:** Màn hình tương tác AI trong **Flow 1A** (nhánh từ Flow 1, có xử lý lỗi mất kết nối).
 - **Nội dung & Thành phần hiển thị chính:**
   - **Top App Bar:** Nút mũi tên Back, tiêu đề màn hình "Trợ lý AI", phụ đề cấu hình `PRM323 • Gemini 1.5 Flash (Google AI)`.
   - **Thanh trạng thái kết nối & Ngữ cảnh:**
