@@ -264,6 +264,7 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
   2. Hoàn thiện hành động và phòng ngừa lỗi
   - SCR-08: Bổ sung dialog xác nhận trước khi “Xóa cache tạm”, nêu rõ hậu quả và cung cấp lựa chọn hủy.
   - SCR-05: Hoàn thiện Quick Capture, giúp người dùng tạo ghi chú nhanh, quản lý nội dung Markdown và tạo task nếu chức năng này thuộc phạm vi thiết kế.
+  - Dời nút hành động chính "Lưu vào Vault" từ góc trên AppBar xuống thanh công cụ định dạng ở cạnh đáy màn hình (vùng ngón cái) để tối ưu thao tác một tay trên xe bus.
   - Làm rõ trạng thái tự động lưu, đang lưu và lưu thất bại; tránh mâu thuẫn giữa tự động lưu và nút Lưu.
   - Kiểm tra hành vi bàn phím, thanh công cụ và các nút quan trọng khi sử dụng bằng một tay.
   - Giữ nguyên cơ chế Undo của SCR-04.
