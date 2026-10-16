@@ -23,7 +23,7 @@
 - **Nhãn nhóm hành vi (Archetype):** *“Sinh viên SE tra cứu ngoại tuyến và ghi nhanh một tay khi di chuyển”*
 - **Câu nói đại diện (Quote):**
   > *“Giữa hai ca học hoặc lúc đang đứng trên xe bus, mình chỉ có chưa tới một phút để xem hôm nay học slot mấy và tối nay có bài Lab nào đến hạn nộp trên LMS.”*
-  > *(Lưu ý: Câu nói giả lập để minh họa nhu cầu và bối cảnh sử dụng; không phải phát biểu nguyên văn từ transcript phỏng vấn).*
+
 
 ---
 
