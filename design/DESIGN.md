@@ -8,6 +8,7 @@ Tài liệu mô tả thiết kế đưa cho Google Stitch làm ngữ cảnh, đ�
 
 - **Sản phẩm:** ứng dụng Android đồng hành cho sinh viên Kỹ thuật Phần mềm FPTU: tra cứu đề cương môn học ngoại tuyến, tổng hợp deadline, ghi chú nhanh vào Obsidian Vault, hỏi trợ lý AI về ghi chú của mình.
 - **Người dùng:** Nguyễn Minh Đức, 20 tuổi, thao tác một tay bằng ngón cái khi đang di chuyển, mạng thường chập chờn (xem `ux/persona.md`).
+- **Phạm vi persona:** thiết kế hiện tại phục vụ P02 · Nguyễn Minh Đức (primary); P01 và P03 là secondary personas, chưa được bao phủ bởi các màn hình/prototype hiện tại.
 - **Nền tảng:** di động Android, khung thiết kế chính **360 × 800 dp**, kiểm tra thêm ở **412 dp**. Chỉ **Light Theme**; dark theme nằm ngoài phạm vi.
 - **8 màn hình:** Trang chủ, Lộ trình, Chi tiết môn học, Việc cần làm, Soạn ghi chú, Ghi chú, Trợ lý AI, Cài đặt & Đồng bộ Vault. Điều hướng chính là Navigation Bar 4 mục (Trang chủ, Lộ trình, Việc cần làm, Ghi chú) kèm FAB "Ghi chú nhanh".
 
