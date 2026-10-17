@@ -324,13 +324,13 @@ Nguồn FPTU/FLM công khai và giới hạn xác minh được ghi trong [`ux/a
 
 **Nguồn phản hồi:** giảng viên nhận xét giao diện nhiều màu, khó nhìn, nhiều chữ và thiếu icon. Đây là phản hồi của giảng viên và quyết định chỉnh sửa của nhóm; không ghi nhận như kết quả AI.
 
-**Quyết định:** giữ xanh dương làm màu hành động chính; chuyển các vùng màu phụ sang nền trắng/trung tính; dành đỏ cho trạng thái lỗi; rút gọn câu chữ nhưng giữ thông tin về quyền riêng tư, nguồn dữ liệu mẫu và phục hồi lỗi; dùng nhất quán Material Symbols Rounded.
+**Điều chỉnh sau rà soát:** phiên bản trung tính hóa trước đó làm mất phân cấp và khiến giao diện nhạt. Sau phản hồi của người dùng, màu được phục hồi có hệ thống: xanh dương cho hành động, teal cho Vault/ghi chú, xanh lá cho hoàn tất, amber cho cảnh báo, đỏ cho lỗi; dùng nền tint nhẹ thay cho các mảng màu đậm. Câu chữ vẫn gọn nhưng giữ thông tin về quyền riêng tư, nguồn dữ liệu mẫu và phục hồi lỗi; icon dùng Material Symbols Rounded.
 
 **Đã cập nhật trong Figma:**
-- `03 Final UI` và `06 Prototype`: cập nhật màu token và các màu tĩnh còn sót, rút gọn nội dung trên màn hình, thêm icon cho các khối tóm tắt học vụ, catalog, cây tiên quyết, đồng ý chia sẻ, chiến lược và đồng bộ.
-- `04 Design System`: cập nhật nhãn giá trị màu và hướng dẫn sử dụng màu/icon để khớp mode hiện tại.
+- `03 Final UI` và `06 Prototype`: áp dụng lại màu semantic cho deadline, Vault, ghi chú, hoàn tất, cảnh báo và lỗi; nền màn hình sáng xanh xám, card trắng; rút gọn nội dung và giữ icon nhất quán trên các khối tóm tắt, catalog, cây tiên quyết, consent, chiến lược và đồng bộ.
+- `04 Design System`: cập nhật swatch, HEX, ngày cập nhật và quy tắc sử dụng từng màu semantic.
 - `05 Components`: thêm board `10 · Iconography` với 10 component Material Symbols Rounded dùng lại được; icon được đặt vào các màn hình liên quan.
 
 **Đã giữ nguyên:** cấu trúc 6 workflow, nội dung quyết định, điều hướng, overlay consent, nhánh offline/AI và các tương tác prototype.
 
-**Kiểm tra trực quan:** đã xem lại AdvisorHub, consent dialog, SyncError và kết quả chiến lược; màu nền trung tính, icon không che nội dung, màn lỗi vẫn phân biệt rõ bằng nhãn + icon đỏ. Không tạo số liệu kiểm thử người dùng hoặc kết quả đánh giá tự động.
+**Kiểm tra trực quan:** đã xem lại Home, Tasks, NoteEditor, AdvisorHub, SyncError, ProgramCatalog, Curriculum, StrategySim, Color Tokens, Card, Button, Dialog và Iconography; các màu pastel phân vai rõ, CTA xanh, lỗi đỏ; icon không che nội dung. Không tạo số liệu kiểm thử người dùng hoặc kết quả đánh giá tự động.

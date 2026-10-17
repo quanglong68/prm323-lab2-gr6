@@ -2,7 +2,7 @@
 
 Tài liệu mô tả thiết kế ban đầu đưa cho Google Stitch làm ngữ cảnh, đồng thời là nguồn gốc của Design System trong Figma (page 04, 05) và bảng token → Flutter trong handoff. Tên `SCR-xx` ở đây là alias lịch sử của bộ 8 màn hình Lab 2; mã phân cấp hiện hành và crosswalk được ghi trong `design/screen-spec.md` và `ux/user-flow.md`.
 
-> **Cập nhật trực quan hiện hành (17/10/2026):** sau phản hồi giảng viên, bảng màu lịch sử bên dưới không còn mô tả chính xác Figma hiện tại. Figma dùng xanh dương `#1D4ED8` làm màu nhấn; nền `#F8FAFC` và bề mặt trắng/trung tính; đỏ `#B91C1C` chỉ cho lỗi. Warning/success container hiện trung tính; trạng thái vẫn có nhãn và icon. Dùng bảng **Token → Flutter** trong `handoff/flutter-handoff.md` làm mapping hiện hành. Page 05 có thư viện Material Symbols Rounded 24 px. Các giá trị màu trong bảng legacy bên dưới ghi lại hướng thiết kế ban đầu.
+> **Cập nhật trực quan hiện hành (17/10/2026):** sau phản hồi giảng viên, Figma dùng bảng màu ngữ nghĩa có tiết chế: xanh dương `#1D4ED8` cho hành động chính; teal `#0F766E` cho Vault/ghi chú; xanh lá `#16845B` cho hoàn tất; amber `#B45309` cho cảnh báo; đỏ `#B42318` cho lỗi. Các container có sắc độ nhạt để phân biệt nhóm, nền màn hình `#F4F7FB`, card trắng. Mọi trạng thái vẫn có nhãn và icon. Bảng Token → Flutter hiện hành nằm trong `handoff/flutter-handoff.md`; bảng màu bên dưới ghi hướng thiết kế ban đầu.
 
 
 
