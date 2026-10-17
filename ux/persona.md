@@ -30,8 +30,8 @@ Sinh viên FPTU cần tìm đề cương, deadline và ghi chú học tập nhan
 
 ## P02 · mục tiêu usability (targets, chưa phải kết quả)
 
-- **M1:** từ SCR-01 mở SCR-03 trong ≤8 giây và ≤3 chạm.
-- **M2:** lưu note ở SCR-05 trong ≤15 giây.
+- **M1:** từ SCR-01.01 mở SCR-02.02 trong ≤8 giây và ≤3 chạm.
+- **M2:** lưu note ở SCR-04.01 trong ≤15 giây.
 - **M3:** 5/5 người thử hoàn tác hoặc xử lý lỗi sync đúng, không mất dữ liệu.
 - **M4:** 5/5 hiểu lỗi kết nối AI và thử lại mà không mất câu hỏi.
 
