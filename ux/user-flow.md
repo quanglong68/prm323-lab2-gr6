@@ -1,6 +1,6 @@
 # UX ANALYSIS: INFORMATION ARCHITECTURE & USER FLOWS
 
-> Tài liệu này bám theo `persona.md` (`P01 · Nguyễn Minh Đức`). Các mục tiêu của persona được ký hiệu **G1–G4**:
+> Tài liệu này bám theo `persona.md` (`P02 · Nguyễn Minh Đức`). Các mục tiêu của persona được ký hiệu **G1–G4**:
 > G1 = Nắm cấu trúc và nội dung slot môn học · G2 = Tổng hợp công việc cần làm · G3 = Tra cứu ghi chú bài học · G4 = Ghi chép nhanh (Quick Capture).
 > Các tiêu chí đo được **M1–M4** là bốn tiêu chí trong mục 5 của persona (M1 = tra cứu ≤ 8 giây và ≤ 3 chạm, M2 = tạo/lưu ghi chú deadline ≤ 15 giây, M3 = Undo trong Snackbar 8 giây & phục hồi lỗi đồng bộ, M4 = nhận diện lỗi mất mạng khi hỏi AI và chạm Thử lại giữ nguyên câu hỏi).
 
@@ -13,6 +13,8 @@
 - **Ngoại tuyến:** xem đề cương, xem và tick task, soạn ghi chú và quét lại chỉ mục Vault cục bộ đều dùng được vì chỉ đọc/ghi file trên thiết bị. **Trợ lý AI (`Gemini 1.5 Flash`) cần mạng để giải đáp câu hỏi mới.**
 - **Ngoài phạm vi (ghi nhận để tránh bị hỏi khó):** xử lý xung đột khi một file bị sửa đồng thời trên laptop và điện thoại (do dịch vụ đồng bộ đảm nhiệm); thông báo nhắc deadline ngoài app; dark theme; chèn liên kết `[[...]]`.
 - **Số lượng:** 8 màn hình độc lập (`SCR-01_Home` đến `SCR-08_SyncVault`), 3 flow chính có prototype và 1 nhánh bổ sung Flow 1A về hỏi AI; không tính dialog overlay `D-01_SyncConfirmation`, snackbar và biến thể lỗi `SCR-08_SyncError`.
+
+- **Phân khúc persona:** prototype hiện tại được tối ưu và kiểm thử theo P02 · Nguyễn Minh Đức. P01 (sinh viên năm nhất) và P03 (sinh viên năm cuối) là persona bổ sung; các gợi ý FLM/FAP, prerequisite và mô phỏng GPA trong `persona.md` là cơ hội sản phẩm tương lai, chưa thuộc phạm vi 8 màn hình/3 prototype flow hiện tại.
 
 ---
 

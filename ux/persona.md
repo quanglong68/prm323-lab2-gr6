@@ -9,16 +9,16 @@
 - **Tên dự án:** FPTU Second Brain Mobile
 - **Chủ đề đăng ký:** Study Planner (Ứng dụng đồng hành quản lý lộ trình học tập theo đề cương FLM, hạn nộp bài và kho ghi chú Markdown ngoại tuyến cho sinh viên ngành Kỹ thuật Phần mềm — ĐH FPT).
 - **Giả định kỹ thuật nền tảng:** Thư mục ghi chú Markdown (`Obsidian Vault`) và các file đề cương môn học (`FLM SYNC`) đã được đồng bộ sẵn giữa laptop và bộ nhớ trong của điện thoại (`/storage/emulated/0/Documents/Obsidian/FPTU`). Ứng dụng di động đóng vai trò đọc/ghi cục bộ trực tiếp trên thư mục này và gọi Gemini API khi có mạng.
-- **Lý do xây dựng 01 Primary Persona (`P01`):**
-  - Theo quy chuẩn Lab 2 (bài làm cá nhân), ứng dụng giải quyết một luồng tác vụ chuyên biệt cho một tập người dùng đồng nhất: **sinh viên Kỹ thuật Phần mềm (SE) tại FPTU đã có thói quen lưu trữ bài học bằng Markdown trên máy tính và cần công cụ đồng hành khi di chuyển bằng điện thoại**.
-  - Các hành vi tra cứu lịch slot, kiểm tra deadline khẩn cấp, ghi chú nhanh trên lớp và hỏi đáp AI đều diễn ra trên cùng một đối tượng người dùng trong ngày, không phân tách thành các vai trò (role) đối lập.
+- **Lý do xây dựng 01 Primary Persona (`P02`):**
+  - Theo quy chuẩn Lab 2 (bài làm cá nhân), một Primary Persona cần xác định rõ nhóm người dùng và phạm vi tác vụ mà thiết kế cốt lõi phục vụ. P02 là nhóm **sinh viên SE tại FPTU đã có thói quen lưu trữ bài học bằng Markdown trên máy tính và cần công cụ đồng hành khi di chuyển bằng điện thoại**.
+  - P01 và P03 được bổ sung theo yêu cầu giảng viên làm Secondary Personas để ghi nhận nhu cầu ở đầu/cuối hành trình học; các nhu cầu của họ chưa làm thay đổi phạm vi 8 màn hình và 3 prototype flow hiện tại, vốn tập trung vào P02.
 
 ---
 
 ## 2. Hồ sơ Primary Persona Chuẩn hóa (12 Trường Lõi & Chi tiết Bắt buộc Lab 2)
 
 ### Tóm tắt Định danh
-- **Mã & Mức ưu tiên:** `P01 · Primary Persona` (Ưu tiên cao nhất — quyết định 100% kiến trúc thông tin và luồng tương tác cốt lõi).
+- **Mã & Mức ưu tiên:** `P02 · Primary Persona` (Ưu tiên cao nhất — quyết định 100% kiến trúc thông tin và luồng tương tác cốt lõi).
 - **Họ và tên giả định:** Nguyễn Minh Đức
 - **Nhãn nhóm hành vi (Archetype):** *“Sinh viên SE tra cứu ngoại tuyến và ghi nhanh một tay khi di chuyển”*
 - **Câu nói đại diện (Quote):**
@@ -32,7 +32,7 @@
 | Trường (Field) | Nội dung chi tiết |
 | :--- | :--- |
 | **01. Identity & Archetype** | **Nguyễn Minh Đức** — Sinh viên năm 3 ngành Kỹ thuật Phần mềm (Học kỳ Fall 2024 - Kỳ 5), nhóm hành vi *“Học tập đa thiết bị, tra cứu ngoại tuyến và thao tác nhanh một tay khi di chuyển”*. |
-| **02. Persona Priority** | **Primary Persona.** Mọi quyết định về cấu trúc điều hướng 4 tab, chế độ đọc Offline-first, vị trí nút ở vùng ngón cái và cơ chế hoàn tác (Undo) đều phục vụ trực tiếp cho P01. |
+| **02. Persona Priority** | **Primary Persona.** Mọi quyết định về cấu trúc điều hướng 4 tab, chế độ đọc Offline-first, vị trí nút ở vùng ngón cái và cơ chế hoàn tác (Undo) đều phục vụ trực tiếp cho P02. |
 | **03. Usage Context** | - **Không gian & Thời gian:** Khi đang đứng/ngồi trên xe bus công cộng, đi bộ chuyển phòng giữa các ca học tại campus FPTU, hoặc 5 phút đầu giờ trong phòng lab.<br>- **Thiết bị:** Điện thoại Android màn hình phổ thông (~360–412 dp).<br>- **Sự chú ý:** Bị phân tán cao, môi trường rung lắc, thường chỉ cầm điện thoại bằng một tay, mỗi phiên mở app chỉ kéo dài **30–60 giây**. |
 | **04. Goals** | - **G1 — Nắm cấu trúc và nội dung slot môn học:** Xem nhanh tiến độ slot (VD: `Slot 12/30`), nội dung từng buổi và các đầu điểm đánh giá (`Assignment`, `PT`, `PE`, `FE`) từ đề cương FLM đã lưu ngoại tuyến.<br>- **G2 — Tổng hợp công việc cần làm:** Gom toàn bộ deadline rải rác trong các file Markdown về một danh sách tập trung có phân loại *Quá hạn / Hôm nay / Sắp tới*.<br>- **G3 — Tra cứu ghi chú bài học:** Tìm lại nhanh kiến thức và tóm tắt môn học (như `PRM323`, `SWP391`) bằng bộ lọc môn hoặc hỏi Trợ lý AI có trích dẫn nguồn.<br>- **G4 — Ghi chép nhanh (Quick Capture):** Tạo nhanh ghi chú Markdown hoặc thêm đầu việc mới kèm hạn nộp ngay trên lớp chỉ với vài chạm. |
 | **05. Job to Be Done (JTBD)** | - **JTBD 1 (Tra cứu & Deadline):** *“Khi đang di chuyển trên xe bus hoặc đổi phòng học với mạng 4G chập chờn, tôi muốn xem ngay nội dung slot học hôm nay và các bài Lab sắp hết hạn nộp mà không cần đăng nhập lại cổng trường, để chủ động chuẩn bị bài và không bị trễ deadline trên LMS.”*<br>- **JTBD 2 (Ghi nhanh & Hỏi AI):** *“Khi giảng viên vừa nhắc một lưu ý chấm điểm hoặc khi cần ôn nhanh kiến thức đã chép, tôi muốn ghi lại ngay bằng một tay hoặc đặt câu hỏi cho AI dựa trên chính kho Vault của mình, để tiết kiệm thời gian lục tìm từng file lẻ.”* |
@@ -60,6 +60,73 @@
 
 ---
 
+## 2A. Persona Bổ sung theo yêu cầu giảng viên
+
+> **Phạm vi:** P02 · Nguyễn Minh Đức vẫn là Primary Persona mà 8 màn hình và 3 prototype flow hiện tại phục vụ. P01 và P03 là Secondary Personas để mở rộng nghiên cứu và định hướng sản phẩm; các tính năng đặc thù bên dưới là đề xuất, chưa được xem là chức năng đã triển khai trong Figma/prototype.
+>
+> **Chất lượng bằng chứng:** Thông tin P01/P03 dưới đây được tổng hợp từ yêu cầu persona do giảng viên cung cấp, chưa có phỏng vấn hoặc kiểm chứng người dùng. Các hành vi/động lực chưa được cung cấp được ghi rõ là giả định cần xác thực.
+
+### P01 · Sinh viên năm nhất — Lê Hoàng Nam
+
+**Tóm tắt định danh**
+
+- **Mã & mức ưu tiên:** `P01 · Secondary Persona`.
+- **Họ tên giả định:** Lê Hoàng Nam, 18 tuổi.
+- **Archetype:** *“Sinh viên mới cần biến quy chế và đề cương thành kế hoạch học tập dễ hiểu”*.
+- **Quote giả lập:** *“Em biết mình có nhiều môn phải học, nhưng chưa rõ xem đề cương ở đâu và nên chia thời gian tự học thế nào.”* (Câu minh họa, không phải trích dẫn phỏng vấn.)
+
+| Trường (Field) | Nội dung chi tiết |
+| :--- | :--- |
+| **01. Identity & Archetype** | Lê Hoàng Nam, 18 tuổi, sinh viên năm nhất ngành Quản trị Kinh doanh (BBA), Kỳ 1. Vừa qua định hướng/tiếng Anh dự bị; còn bỡ ngỡ với cách tổ chức học tập tại FPTU. |
+| **02. Persona Priority** | **Secondary Persona.** Đại diện nhóm sinh viên mới; giúp đánh giá khả năng giải thích thông tin học vụ và lập kế hoạch. Không thay đổi trọng tâm của prototype hiện tại vốn được thiết kế cho P02. |
+| **03. Usage Context** | Bắt đầu kỳ đầu tiên, cần làm quen với FLM, thời khóa biểu theo slot, yêu cầu điểm danh và quy chế PE/FE. Thiết bị, thời điểm, tần suất và điều kiện mạng chưa được cung cấp; cần xác thực trước khi dùng làm tiêu chí thiết kế chi tiết. |
+| **04. Goals** | Hiểu nơi tìm đề cương FLM và cách đọc trọng số/điều kiện qua môn; lập lịch tự học thực tế cho khoảng 5–6 môn đại cương. |
+| **05. Job to Be Done (JTBD)** | *“Khi bắt đầu kỳ học và chưa quen quy trình FPTU, tôi muốn hiểu yêu cầu của từng môn và nhìn thấy thời gian rảnh trong tuần, để biết cần học gì và sắp xếp việc tự học.”* |
+| **06. Current Behaviors** | Đề bài cho biết Nam vừa trải qua định hướng/tiếng Anh dự bị và chưa có thói quen xếp lịch tự học. Công cụ đang dùng, cách tra cứu FLM và cách quản lý thời gian cụ thể chưa có dữ liệu; không suy diễn thành hành vi đã quan sát. |
+| **07. Pain Points** | Không biết tìm đề cương FLM ở đâu; chưa hiểu cách tính trọng số và điều kiện qua môn; khó tự chia lịch cho 5–6 môn đại cương cùng lúc. |
+| **08. Motivations** | Mong muốn hiểu kỳ học mới, tránh bỏ sót yêu cầu quan trọng và hình thành thói quen tự học. Đây là suy luận từ pain point, cần phỏng vấn để xác thực. |
+| **09. Constraints** | Kiến thức về quy trình và quy chế FPTU còn mới. Tư vấn điểm/điều kiện qua môn phải dựa trên nguồn chính thức, có thời điểm hiệu lực; tích hợp FAP/FLM cần quyền truy cập và dữ liệu được xác nhận. |
+| **10. Key Scenarios** | Đầu kỳ: chọn một môn, mở đề cương và tìm phần đánh giá/điều kiện qua môn. Đầu tuần: xem thời khóa biểu đã xác nhận, tìm khung giờ trống và tạo lịch tự học. |
+| **11. Success Criteria** | Bản nháp mục tiêu kiểm thử: người dùng tìm được đề cương và xác định đúng điều kiện qua môn từ nguồn trích dẫn; lập được lịch tự học tuần dựa trên thời khóa biểu thật. Ngưỡng thời gian/tỷ lệ hoàn thành cần được xác lập sau usability test. |
+| **12. Evidence & Status** | **Proto-Persona**, dựa trên mô tả giảng viên cung cấp trong yêu cầu bổ sung; chưa có transcript phỏng vấn, dữ liệu FAP/FLM hoặc kiểm chứng quy chế. Các giả định cần kiểm chứng: công cụ hiện dùng, mức độ hiểu FLM, lịch học thực tế và nhu cầu nhận tư vấn điểm. |
+
+**Nhu cầu tính năng chuyên biệt (đề xuất, chưa triển khai):**
+
+- **Tư vấn môn học/kỳ học:** giải thích cách đọc trọng số và quy tắc qua môn bằng ngôn ngữ dễ hiểu. Ví dụ ngưỡng điểm trong đề bài chỉ được hiển thị như nội dung có nguồn chính thức và ngày hiệu lực, không hard-code thành lời khuyên AI không kiểm chứng.
+- **Gợi ý lịch tự học:** đề xuất khoảng trống từ thời khóa biểu FAP do người dùng cung cấp hoặc kết nối được cấp quyền; cho phép sửa/xác nhận trước khi tạo lịch.
+
+### P03 · Sinh viên năm cuối — Trần Thảo Vy
+
+**Tóm tắt định danh**
+
+- **Mã & mức ưu tiên:** `P03 · Secondary Persona`.
+- **Họ tên giả định:** Trần Thảo Vy, 22 tuổi.
+- **Ngành theo mô tả giảng viên:** Thiết kế Mỹ thuật số (GD) / Ngôn ngữ Anh, Kỳ 8–9. Cần xác nhận một ngành cụ thể nếu đây là hồ sơ người dùng thật; giữ nguyên mô tả gộp từ yêu cầu hiện tại.
+- **Archetype:** *“Sinh viên cuối khóa cần rà điều kiện tốt nghiệp và chọn phương án cải thiện GPA”*.
+- **Quote giả lập:** *“Trước khi làm Capstone, mình muốn biết còn thiếu môn tiên quyết nào và học cải thiện môn nào sẽ có ích nhất.”* (Câu minh họa, không phải trích dẫn phỏng vấn.)
+
+| Trường (Field) | Nội dung chi tiết |
+| :--- | :--- |
+| **01. Identity & Archetype** | Trần Thảo Vy, 22 tuổi, sinh viên năm cuối Kỳ 8–9; ngành được cung cấp là GD / Ngôn ngữ Anh (cần làm rõ một ngành). Đang chuẩn bị Capstone và xét điều kiện tốt nghiệp. |
+| **02. Persona Priority** | **Secondary Persona.** Đại diện nhu cầu rà soát chương trình học cuối khóa. Các nhu cầu này định hướng nghiên cứu tương lai, không hàm ý prototype hiện có đã kết nối bảng điểm hoặc khung chương trình. |
+| **03. Usage Context** | Trước Capstone hoặc khi chuẩn bị xét tốt nghiệp, cần đối chiếu tiến độ đã học với khung chương trình và điều kiện môn tiên quyết. Thiết bị, cách theo dõi hiện tại và thời điểm cụ thể chưa được cung cấp. |
+| **04. Goals** | Xác định môn còn nợ/rớt; biết môn tiên quyết nào phải hoàn tất trước Capstone; cân nhắc môn nên học cải thiện để nâng GPA. |
+| **05. Job to Be Done (JTBD)** | *“Khi chuẩn bị Capstone và xét tốt nghiệp, tôi muốn đối chiếu kết quả học tập với khung chương trình và thử các phương án học lại/cải thiện, để biết bước tiếp theo mà không bỏ sót điều kiện.”* |
+| **06. Current Behaviors** | Đề bài cho biết Vy đang cần nhớ/nhận diện môn nợ, môn tiên quyết và phương án cải thiện GPA. Nguồn tra cứu hiện tại, quy trình kiểm tra và cách tính GPA chưa được mô tả; cần phỏng vấn để xác thực. |
+| **07. Pain Points** | Khó nhớ môn nào bị nợ/rớt; không chắc môn tiên quyết nào bắt buộc phải qua trước khóa luận; không biết học cải thiện môn nào có lợi nhất cho GPA. |
+| **08. Motivations** | Hoàn tất Capstone, đáp ứng điều kiện ra trường và đưa ra lựa chọn học tập có căn cứ. Sự ưu tiên tương đối giữa tốt nghiệp đúng hạn và GPA cần xác thực. |
+| **09. Constraints** | Cần bảng điểm chính xác, khung chương trình đúng ngành/khóa và quy tắc tiên quyết/GPA hiện hành. Dữ liệu học tập nhạy cảm; cần người dùng cấp quyền, xem nguồn tính toán và tự xác nhận trước khi dựa vào kết quả. |
+| **10. Key Scenarios** | Trước đăng ký Capstone: so sánh bảng điểm với khung chương trình để phát hiện môn tiên quyết còn thiếu. Trước đăng ký kỳ tiếp theo: mô phỏng một số lựa chọn học lại/cải thiện và xem tác động dự kiến đến GPA. |
+| **11. Success Criteria** | Bản nháp mục tiêu kiểm thử: người dùng nhận diện đúng môn còn thiếu từ dữ liệu và khung chương trình đã xác minh; hiểu giả định và kết quả của từng kịch bản GPA. Các ngưỡng chính xác cần thống nhất với quy chế chính thức và usability test. |
+| **12. Evidence & Status** | **Proto-Persona**, dựa trên mô tả giảng viên cung cấp; chưa có transcript, bảng điểm mẫu hoặc xác minh khung chương trình. Giả định cần kiểm chứng: ngành/khóa cụ thể, cách tính GPA, dữ liệu hệ thống có thể truy cập và mức độ ưu tiên của từng mục tiêu. |
+
+**Nhu cầu tính năng chuyên biệt (đề xuất, chưa triển khai):**
+
+- **Prerequisite Check:** đối chiếu bảng điểm do người dùng cung cấp/ủy quyền với khung chương trình đúng ngành và khóa; nêu rõ môn thiếu, nguồn dữ liệu và quy tắc đối chiếu.
+- **Mô phỏng học lại/cải thiện GPA:** cho phép thử các kịch bản với quy tắc tính GPA đã xác minh, trình bày giả định và kết quả dự kiến; không khẳng định thay cho cố vấn học tập hoặc hệ thống chính thức.
+
+---
+
 ## 3. Phát biểu Vấn đề (Problem Statement)
 
 > Sinh viên ngành Kỹ thuật Phần mềm FPTU khi học nhiều môn chuyên ngành thường tốn nhiều thời gian tìm kiếm lại đề cương, hạn nộp bài và nội dung ghi chép do thông tin phân tán trên cổng FLM/LMS và nhiều file Markdown cá nhân, trong khi thời gian tra cứu giữa các tiết học rất ngắn (30–60 giây), thao tác chủ yếu bằng một tay trên điện thoại và trong điều kiện kết nối mạng không ổn định.
@@ -68,9 +135,9 @@
 
 ## 4. Từ Persona đến Quyết định Thiết kế & Giả thuyết Thử nghiệm
 
-Bảng dưới đây chuyển hóa trực tiếp các nhu cầu và rào cản của `P01 · Nguyễn Minh Đức` thành các quyết định thiết kế cụ thể trên 8 màn hình Figma:
+Bảng dưới đây chuyển hóa trực tiếp các nhu cầu và rào cản của `P02 · Nguyễn Minh Đức` thành các quyết định thiết kế cụ thể trên 8 màn hình Figma:
 
-| Nhu cầu / Vấn đề của P01 | Ý tưởng / Quyết định thiết kế để thử nghiệm | Màn hình & Component áp dụng | Cách kiểm chứng (Validation) |
+| Nhu cầu / Vấn đề của P02 | Ý tưởng / Quyết định thiết kế để thử nghiệm | Màn hình & Component áp dụng | Cách kiểm chứng (Validation) |
 | :--- | :--- | :--- | :--- |
 | **G1 / Pain Point 1 & 3:** Xem lịch slot và đầu điểm khi mạng yếu, không muốn đăng nhập lại FLM. | Lưu đề cương dưới dạng file cục bộ trong Vault; hiển thị rõ huy hiệu `"Đã tải về"` và banner `"Đang ngoại tuyến"` nhưng vẫn cho đọc đủ 3 tab *Lịch slot · Đánh giá · Tổng quan*. | `SCR-02_Roadmap`, `SCR-03_CourseDetail` (`CourseCard`, `Badge`, Banner Offline) | Đo thời gian và số lần chạm để mở đề cương môn `PRM323` từ Trang chủ (**Tiêu chí M1**). |
 | **G2 / Pain Point 2:** Dễ quên hạn nộp bài Lab nằm rải rác trong nhiều file. | Đưa khối `"Hạn chót khẩn cấp"` lên đầu `SCR-01` và gom nhóm `"Khẩn cấp & Quá hạn"` lên đầu `SCR-04` kèm nhãn chữ + thời gian cụ thể. | `SCR-01_Home`, `SCR-04_Tasks` (`TaskItem`, `Badge`) | Quan sát khả năng nhận diện ngay bài tập quá hạn/hôm nay trong 5 giây đầu mở app. |
@@ -82,7 +149,7 @@ Bảng dưới đây chuyển hóa trực tiếp các nhu cầu và rào cản c
 
 ## 5. Tiêu chí Thành công Đo được (Measurable Target Metrics)
 
-Các tiêu chí dưới đây là thước đo định lượng khi kiểm thử khả năng sử dụng (Usability Testing) trên Figma Prototype với 5 sinh viên thuộc nhóm Persona P01:
+Các tiêu chí dưới đây là thước đo định lượng khi kiểm thử khả năng sử dụng (Usability Testing) trên Figma Prototype với 5 sinh viên thuộc nhóm Persona P02:
 
 1. **M1 — Tốc độ tra cứu thông tin môn học (Mô phỏng ngoại tuyến):** Từ màn hình chính (`SCR-01`), người thử nghiệm mở được chi tiết môn học (`SCR-03`) để xem tiến độ slot và đầu điểm đánh giá của một môn bất kỳ trong **≤ 8 giây** và qua **không quá 3 lần chạm**.
 2. **M2 — Tốc độ tạo/lưu ghi chú và công việc mới:** Người thử nghiệm hoàn thành thao tác mở trình soạn thảo (`SCR-05`), kiểm tra/nhập nội dung checklist bài tập môn học và bấm `"Lưu vào Vault"` trong **≤ 15 giây**.
