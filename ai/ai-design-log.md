@@ -330,7 +330,8 @@ Nguồn FPTU/FLM công khai và giới hạn xác minh được ghi trong [`ux/a
 - `03 Final UI` và `06 Prototype`: áp dụng lại màu semantic cho deadline, Vault, ghi chú, hoàn tất, cảnh báo và lỗi; nền màn hình sáng xanh xám, card trắng; rút gọn nội dung và giữ icon nhất quán trên các khối tóm tắt, catalog, cây tiên quyết, consent, chiến lược và đồng bộ.
 - `04 Design System`: cập nhật swatch, HEX, ngày cập nhật và quy tắc sử dụng từng màu semantic.
 - `05 Components`: thêm board `10 · Iconography` với 10 component Material Symbols Rounded dùng lại được; icon được đặt vào các màn hình liên quan.
+- Tám màn Workflow 4–6 trên mỗi trang `03 Final UI` và `06 Prototype`: thêm back arrow chuẩn, đưa tiêu đề vào giữa AppBar cao 56 px, thống nhất cỡ Inter Semi Bold 20 sp.
 
 **Đã giữ nguyên:** cấu trúc 6 workflow, nội dung quyết định, điều hướng, overlay consent, nhánh offline/AI và các tương tác prototype.
 
-**Kiểm tra trực quan:** đã xem lại Home, Tasks, NoteEditor, AdvisorHub, SyncError, ProgramCatalog, Curriculum, StrategySim, Color Tokens, Card, Button, Dialog và Iconography; các màu pastel phân vai rõ, CTA xanh, lỗi đỏ; icon không che nội dung. Không tạo số liệu kiểm thử người dùng hoặc kết quả đánh giá tự động.
+**Kiểm tra trực quan:** đã xem lại Home, Tasks, NoteEditor, AdvisorHub, SyncError, ProgramCatalog, Curriculum, StrategySim, Loading, kết quả local/shared, Color Tokens, Card, Button, Dialog và Iconography; các màu pastel phân vai rõ, CTA xanh, lỗi đỏ; icon không che nội dung; tiêu đề các màn mở rộng được căn giữa và không tràn. Không tạo số liệu kiểm thử người dùng hoặc kết quả đánh giá tự động.

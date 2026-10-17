@@ -7,6 +7,7 @@
 - Nội dung tối thiểu 14 sp; Navigation label 12 sp là ngoại lệ được ghi trong design brief. Touch target tối thiểu 48 × 48 dp; khoảng cách tối thiểu 8 dp.
 - Contrast chữ thường ≥ 4.5:1, chữ lớn/UI control ≥ 3:1; không dùng màu làm tín hiệu duy nhất.
 - **Visual refresh hiện hành:** xanh dương `#1D4ED8` cho hành động; teal `#0F766E` cho Vault/ghi chú; xanh lá `#16845B` cho hoàn tất; amber `#B45309` cho cảnh báo; đỏ `#B42318` cho lỗi. Dùng container tint nhẹ, nền `#F4F7FB`, card trắng; trạng thái luôn có nhãn và icon. Icon dùng Material Symbols Rounded 24 px; xem Page 05 `10 · Iconography`. Bảng token chi tiết bên dưới là nguồn Flutter hiện hành; phần màu trong `design/DESIGN.md` ghi hướng ban đầu.
+- **AppBar Workflow 4–6:** cao 56 dp; back target 48 × 48 dp bên trái; tiêu đề Inter Semi Bold 20 sp căn giữa trong vùng giữa hai nút; áp dụng đồng nhất trên Final UI và Prototype.
 - Lưới 4 dp; lề 16 dp tại 360, 20 dp tại 412. Xem `design/DESIGN.md` để biết giá trị đầy đủ.
 - Prototype có 6 điểm bắt đầu: ba flow Lab 2 gốc và Workflow 4–6. Hỏi AI là nhánh Flow 1A từ chi tiết môn, không phải một start point riêng. Dữ liệu Figma mở rộng là dữ liệu mẫu.
 - Mã phẳng trong phần handoff của ba flow gốc là alias lịch sử. Mã hiện hành theo module là `SCR-01.01_Home`, `SCR-02.01_Roadmap`, `SCR-02.02_CourseDetail`, `SCR-03.01_Tasks`, `SCR-04.01_NoteEditor`, `SCR-04.02_Notes`, `SCR-05.01_AdvisorHub`, `SCR-06.01_SyncVault` và `SCR-06.02_SyncError`.
