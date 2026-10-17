@@ -4,22 +4,40 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## Danh mục 8 Màn hình Hệ thống
+## Danh mục mã màn hình phân cấp
+
+Quy ước: `SCR-<module>.<screen>_<name>`. Cấp trước là module chức năng; cấp sau là màn hình/trạng thái trong module. Cùng một màn hình giữ một mã duy nhất khi được dùng ở nhiều flow. Dialog và snackbar giữ namespace riêng (`D-01`, `SN-01`). Loading/kết quả AI là trạng thái trong module AI, không làm tăng số màn hình chính.
+
+| Module | Mã màn hình | Màn hình / trạng thái |
+| :--- | :--- | :--- |
+| Tổng quan | `SCR-01.01_Home` | Trang chủ |
+| Học tập | `SCR-02.01_Roadmap` | Lộ trình môn học |
+| Học tập | `SCR-02.02_CourseDetail` | Chi tiết môn học |
+| Công việc | `SCR-03.01_Tasks` | Việc cần làm |
+| Ghi chú | `SCR-04.01_NoteEditor` | Soạn thảo ghi chú |
+| Ghi chú | `SCR-04.02_Notes` | Danh sách ghi chú Vault |
+| Trợ lý AI | `SCR-05.01_AskAI` | Trợ lý AI |
+| Trợ lý AI | `SCR-05.02_Loading` | Đang tải / thử lại |
+| Trợ lý AI | `SCR-05.03_Result` | Kết quả AI |
+| Đồng bộ Vault | `SCR-06.01_SyncVault` | Cài đặt & đồng bộ |
+| Đồng bộ Vault | `SCR-06.02_SyncError` | Lỗi đồng bộ |
+
+### Danh mục 8 Màn hình Hệ thống
 
 | Mã màn hình | Tên màn hình | Cấp bậc điều hướng | Ánh xạ User Flow |
 | :---: | :--- | :--- | :--- |
-| **SCR-01** | Trang chủ (Dashboard) | Màn hình cấp cao nhất (Top-level Tab 1) | Flow 1, Flow 2 |
-| **SCR-02** | Lộ trình môn học (Timeline / Semester Courses) | Màn hình cấp cao nhất (Top-level Tab 2) | Flow 1 |
-| **SCR-03** | Chi tiết môn học (Course Details / FLM Syllabus) | Màn hình chi tiết con (Pushed from SCR-01/02) | Flow 1, Flow 1A |
-| **SCR-04** | Việc cần làm (Tasks & Deadlines) | Màn hình cấp cao nhất (Top-level Tab 3) | Flow 2 (Có nhánh phục hồi Undo) |
-| **SCR-05** | Soạn thảo ghi chú nhanh (Quick Note / Markdown Editor) | Màn hình độc lập (Modal / Fullscreen Editor) | Flow 2, Flow 3, Flow 1A (nguồn) |
-| **SCR-06** | Danh sách ghi chú Vault (Vault Notes Explorer) | Màn hình cấp cao nhất (Top-level Tab 4) | Flow 3, Flow 1A (tra cứu offline) |
-| **SCR-07** | Trợ lý AI môn học (AI Tutor Chat) | Màn hình hội thoại chuyên sâu (Pushed) | Flow 1A (Có nhánh lỗi mất mạng) |
-| **SCR-08** | Cài đặt & Đồng bộ Vault (Settings & Sync) | Màn hình cấu hình hệ thống (Pushed from Top Bar) | Cấu hình nền tảng / Flow 3 |
+| **SCR-01.01** | Trang chủ (Dashboard) | Màn hình cấp cao nhất (Top-level Tab 1) | Flow 1, Flow 2 |
+| **SCR-02.01** | Lộ trình môn học (Timeline / Semester Courses) | Màn hình cấp cao nhất (Top-level Tab 2) | Flow 1 |
+| **SCR-02.02** | Chi tiết môn học (Course Details / FLM Syllabus) | Màn hình chi tiết con (Pushed from SCR-01.01/02) | Flow 1, Flow 1A |
+| **SCR-03.01** | Việc cần làm (Tasks & Deadlines) | Màn hình cấp cao nhất (Top-level Tab 3) | Flow 2 (Có nhánh phục hồi Undo) |
+| **SCR-04.01** | Soạn thảo ghi chú nhanh (Quick Note / Markdown Editor) | Màn hình độc lập (Modal / Fullscreen Editor) | Flow 2, Flow 3, Flow 1A (nguồn) |
+| **SCR-04.02** | Danh sách ghi chú Vault (Vault Notes Explorer) | Màn hình cấp cao nhất (Top-level Tab 4) | Flow 3, Flow 1A (tra cứu offline) |
+| **SCR-05.01** | Trợ lý AI môn học (AI Tutor Chat) | Màn hình hội thoại chuyên sâu (Pushed) | Flow 1A (Có nhánh lỗi mất mạng) |
+| **SCR-06.01** | Cài đặt & Đồng bộ Vault (Settings & Sync) | Màn hình cấu hình hệ thống (Pushed from Top Bar) | Cấu hình nền tảng / Flow 3 |
 
 ---
 
-## 1. SCR-01: Trang chủ (Dashboard)
+## 1. SCR-01.01: Trang chủ (Dashboard)
 
 - **Mục đích:** Cung cấp bức tranh toàn cảnh về tiến độ học tập trong ngày, cảnh báo tức thì các hạn chót khẩn cấp nhất, và làm điểm xuất phát truy cập nhanh vào môn học hoặc ghi chú.
 - **Thuộc User Flow:** Điểm bắt đầu (Starting Point) của **Flow 1** và **Flow 2**.
@@ -38,7 +56,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 2. SCR-02: Lộ trình môn học (Timeline / Semester Courses)
+## 2. SCR-02.01: Lộ trình môn học (Timeline / Semester Courses)
 
 - **Mục đích:** Hiển thị tổng quan các môn học sinh viên đang theo học trong kỳ hiện tại cùng trạng thái lưu trữ ngoại tuyến của từng bộ đề cương.
 - **Thuộc User Flow:** Bước trung gian của **Flow 1**.
@@ -56,7 +74,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 3. SCR-03: Chi tiết môn học (Course Details / FLM Syllabus)
+## 3. SCR-02.02: Chi tiết môn học (Course Details / FLM Syllabus)
 
 - **Mục đích:** Cung cấp toàn bộ lịch trình slot học chi tiết, tài liệu và đề cương FLM của môn học cụ thể được lưu cục bộ trong máy.
 - **Thuộc User Flow:** Điểm kết thúc của **Flow 1**, điểm bắt đầu của nhánh mở ghi chú/hỏi AI trong **Flow 1A** (nhánh từ Flow 1).
@@ -71,13 +89,13 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
     - Slot 13: "Thực hành Lab • Lab 2: Usability & Handoff" (Badge đỏ nhạt `Hôm nay`, hạn nộp `23:59 Hôm nay (15/10/2024) trên Hệ thống LMS`).
     - Slot 14: "Lý thuyết • Networking & REST API" (Badge xám `Sắp tới`, dự kiến 21/10/2024).
   - **Thanh nút cố định đáy (Bottom Action Bar):** 
-    - Nút chính: ` Hỏi trợ lý AI về môn này` (Filled Primary Blue - dẫn sang SCR-07).
-    - Nút phụ: ` Tài liệu` (Outlined Button - dẫn sang SCR-06).
+    - Nút chính: ` Hỏi trợ lý AI về môn này` (Filled Primary Blue - dẫn sang SCR-05.01).
+    - Nút phụ: ` Tài liệu` (Outlined Button - dẫn sang SCR-04.02).
 - **Ý đồ thiết kế:** Đưa nút hành động chính xuống đáy màn hình hỗ trợ công thái học ngón cái khi di chuyển trên xe bus (Ergonomics).
 
 ---
 
-## 4. SCR-04: Việc cần làm (Tasks & Deadlines)
+## 4. SCR-03.01: Việc cần làm (Tasks & Deadlines)
 
 - **Mục đích:** Quản lý toàn bộ danh sách việc cần làm, bài tập Lab và deadline theo thứ tự ưu tiên, tích hợp cơ chế hoàn tác khi tick nhầm.
 - **Thuộc User Flow:** Trung tâm của **Flow 2** (Flow có nhánh phục hồi lỗi Undo).
@@ -97,7 +115,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 5. SCR-05: Soạn thảo ghi chú nhanh (Quick Note Editor)
+## 5. SCR-04.01: Soạn thảo ghi chú nhanh (Quick Note Editor)
 
 - **Mục đích:** Cho phép ghi chép nhanh cú pháp Markdown, lưu trực tiếp vào thư mục Vault nội bộ của máy và chuyển đổi checklist thành việc cần làm.
 - **Thuộc User Flow:** Màn hình trung tâm của **Flow 3**.
@@ -117,7 +135,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 6. SCR-06: Danh sách ghi chú Vault (Vault Notes Explorer)
+## 6. SCR-04.02: Danh sách ghi chú Vault (Vault Notes Explorer)
 
 - **Mục đích:** Duyệt, lọc và tìm kiếm toàn bộ các file ghi chú Markdown `.md` có trong Obsidian Vault ngoại tuyến của sinh viên.
 - **Thuộc User Flow:** Điểm đến tra cứu tài liệu trong **Flow 3**.
@@ -134,7 +152,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 7. SCR-07: Trợ lý AI môn học (AI Tutor Chat)
+## 7. SCR-05.01: Trợ lý AI môn học (AI Tutor Chat)
 
 - **Mục đích:** Cung cấp giao diện hỏi đáp với mô hình Gemini 1.5 Flash dựa trên ngữ cảnh đề cương môn học và ghi chú cá nhân, có khả năng phản hồi khi mất kết nối.
 - **Thuộc User Flow:** Màn hình tương tác AI trong **Flow 1A** (nhánh từ Flow 1, có xử lý lỗi mất kết nối).
@@ -154,7 +172,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 8. SCR-08: Cài đặt & Đồng bộ Vault (Settings & Sync)
+## 8. SCR-06.01: Cài đặt & Đồng bộ Vault (Settings & Sync)
 
 - **Mục đích:** Quản lý đường dẫn lưu trữ Vault cục bộ trên máy Android, cấu hình Gemini API Key và theo dõi dung lượng bộ nhớ đệm offline.
 - **Thuộc User Flow:** Màn hình cấu hình hỗ trợ toàn bộ hệ thống.
