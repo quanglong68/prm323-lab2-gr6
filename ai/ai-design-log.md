@@ -45,7 +45,7 @@ Quy tắc thiết kế cốt lõi (Material Design 3):
 
 DANH SÁCH 8 MÀN HÌNH CHI TIẾT:
 
-1. SCR-01: Trang chủ (Dashboard)
+1. SCR-01.01: Trang chủ (Dashboard)
 - Top App Bar (56 dp): Tiêu đề "Kỹ thuật Phần mềm", icon Cài đặt ở góc phải (48x48 dp) dẫn đến SCR-08.
 - Phần 1 (Carousel hạn chót khẩn cấp): Danh sách cuộn ngang tối đa 3 thẻ cho các việc có hạn <= 3 ngày. Mỗi thẻ hiển thị: mã môn "PRM323", tên việc "Figma Prototype Lab 2", huy hiệu gồm icon đồng hồ + chữ "Hôm nay" (nền vàng #FEF3C7, chữ #92400E). Nút chữ "Xem tất cả" căn phải.
 - Phần 2 (Thẻ môn gần đây): Thẻ hiển thị "PRM323 - Lập trình Di động Đa nền tảng", tiến độ "Slot 12/30", nút "Xem đề cương".
@@ -53,7 +53,7 @@ DANH SÁCH 8 MÀN HÌNH CHI TIẾT:
 - Phần 4: Thanh tiến độ đồng bộ Vault 65%.
 - Bottom Navigation Bar (80 dp): Tab "Trang chủ" đang chọn. FAB tròn (56x56 dp) ở góc phải đáy với icon cây bút ghi chú.
 
-2. SCR-02: Lộ trình môn học (Timeline / Semester Courses)
+2. SCR-02.01: Lộ trình môn học (Timeline / Semester Courses)
 - Top App Bar: Tiêu đề "Lộ trình học tập", chip chọn kỳ "Học kỳ Fall 2024 (Kỳ 5)" [Đang chọn].
 - Thống kê tóm tắt: Thẻ thông tin "4 môn học • 11 tín chỉ • 100% đã tải đề cương offline".
 - Danh sách môn học dạng thẻ dọc:
@@ -62,7 +62,7 @@ DANH SÁCH 8 MÀN HÌNH CHI TIẾT:
   * Môn 3: "ITE302c - Đạo đức Nghề nghiệp CNTT" (3 tín chỉ), tiến độ Slot 6/20.
 - Bottom Navigation Bar: Tab "Lộ trình" đang chọn.
 
-3. SCR-03: Chi tiết môn học (Course Details / FLM Syllabus)
+3. SCR-02.02: Chi tiết môn học (Course Details / FLM Syllabus)
 - Top App Bar: Nút Back mũi tên trái (48x48 dp), tiêu đề "PRM323", icon góc phải auto_awesome "Hỏi AI môn này".
 - Thẻ đầu trang: Tên môn "Lập trình Di động Đa nền tảng", 3 tín chỉ, huy hiệu "Đã tải về".
 - Banner ngoại tuyến: Nền vàng nhạt #FEF3C7: "Đang ngoại tuyến • Dữ liệu đề cương lưu cục bộ".
@@ -71,9 +71,9 @@ DANH SÁCH 8 MÀN HÌNH CHI TIẾT:
   * Slot 11: "Kiến trúc State Management" (Đã xong, icon check xanh).
   * Slot 12: "Thiết kế UI Material 3 & Figma" (Hôm nay, chữ đậm).
   * Slot 13: "Lab 2: Usability & Handoff" (Sắp tới).
-- Thanh đáy cố định: Nút chính "Xem ghi chú môn PRM323" (dẫn đến SCR-06).
+- Thanh đáy cố định: Nút chính "Xem ghi chú môn PRM323" (dẫn đến SCR-04.02).
 
-4. SCR-04: Việc cần làm (Tasks & Deadlines)
+4. SCR-03.01: Việc cần làm (Tasks & Deadlines)
 - Top App Bar: Tiêu đề "Việc cần làm", hàng chip lọc: "Hôm nay" [Đang chọn], "Sắp tới", "Đã hoàn thành".
 - Danh sách việc:
   * Việc 1 (Quá hạn): Checkbox bên trái (48x48 dp, cách chữ 8 dp). Tên "Nộp báo cáo Lab 1", môn "SWP391", huy hiệu icon lỗi + chữ "Quá hạn" (nền đỏ #FEE2E2, chữ #991B1B).
@@ -81,13 +81,13 @@ DANH SÁCH 8 MÀN HÌNH CHI TIẾT:
 - Thanh thông báo nổi (Snackbar SN-01) neo phía trên Bottom Nav: Nền tối #1E293B, chữ "Đã hoàn thành task", nút chữ màu xanh "HOÀN TÁC" (48x48 dp).
 - Bottom Navigation Bar: Tab "Việc làm" đang chọn.
 
-5. SCR-05: Soạn thảo ghi chú nhanh (Quick Note / Markdown Editor)
+5. SCR-04.01: Soạn thảo ghi chú nhanh (Quick Note / Markdown Editor)
 - Top App Bar: Nút Đóng 'X' góc trái (48x48 dp), tiêu đề "Ghi chú mới", nút góc phải "Lưu" (Primary Blue).
 - Trạng thái lưu: Dòng chữ nhỏ "Đã tự động lưu vào Vault cục bộ • 1 phút trước".
 - Vùng soạn thảo: Ô nhập tiêu đề "Tiêu chuẩn chấm điểm Lab 2 PRM323", ô soạn thảo nội dung Markdown bên dưới.
 - Thanh công cụ định dạng neo trên bàn phím: Các icon nút bấm (48x48 dp) gồm Đậm (B), Nghiêng (I), Tiêu đề (H), Checkbox [ ], Chèn liên kết, Chèn ảnh.
 
-6. SCR-06: Danh sách ghi chú Vault (Vault Notes Explorer)
+6. SCR-04.02: Danh sách ghi chú Vault (Vault Notes Explorer)
 - Top App Bar: Tiêu đề "Ghi chú của tôi", ô tìm kiếm nhanh "Tìm trong Obsidian Vault...".
 - Hàng thư mục môn học (Chips cuộn ngang): "Tất cả" [Đang chọn], "PRM323", "SWP391", "ITE302c".
 - Danh sách ghi chú:
@@ -95,7 +95,7 @@ DANH SÁCH 8 MÀN HÌNH CHI TIẾT:
   * Note 2: "SWP391 - Biên bản họp Sprint 2.md", sửa lúc "Hôm qua".
 - Bottom Navigation Bar: Tab "Ghi chú" đang chọn. FAB góc phải với icon dấu cộng (+) để tạo ghi chú mới.
 
-7. SCR-07: Trợ lý AI môn học (AI Tutor Chat)
+7. SCR-05.01: Trợ lý AI môn học (AI Tutor Chat)
 - Top App Bar: Nút Back mũi tên trái (48x48 dp), tiêu đề "Trợ lý AI", chip phụ "Ngữ cảnh: PRM323".
 - Khung hội thoại:
   * Tin nhắn sinh viên (bên phải, nền xanh #1D4ED8, chữ trắng): "Cho mình hỏi Lab 2 PRM323 cần nộp những gì?".
@@ -103,7 +103,7 @@ DANH SÁCH 8 MÀN HÌNH CHI TIẾT:
   * Thẻ trích dẫn nguồn (Citation Chip) dưới tin nhắn AI: Nền Teal nhạt #CCFBF1, icon tài liệu + chữ "Nguồn: PRM323_Syllabus.md", chạm được (48x48 dp).
 - Thanh nhập liệu đáy: Ô nhập "Hỏi về môn học hoặc ghi chú...", nút tròn gửi icon Send màu xanh #1D4ED8.
 
-8. SCR-08: Cài đặt & Đồng bộ Vault (Settings & Sync)
+8. SCR-06.01: Cài đặt & Đồng bộ Vault (Settings & Sync)
 - Top App Bar: Nút Back mũi tên trái (48x48 dp), tiêu đề "Cài đặt & Đồng bộ".
 - Phần 1 (Đồng bộ Obsidian Vault): Đường dẫn thư mục "/storage/emulated/0/Documents/ObsidianVault", nút "Chọn thư mục khác", Switch bật tắt "Tự động đồng bộ một chiều khi có mạng".
 - Phần 2 (Bộ nhớ): "Đã lưu trữ 42 ghi chú, 4 đề cương môn học (Tổng: 18.4 MB)", nút "Xóa cache tạm".
@@ -113,36 +113,36 @@ DANH SÁCH 8 MÀN HÌNH CHI TIẾT:
 
 Dưới đây là ảnh chụp thực tế toàn bộ 8 màn hình do Google Stitch tạo ra dựa trên Design System và Prompt hệ thống:
 
-- **SCR-01: Trang chủ (Dashboard)**
-  ![SCR-01 Trang chủ](../assets/stitch/initial/initial-scr01.png)
+- **SCR-01.01: Trang chủ (Dashboard)**
+  ![SCR-01.01 Trang chủ](../assets/stitch/initial/initial-scr01.png)
 
-- **SCR-02: Lộ trình môn học (Timeline)**
-  ![SCR-02 Lộ trình](../assets/stitch/initial/initial-scr02.png)
+- **SCR-02.01: Lộ trình môn học (Timeline)**
+  ![SCR-02.01 Lộ trình](../assets/stitch/initial/initial-scr02.png)
 
-- **SCR-03: Chi tiết môn học (Course Details)**
-  ![SCR-03 Chi tiết môn học](../assets/stitch/initial/initial-scr03.png)
+- **SCR-02.02: Chi tiết môn học (Course Details)**
+  ![SCR-02.02 Chi tiết môn học](../assets/stitch/initial/initial-scr03.png)
 
-- **SCR-04: Việc cần làm (Tasks & Deadlines)**
-  ![SCR-04 Việc cần làm](../assets/stitch/initial/initial-scr04.png)
+- **SCR-03.01: Việc cần làm (Tasks & Deadlines)**
+  ![SCR-03.01 Việc cần làm](../assets/stitch/initial/initial-scr04.png)
 
-- **SCR-05: Soạn thảo ghi chú nhanh (Quick Note Editor)**
-  ![SCR-05 Soạn thảo ghi chú](../assets/stitch/initial/initial-scr05.png)
+- **SCR-04.01: Soạn thảo ghi chú nhanh (Quick Note Editor)**
+  ![SCR-04.01 Soạn thảo ghi chú](../assets/stitch/initial/initial-scr05.png)
 
-- **SCR-06: Danh sách ghi chú Vault (Vault Explorer)**
-  ![SCR-06 Danh sách ghi chú](../assets/stitch/initial/initial-scr06.png)
+- **SCR-04.02: Danh sách ghi chú Vault (Vault Explorer)**
+  ![SCR-04.02 Danh sách ghi chú](../assets/stitch/initial/initial-scr06.png)
 
-- **SCR-07: Trợ lý AI môn học (AI Tutor Chat)**
-  ![SCR-07 Trợ lý AI](../assets/stitch/initial/initial-scr07.png)
+- **SCR-05.01: Trợ lý AI môn học (AI Tutor Chat)**
+  ![SCR-05.01 Trợ lý AI](../assets/stitch/initial/initial-scr07.png)
 
-- **SCR-08: Cài đặt & Đồng bộ Vault (Settings & Sync)**
-  ![SCR-08 Cài đặt & Đồng bộ](../assets/stitch/initial/initial-scr08.png)
+- **SCR-06.01: Cài đặt & Đồng bộ Vault (Settings & Sync)**
+  ![SCR-06.01 Cài đặt & Đồng bộ](../assets/stitch/initial/initial-scr08.png)
 ---
 
 ## 3. Phản biện UX & Accessibility bằng AI (AI Critique)
 
 ### 3.1. Prompt Yêu cầu AI Phản biện
 ```text
-Bạn là chuyên gia thẩm định UX/UI di động. Hãy đánh giá tổng quan toàn bộ hệ thống 8 màn hình ban đầu của ứng dụng "FPTU Second Brain Mobile" (từ SCR-01 Trang chủ đến SCR-08 Cài đặt) do Google Stitch vừa tạo ra.
+Bạn là chuyên gia thẩm định UX/UI di động. Hãy đánh giá tổng quan toàn bộ hệ thống 8 màn hình ban đầu của ứng dụng "FPTU Second Brain Mobile" (từ SCR-01.01 Trang chủ đến SCR-06.01 Cài đặt) do Google Stitch vừa tạo ra.
 Tiêu chuẩn đánh giá bắt buộc:
 1. 10 Heuristics Usability của Jakob Nielsen.
 2. Quy chuẩn Trợ năng WCAG 2.1 AA: Độ tương phản màu sắc, vùng chạm cảm ứng tối thiểu 48x48 dp, cỡ chữ nội dung tối thiểu 14 sp, không dùng màu đơn độc để truyền đạt thông tin.
@@ -160,30 +160,30 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 3. Thêm tính năng ngoài phạm vi (Spaced Repetition, streak, nodes, chuông thông báo, avatar), làm loãng định vị “ứng dụng đọc Vault ngoại tuyến”.
 
 #### Nhóm A: Nghiêm trọng (Chặn bàn giao)
-* **A1. Tiêu đề màn hình sai ở SCR-07 và SCR-08:** AppBar của màn Trợ lý AI và màn Cài đặt đều ghi “Chi Tiết Môn Học”, trùng SCR-03 (Vi phạm Heuristic H1, H4). Đức sẽ không biết mình đang ở đâu.
+* **A1. Tiêu đề màn hình sai ở SCR-05.01 và SCR-06.01:** AppBar của màn Trợ lý AI và màn Cài đặt đều ghi “Chi Tiết Môn Học”, trùng SCR-02.02 (Vi phạm Heuristic H1, H4). Đức sẽ không biết mình đang ở đâu.
 * **A2. Deadline và dữ liệu mâu thuẫn giữa các màn hình:** 
-  - Lab 2 PRM323: SCR-01, SCR-04, SCR-07 ghi hạn 23:59 hôm nay (15/10), nhưng SCR-03 lại ghi Slot 13 hạn 18/10.
-  - Học kỳ hiện tại: SCR-01 ghi “Kỳ Summer 2024”, các màn khác ghi Fall 2024.
+  - Lab 2 PRM323: SCR-01.01, SCR-03.01, SCR-05.01 ghi hạn 23:59 hôm nay (15/10), nhưng SCR-02.02 lại ghi Slot 13 hạn 18/10.
+  - Học kỳ hiện tại: SCR-01.01 ghi “Kỳ Summer 2024”, các màn khác ghi Fall 2024.
   - Nơi nộp bài: Bốn tên khác nhau (“CMS”, “FAP / LMS”, “FAP / Edunext”, “LMS”).
-  - Số liệu đồng bộ mâu thuẫn giữa SCR-01, SCR-02 và SCR-08. (Vi phạm H4, H5, H2).
-* **A3. Nút HOÀN TÁC bị FAB che (SCR-04):** Snackbar “Đã hoàn thành task” bị FAB đè lên phần nhãn “HOÀN…”, vi phạm Heuristic H9, H3 và tiêu chí M3 của persona. FAB còn đè lên chữ ở SCR-01 và SCR-06.
-* **A4. Tuyên bố riêng tư sai và thiếu cấu hình AI (SCR-07, SCR-08):** SCR-08 ghi xử lý 100% trong máy nhưng app lại gọi Gemini API qua mạng; SCR-07 nhãn model “Llama 3” không khớp spec; thiếu ô Gemini API Key (Vi phạm H2, H9, rủi ro đạo đức).
-* **A5. Hứa hẹn chức năng không tồn tại:** SCR-01 có nút “Nộp bài ngay” (ngoài phạm vi app offline); SCR-08 có công tắc đồng bộ FLM trái quyết định thiết kế; SCR-06 hướng dẫn gõ [[Tên ghi chú]] trong khi ngoài phạm vi (Vi phạm H2, H5, H8).
+  - Số liệu đồng bộ mâu thuẫn giữa SCR-01.01, SCR-02.01 và SCR-08. (Vi phạm H4, H5, H2).
+* **A3. Nút HOÀN TÁC bị FAB che (SCR-03.01):** Snackbar “Đã hoàn thành task” bị FAB đè lên phần nhãn “HOÀN…”, vi phạm Heuristic H9, H3 và tiêu chí M3 của persona. FAB còn đè lên chữ ở SCR-01.01 và SCR-06.
+* **A4. Tuyên bố riêng tư sai và thiếu cấu hình AI (SCR-05.01, SCR-06.01):** SCR-06.01 ghi xử lý 100% trong máy nhưng app lại gọi Gemini API qua mạng; SCR-05.01 nhãn model “Llama 3” không khớp spec; thiếu ô Gemini API Key (Vi phạm H2, H9, rủi ro đạo đức).
+* **A5. Hứa hẹn chức năng không tồn tại:** SCR-01.01 có nút “Nộp bài ngay” (ngoài phạm vi app offline); SCR-06.01 có công tắc đồng bộ FLM trái quyết định thiết kế; SCR-04.02 hướng dẫn gõ [[Tên ghi chú]] trong khi ngoài phạm vi (Vi phạm H2, H5, H8).
 
 #### Nhóm B: Mức độ Cao
-* **B1. Hành động chính nằm ngoài vùng ngón cái (Thao tác một tay trên xe bus):** Nút “Lưu” ở SCR-05, nút AI ở SCR-03, bánh răng Cài đặt ở SCR-01, dãy tìm kiếm/chuông/avatar đều đặt ở nửa trên màn hình, vi phạm trực tiếp `DESIGN.md` và persona.
-* **B2. SCR-05 không hỗ trợ Quick Capture đúng spec:** Thiếu nút tạo task; vùng chạm thanh công cụ dưới 48 dp; màn hình tách đôi bị cuộn lồng nhau; trạng thái tự động lưu mâu thuẫn với nút Lưu; tiêu đề bị tràn không xuống dòng.
-* **B2b. Header kép:** Hai mũi tên Back xếp chồng trong SCR-03; SCR-05 có AppBar rồi lại đến thanh thứ hai.
+* **B1. Hành động chính nằm ngoài vùng ngón cái (Thao tác một tay trên xe bus):** Nút “Lưu” ở SCR-04.01, nút AI ở SCR-02.02, bánh răng Cài đặt ở SCR-01.01, dãy tìm kiếm/chuông/avatar đều đặt ở nửa trên màn hình, vi phạm trực tiếp `DESIGN.md` và persona.
+* **B2. SCR-04.01 không hỗ trợ Quick Capture đúng spec:** Thiếu nút tạo task; vùng chạm thanh công cụ dưới 48 dp; màn hình tách đôi bị cuộn lồng nhau; trạng thái tự động lưu mâu thuẫn với nút Lưu; tiêu đề bị tràn không xuống dòng.
+* **B2b. Header kép:** Hai mũi tên Back xếp chồng trong SCR-02.02; SCR-04.01 có AppBar rồi lại đến thanh thứ hai.
 * **B3. Không nhất quán thành phần giữa các tab:** Navigation Bar dùng hai bộ icon khác nhau; AppBar có hai kiểu dáng khác nhau; FAB đổi icon liên tục; màu badge không đồng nhất giữa các màn hình.
-* **B4. Chữ cắt mất thông tin cốt lõi:** SCR-04 cắt ngày hạn và tên phòng học; SCR-07 cắt nút Gửi; SCR-08 cắt đường dẫn Vault (Vi phạm H1, H6).
-* **B5. Tương phản và cỡ chữ (WCAG 1.4.3, 1.4.1):** Nút “Xóa cache tạm” ở SCR-08 chỉ đạt 3.95:1 (dưới chuẩn 4.5:1); chữ đỏ sáng trên nền tím SCR-07; các tab không chọn bị làm mờ; dòng phụ dưới 14 sp.
-* **B6. “Xóa cache tạm” không có Dialog xác nhận (SCR-08):** Dễ khiến Đức vô tình bấm nhầm xóa mất dữ liệu ngoại tuyến trước khi lên xe bus (Vi phạm H5).
+* **B4. Chữ cắt mất thông tin cốt lõi:** SCR-03.01 cắt ngày hạn và tên phòng học; SCR-05.01 cắt nút Gửi; SCR-06.01 cắt đường dẫn Vault (Vi phạm H1, H6).
+* **B5. Tương phản và cỡ chữ (WCAG 1.4.3, 1.4.1):** Nút “Xóa cache tạm” ở SCR-06.01 chỉ đạt 3.95:1 (dưới chuẩn 4.5:1); chữ đỏ sáng trên nền tím SCR-05.01; các tab không chọn bị làm mờ; dòng phụ dưới 14 sp.
+* **B6. “Xóa cache tạm” không có Dialog xác nhận (SCR-06.01):** Dễ khiến Đức vô tình bấm nhầm xóa mất dữ liệu ngoại tuyến trước khi lên xe bus (Vi phạm H5).
 
 #### Nhóm C: Mức độ Trung bình
 * **C1:** Tính năng thừa làm loãng định vị (Spaced Repetition, Streak 4 ngày, Lịch học, 128 nodes, chuông thông báo, avatar online).
 * **C2:** Màn hình Home và Tasks tự mâu thuẫn (nhiều nút hành động chính cạnh tranh nhau, số liệu trên vòng tròn tiến độ lệch với text).
-* **C3:** SCR-02 lệch spec (Timeline 9 kỳ bị thay bằng chip chọn kỳ; nút “Chi tiết môn học” lặp 4 lần).
-* **C4:** SCR-06 trùng lặp điều khiển lọc/sắp xếp, thiếu nút “Hỏi AI”, hiển thị đuôi file `.md` kỹ thuật.
+* **C3:** SCR-02.01 lệch spec (Timeline 9 kỳ bị thay bằng chip chọn kỳ; nút “Chi tiết môn học” lặp 4 lần).
+* **C4:** SCR-04.02 trùng lặp điều khiển lọc/sắp xếp, thiếu nút “Hỏi AI”, hiển thị đuôi file `.md` kỹ thuật.
 * **C5:** Lỗi render icon (glyph vỡ, nút phát video không tồn tại).
 * **C6:** AI không báo trước cần mạng khi mất kết nối (Vi phạm H1).
 
@@ -194,9 +194,9 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 | Phát hiện AI | Quyết định của sinh viên | Lý do lập luận cụ thể (Gắn với Persona & Ràng buộc) |
 | :--- | :---: | :--- |
 | **1. Che khuất nút HOÀN TÁC & FAB đè chữ** | **CHẤP NHẬN (Accept)** | Lưới an toàn Hoàn tác (SN-01) là tiêu chí đo lường **M3** bắt buộc trong `ux/persona.md`. Sửa lại cấu trúc Scaffold để Snackbar đẩy FAB lên hoặc ẩn FAB khi Snackbar xuất hiện. |
-| **2. Dữ liệu mâu thuẫn & Sai AppBar SCR-07/08** | **CHẤP NHẬN (Accept)** | Đảm bảo tính nhất quán (Heuristic #4). Chuẩn hóa toàn bộ tiêu đề AppBar, thống nhất deadline Lab 2 về 15/10/2024, học kỳ Fall 2024 và cổng nộp bài LMS. |
-| **3. Nút hành động chính ở góc trên ngoài vùng ngón cái** | **CHẤP NHẬN (Accept)** | Đức thao tác một tay trên xe bus. Dời nút "Lưu" (SCR-05) xuống thanh công cụ sát bàn phím và đưa các nút chức năng chính về nửa dưới màn hình. |
-| **4. Cam kết riêng tư sai & Thiếu Gemini API Key** | **CHỈNH SỬA (Modify)** | Sửa thông điệp riêng tư đúng bản chất gọi API qua mạng và bổ sung ô nhập Gemini API Key vào SCR-08 để phục vụ nhánh Flow 1A (bản nháp lịch sử gọi là Flow 4). |
+| **2. Dữ liệu mâu thuẫn & Sai AppBar SCR-05.01/08** | **CHẤP NHẬN (Accept)** | Đảm bảo tính nhất quán (Heuristic #4). Chuẩn hóa toàn bộ tiêu đề AppBar, thống nhất deadline Lab 2 về 15/10/2024, học kỳ Fall 2024 và cổng nộp bài LMS. |
+| **3. Nút hành động chính ở góc trên ngoài vùng ngón cái** | **CHẤP NHẬN (Accept)** | Đức thao tác một tay trên xe bus. Dời nút "Lưu" (SCR-04.01) xuống thanh công cụ sát bàn phím và đưa các nút chức năng chính về nửa dưới màn hình. |
+| **4. Cam kết riêng tư sai & Thiếu Gemini API Key** | **CHỈNH SỬA (Modify)** | Sửa thông điệp riêng tư đúng bản chất gọi API qua mạng và bổ sung ô nhập Gemini API Key vào SCR-06.01 để phục vụ nhánh Flow 1A (bản nháp lịch sử gọi là Flow 4). |
 | **5. Card rác ngoài luồng (Streak, Spaced Repetition)** | **CHẤP NHẬN (Accept)** | Loại bỏ toàn bộ các tính năng không thuộc phạm vi app offline để tối ưu thời gian mở app 30–60 giây của sinh viên. |
 | **6. Nút "Xóa cache" thiếu Dialog & Vi phạm tương phản** | **CHẤP NHẬN (Accept)** | Thêm Dialog xác nhận khi bấm xóa cache để phòng ngừa mất dữ liệu (Heuristic #5) và điều chỉnh mã màu chữ đạt chuẩn tương phản WCAG 4.5:1. |
 ## 5. Các Vòng lặp Tinh chỉnh với AI (AI Iteration Loops)
@@ -204,73 +204,73 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 **Công cụ phản biện UX:** Claude . Google Stitch được dùng để sinh và tinh chỉnh giao diện.
 
 ### Vòng lặp 1: Thống nhất Dữ liệu, Chuẩn hóa AppBar & Dọn dẹp Card rác
-- **Vấn đề cụ thể cần giải quyết:** Xử lý các điểm mâu thuẫn dữ liệu nghiêm trọng giữa các màn hình (deadline Lab 2, tên học kỳ, cổng nộp bài), sửa lỗi tiêu đề App Bar ở SCR-08 bị trùng lặp, và dọn sạch các tính năng ngoài phạm vi (card rác) để tập trung định vị app đọc Vault offline (Khớp với phát hiện A1, A2, C1 trong bản phản biện).
+- **Vấn đề cụ thể cần giải quyết:** Xử lý các điểm mâu thuẫn dữ liệu nghiêm trọng giữa các màn hình (deadline Lab 2, tên học kỳ, cổng nộp bài), sửa lỗi tiêu đề App Bar ở SCR-06.01 bị trùng lặp, và dọn sạch các tính năng ngoài phạm vi (card rác) để tập trung định vị app đọc Vault offline (Khớp với phát hiện A1, A2, C1 trong bản phản biện).
 - **Prompt gửi Google Stitch:**
   ```text
   Hãy tinh chỉnh lại toàn bộ hệ thống 8 màn hình để khắc phục các lỗi mâu thuẫn dữ liệu và chuẩn hóa giao diện:
-  1. Đồng bộ hóa dữ liệu toàn hệ thống: Thống nhất hạn chót bài Lab 2 PRM323 trên tất cả các màn hình (SCR-01, SCR-02, SCR-03, SCR-04, SCR-05, SCR-06, SCR-07) là "23:59 Hôm nay (15/10/2024)". Thống nhất học kỳ "Học kỳ Fall 2024 (Kỳ 5)" và cổng nộp bài duy nhất qua "Hệ thống LMS".
-  2. Sửa lỗi tiêu đề Top App Bar: SCR-07 thành "Trợ lý AI", SCR-08 thành "Cài đặt & Đồng bộ".
+  1. Đồng bộ hóa dữ liệu toàn hệ thống: Thống nhất hạn chót bài Lab 2 PRM323 trên tất cả các màn hình (SCR-01.01, SCR-02.01, SCR-02.02, SCR-03.01, SCR-04.01, SCR-04.02, SCR-05.01) là "23:59 Hôm nay (15/10/2024)". Thống nhất học kỳ "Học kỳ Fall 2024 (Kỳ 5)" và cổng nộp bài duy nhất qua "Hệ thống LMS".
+  2. Sửa lỗi tiêu đề Top App Bar: SCR-05.01 thành "Trợ lý AI", SCR-06.01 thành "Cài đặt & Đồng bộ".
   3. Dọn dẹp tính năng thừa ngoài phạm vi: Xóa bỏ hoàn toàn "Spaced Repetition", "Streak 4 ngày", "Lịch học FPTU", "128 nodes" để trả lại không gian tối giản.
   ```
 
   ### Kết quả trước và sau (Before & After):
-- **Trước:** Dữ liệu lệch nhau giữa các màn, AppBar SCR-08 ghi sai thành "Chi Tiết Môn Học", xuất hiện các thẻ streak và spaced repetition ngoài luồng.
-- **Sau:** Dữ liệu đã đồng nhất tuyệt đối (deadline 15/10/2024, Fall 2024, LMS); AppBar SCR-08 đã hiển thị đúng tên "Cài đặt & Đồng bộ"; các thẻ rác trên màn hình chính đã được dọn sạch.
+- **Trước:** Dữ liệu lệch nhau giữa các màn, AppBar SCR-06.01 ghi sai thành "Chi Tiết Môn Học", xuất hiện các thẻ streak và spaced repetition ngoài luồng.
+- **Sau:** Dữ liệu đã đồng nhất tuyệt đối (deadline 15/10/2024, Fall 2024, LMS); AppBar SCR-06.01 đã hiển thị đúng tên "Cài đặt & Đồng bộ"; các thẻ rác trên màn hình chính đã được dọn sạch.
 - **Ảnh bằng chứng sau Vòng lặp 1:** [assets/stitch/iteration-1](../assets/stitch/iteration-1/) có các ảnh `1.png` đến `8.png`.
 - **Đối chiếu trước/sau:** [Ảnh ban đầu](../assets/stitch/initial/) → [Vòng 1](../assets/stitch/iteration-1/).
-### Vòng lặp 2: Sửa tiêu đề SCR-07, Xử lý chồng lấp Snackbar/FAB & Bổ sung Gemini API Key
+### Vòng lặp 2: Sửa tiêu đề SCR-05.01, Xử lý chồng lấp Snackbar/FAB & Bổ sung Gemini API Key
 
-- **Vấn đề cụ thể cần giải quyết:** Khắc phục lỗi tiêu đề App Bar ở SCR-07 bị trùng ("Chi Tiết Môn Học" → "Trợ lý AI"), giải quyết xung đột vị trí che khuất chữ "HOÀN TÁC" trên thanh Snackbar SCR-04 do bị nút FAB đè lên (đảm bảo tiêu chí Undo - M3 của persona), và bổ sung trường Gemini API Key trên SCR-08 (khớp với phát hiện A1, A3, A4 trong bản phản biện).
+- **Vấn đề cụ thể cần giải quyết:** Khắc phục lỗi tiêu đề App Bar ở SCR-05.01 bị trùng ("Chi Tiết Môn Học" → "Trợ lý AI"), giải quyết xung đột vị trí che khuất chữ "HOÀN TÁC" trên thanh Snackbar SCR-03.01 do bị nút FAB đè lên (đảm bảo tiêu chí Undo - M3 của persona), và bổ sung trường Gemini API Key trên SCR-06.01 (khớp với phát hiện A1, A3, A4 trong bản phản biện).
 
 - **Prompt gửi Google Stitch:**
 
   ```text
   Hãy tinh chỉnh 3 điểm sau trên hệ thống giao diện:
-  1. SCR-07: Sửa tiêu đề Top App Bar từ "Chi Tiết Môn Học" thành "Trợ lý AI".
-  2. SCR-04: Điều chỉnh bố cục để thanh thông báo nổi (Snackbar) "Đã hoàn thành task" hiển thị phía trên nút hành động nổi (FAB) hoặc tạm ẩn FAB khi Snackbar xuất hiện, đảm bảo nút "HOÀN TÁC" không bị che khuất bất kỳ phần nào.
-  3. SCR-08: Bổ sung ô nhập "Gemini API Key" vào phần cấu hình hệ thống trợ lý AI.
+  1. SCR-05.01: Sửa tiêu đề Top App Bar từ "Chi Tiết Môn Học" thành "Trợ lý AI".
+  2. SCR-03.01: Điều chỉnh bố cục để thanh thông báo nổi (Snackbar) "Đã hoàn thành task" hiển thị phía trên nút hành động nổi (FAB) hoặc tạm ẩn FAB khi Snackbar xuất hiện, đảm bảo nút "HOÀN TÁC" không bị che khuất bất kỳ phần nào.
+  3. SCR-06.01: Bổ sung ô nhập "Gemini API Key" vào phần cấu hình hệ thống trợ lý AI.
   ```
 
 ### Kết quả trước và sau (Before & After)
 
-- **Trước:** Top App Bar SCR-07 vẫn bị ghi sai tiêu đề; nút "HOÀN TÁC" trên SCR-04 bị FAB đè lên chữ "HOÀN..."; SCR-08 thiếu ô nhập Gemini API Key.
-- **Sau:** App Bar SCR-07 đổi thành "Trợ lý AI" chuẩn xác; Snackbar trên SCR-04 nằm nổi hoàn toàn phía trên FAB, giúp hiển thị trọn vẹn nút "HOÀN TÁC"; SCR-08 đã có khối cấu hình "Gemini API Key" chuyên nghiệp.
+- **Trước:** Top App Bar SCR-05.01 vẫn bị ghi sai tiêu đề; nút "HOÀN TÁC" trên SCR-03.01 bị FAB đè lên chữ "HOÀN..."; SCR-06.01 thiếu ô nhập Gemini API Key.
+- **Sau:** App Bar SCR-05.01 đổi thành "Trợ lý AI" chuẩn xác; Snackbar trên SCR-03.01 nằm nổi hoàn toàn phía trên FAB, giúp hiển thị trọn vẹn nút "HOÀN TÁC"; SCR-06.01 đã có khối cấu hình "Gemini API Key" chuyên nghiệp.
 
 - **Ảnh bằng chứng sau Vòng lặp 2:** [assets/stitch/iteration-2](../assets/stitch/iteration-2/).
 - **Đối chiếu trước/sau:** [Vòng 1](../assets/stitch/iteration-1/) → [Vòng 2](../assets/stitch/iteration-2/).
 ### Vòng lặp 3: Hoàn thiện Tính nhất quán Offline/AI, Công thái học một tay & Trạng thái Giao diện
 
-- **Vấn đề cụ thể cần giải quyết:** Xử lý ranh giới minh bạch giữa dữ liệu cục bộ (Offline) và dịch vụ AI (cần mạng); chuẩn hóa tên mô hình Gemini 1.5 Flash và bổ sung banner phục hồi lỗi mất kết nối (Error State / Retry) trên SCR-07; tối ưu hóa công thái học một tay bằng cách đưa nút "Lưu vào Vault" xuống thanh công cụ đáy trên SCR-05; hoàn thiện Quick Capture tạo task từ checklist và chuẩn hóa tuyên bố quyền riêng tư trên SCR-08 (khớp với phát hiện A4, B1, B2, C6 trong bản phản biện).
+- **Vấn đề cụ thể cần giải quyết:** Xử lý ranh giới minh bạch giữa dữ liệu cục bộ (Offline) và dịch vụ AI (cần mạng); chuẩn hóa tên mô hình Gemini 1.5 Flash và bổ sung banner phục hồi lỗi mất kết nối (Error State / Retry) trên SCR-05.01; tối ưu hóa công thái học một tay bằng cách đưa nút "Lưu vào Vault" xuống thanh công cụ đáy trên SCR-04.01; hoàn thiện Quick Capture tạo task từ checklist và chuẩn hóa tuyên bố quyền riêng tư trên SCR-06.01 (khớp với phát hiện A4, B1, B2, C6 trong bản phản biện).
 
 - **Prompt gửi Google Stitch:**
 
   ```text
   Vòng lặp 3: Hoàn thiện tính nhất quán, Offline/AI, Accessibility và trạng thái giao diện
-  Hãy rà soát và tinh chỉnh toàn bộ 8 màn hình SCR-01 đến SCR-08 của ứng dụng FPTU Second Brain Mobile dựa trên giao diện hiện tại sau vòng lặp 2. Đây là vòng lặp tinh chỉnh cuối cùng, vì vậy hãy tập trung xử lý các vấn đề UX còn tồn đọng thay vì tạo lại giao diện từ đầu.
+  Hãy rà soát và tinh chỉnh toàn bộ 8 màn hình SCR-01.01 đến SCR-06.01 của ứng dụng FPTU Second Brain Mobile dựa trên giao diện hiện tại sau vòng lặp 2. Đây là vòng lặp tinh chỉnh cuối cùng, vì vậy hãy tập trung xử lý các vấn đề UX còn tồn đọng thay vì tạo lại giao diện từ đầu.
   Giữ nguyên những phần đã sửa đúng ở vòng lặp 1 và 2, đặc biệt:
-  - Tiêu đề SCR-07 là “Trợ lý AI”, SCR-08 là “Cài đặt & Đồng bộ”.
+  - Tiêu đề SCR-05.01 là “Trợ lý AI”, SCR-06.01 là “Cài đặt & Đồng bộ”.
   - Snackbar “Đã hoàn thành task” và nút “HOÀN TÁC” không bị FAB che khuất.
-  - SCR-08 có cấu hình Gemini API Key.
+  - SCR-06.01 có cấu hình Gemini API Key.
   - Giữ nguyên phong cách Material Design 3, Light Theme, font Inter, màu chủ đạo #1D4ED8, màu phụ #0F766E và nền #F8FAFC.
   - Giữ đúng phạm vi ứng dụng đồng hành học tập, quản lý ghi chú Obsidian Vault và sử dụng offline.
 
   1. Sửa tính nhất quán giữa Offline và AI
-  - SCR-07 phải thể hiện đúng mô hình AI đang được sử dụng. Nếu hệ thống sử dụng Gemini API, hãy thay nhãn Llama 3 bằng tên mô hình Gemini phù hợp với cấu hình thực tế.
-  - SCR-08 không được tuyên bố xử lý 100% trên thiết bị nếu câu hỏi và dữ liệu được gửi đến Gemini API.
+  - SCR-05.01 phải thể hiện đúng mô hình AI đang được sử dụng. Nếu hệ thống sử dụng Gemini API, hãy thay nhãn Llama 3 bằng tên mô hình Gemini phù hợp với cấu hình thực tế.
+  - SCR-06.01 không được tuyên bố xử lý 100% trên thiết bị nếu câu hỏi và dữ liệu được gửi đến Gemini API.
   - Phân biệt rõ chức năng đọc ghi chú cục bộ có thể sử dụng offline với chức năng AI cần mạng.
   - Khi mất mạng, hiển thị thông báo dễ hiểu, trạng thái gửi thất bại và hành động thử lại phù hợp.
   - Không tự ý bổ sung tính năng hoặc cam kết kỹ thuật mà hệ thống không hỗ trợ.
 
   2. Hoàn thiện hành động và phòng ngừa lỗi
-  - SCR-08: Bổ sung dialog xác nhận trước khi “Xóa cache tạm”, nêu rõ hậu quả và cung cấp lựa chọn hủy.
-  - SCR-05: Hoàn thiện Quick Capture, giúp người dùng tạo ghi chú nhanh, quản lý nội dung Markdown và tạo task nếu chức năng này thuộc phạm vi thiết kế.
+  - SCR-06.01: Bổ sung dialog xác nhận trước khi “Xóa cache tạm”, nêu rõ hậu quả và cung cấp lựa chọn hủy.
+  - SCR-04.01: Hoàn thiện Quick Capture, giúp người dùng tạo ghi chú nhanh, quản lý nội dung Markdown và tạo task nếu chức năng này thuộc phạm vi thiết kế.
   - Dời nút hành động chính "Lưu vào Vault" từ góc trên AppBar xuống thanh công cụ định dạng ở cạnh đáy màn hình (vùng ngón cái) để tối ưu thao tác một tay trên xe bus.
   - Làm rõ trạng thái tự động lưu, đang lưu và lưu thất bại; tránh mâu thuẫn giữa tự động lưu và nút Lưu.
   - Kiểm tra hành vi bàn phím, thanh công cụ và các nút quan trọng khi sử dụng bằng một tay.
   - Giữ nguyên cơ chế Undo của SCR-04.
 
   3. Sửa bố cục và dữ liệu
-  - SCR-01 và SCR-02: Rà soát các khối trống lớn; chỉ sử dụng skeleton khi đang tải dữ liệu và phải có nội dung thay thế khi dữ liệu rỗng hoặc tải lỗi.
+  - SCR-01.01 và SCR-02.01: Rà soát các khối trống lớn; chỉ sử dụng skeleton khi đang tải dữ liệu và phải có nội dung thay thế khi dữ liệu rỗng hoặc tải lỗi.
   - Thống nhất học kỳ Fall 2024 (Kỳ 5), deadline Lab 2 PRM323 là 23:59 ngày 15/10/2024 và cổng nộp bài là Hệ thống LMS trên tất cả màn hình có liên quan.
   - Kiểm tra sự nhất quán của số liệu tiến độ, số ghi chú, đề cương và dung lượng Vault.
   - Không cắt mất deadline, địa điểm, tên môn học hoặc nội dung quan trọng. Cho phép xuống dòng hoặc mở rộng nội dung.
@@ -301,8 +301,8 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 
 ### Kết quả trước và sau (Before & After)
 
-- **Trước:** SCR-07 gắn nhãn Llama 3 và không cảnh báo khi mất mạng; SCR-08 tuyên bố riêng tư sai bản chất gọi API; nút "Lưu" ở SCR-05 nằm ở góc trên ngoài tầm ngón cái; thiếu tính năng Quick Capture tạo task từ checklist.
-- **Sau:** SCR-07 đồng bộ model Gemini 1.5 Flash và có banner báo mất mạng kèm nút "Thử lại"; SCR-08 có cam kết riêng tư minh bạch và chính xác; SCR-05 đưa nút "Lưu vào Vault" xuống góc phải thanh công cụ đáy hỗ trợ thao tác một tay hoàn hảo, kèm nút "+ Tạo việc cần làm từ checklist này"; toàn bộ 8 màn hình đạt độ nhất quán cao về bố cục, màu sắc và dữ liệu.
+- **Trước:** SCR-05.01 gắn nhãn Llama 3 và không cảnh báo khi mất mạng; SCR-06.01 tuyên bố riêng tư sai bản chất gọi API; nút "Lưu" ở SCR-04.01 nằm ở góc trên ngoài tầm ngón cái; thiếu tính năng Quick Capture tạo task từ checklist.
+- **Sau:** SCR-05.01 đồng bộ model Gemini 1.5 Flash và có banner báo mất mạng kèm nút "Thử lại"; SCR-06.01 có cam kết riêng tư minh bạch và chính xác; SCR-04.01 đưa nút "Lưu vào Vault" xuống góc phải thanh công cụ đáy hỗ trợ thao tác một tay hoàn hảo, kèm nút "+ Tạo việc cần làm từ checklist này"; toàn bộ 8 màn hình đạt độ nhất quán cao về bố cục, màu sắc và dữ liệu.
 
 - **Ảnh bằng chứng sau Vòng lặp 3:** [assets/stitch/iteration-3](../assets/stitch/iteration-3/).
 - **Đối chiếu trước/sau:** [Vòng 2](../assets/stitch/iteration-2/) → [Vòng 3](../assets/stitch/iteration-3/).
