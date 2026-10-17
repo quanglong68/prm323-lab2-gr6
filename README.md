@@ -7,7 +7,10 @@ Bộ hồ sơ thiết kế UX/UI cho ứng dụng Android hỗ trợ sinh viên 
 | Hạng mục | Nội dung |
 | --- | --- |
 | Figma | [PRM323 Lab 2 — FPTU Second Brain](https://www.figma.com/design/0gpT8zQmaDiCmcklbFuTSq/PRM323_Lab2_FPTU_Second_Brain) |
-| Personas | [ux/persona.md](ux/persona.md) — P02 là Primary Persona; P01 năm nhất và P03 năm cuối là Secondary Personas bổ sung |
+| Persona index & synthesis | [ux/persona.md](ux/persona.md) — phạm vi, coverage, evidence và research backlog |
+| P01 · Secondary | [Lê Hoàng Nam — năm nhất BBA](ux/personas/P01-le-hoang-nam.md) |
+| P02 · Primary | [Nguyễn Minh Đức — năm ba SE](ux/personas/P02-nguyen-minh-duc.md) |
+| P03 · Secondary | [Trần Thảo Vy — năm cuối Ngôn ngữ Anh](ux/personas/P03-tran-thao-vy.md) |
 | User flow | [ux/user-flow.md](ux/user-flow.md) — 3 prototype flow chính và nhánh AI Flow 1A |
 | Design brief/system | [design/DESIGN.md](design/DESIGN.md) |
 | Screen specification | [design/screen-spec.md](design/screen-spec.md) |
@@ -30,4 +33,4 @@ Prototype có 3 điểm bắt đầu: Flow 1 (tra cứu môn), Flow 2 (deadline/
 
 ## Phạm vi
 
-Android mobile-first, Material Design 3, light theme, Inter, khung Figma chính 360 × 800 dp; responsive tại 412 dp được mô tả trong `design/design-decisions.md`. Vault hỗ trợ đọc/ghi cục bộ offline; hỏi Gemini API cần mạng.
+Android mobile-first, Material Design 3, light theme, Inter, khung Figma chính 360 × 800 dp; responsive tại 412 dp được mô tả trong [design/design-decisions.md](design/design-decisions.md). Vault hỗ trợ đọc/ghi cục bộ offline; hỏi Gemini API cần mạng.
