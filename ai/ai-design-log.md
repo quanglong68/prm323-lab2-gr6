@@ -306,3 +306,16 @@ Bản Stitch đẹp, sạch và đúng tinh thần Material 3, nhưng chưa đ�
 
 - **Ảnh bằng chứng sau Vòng lặp 3:** [assets/stitch/iteration-3](../assets/stitch/iteration-3/).
 - **Đối chiếu trước/sau:** [Vòng 2](../assets/stitch/iteration-2/) → [Vòng 3](../assets/stitch/iteration-3/).
+
+## 5. Phần mở rộng theo yêu cầu giảng viên · Workflow 4–6
+
+Phần mở rộng này xuất phát từ yêu cầu giảng viên và quyết định sản phẩm của nhóm; không ghi nhận như output của Stitch/Claude. Không tạo AI output hoặc usability result giả để lấp đầy log.
+
+| Brief / vấn đề | Quyết định thiết kế | Thay đổi đã phản ánh trong Figma và handoff |
+|---|---|---|
+| Bao phủ sinh viên năm nhất và năm cuối bên cạnh P02 | Giữ P02 cho ba flow Lab 2; thêm P01 (khám phá chương trình) và P03 (prerequisite/chiến lược cuối khóa) làm persona secondary, proto-persona | Cập nhật ba hồ sơ riêng và coverage matrix; Workflow 4–6 và screen spec/handoff |
+| Tách setup/catalog, tư vấn 2.1 và chiến lược 2.2 | Workflow 4: setup → catalog → Home → Curriculum → CourseDetail; Workflow 5: AdvisorHub bốn scope; Workflow 6: StrategySim và hai nhánh consent | Thêm ba starting points Figma, catalog cloud/ tải theo ngành, bốn chip Môn/Kỳ/CTĐT/Điểm, local/shared results |
+| Bảo vệ dữ liệu cá nhân; phân biệt catalog với transcript | FLM catalog là nguồn chương trình được phép đồng bộ; FAP tùy chọn; dữ liệu cá nhân lưu cục bộ; AI chỉ nhận dữ liệu sau consent từng lần | FAPConnect có skip/return; consent overlay bắt buộc; local branch không gửi AI; shared branch có loading 1,2 giây và giới hạn nguồn |
+| Tránh đưa quy chế chưa xác minh thành kết luận | Không hard-code một ngưỡng qua môn/điểm danh cho mọi ngành; hiển thị nguồn/ngành/khóa/ngày hiệu lực và trạng thái thiếu dữ liệu | Screen text và tài liệu nhấn mạnh kết quả sơ bộ, dữ liệu mẫu và bước xác nhận cuối tại FAP/đơn vị trường |
+
+Nguồn FPTU/FLM công khai và giới hạn xác minh được ghi trong [`ux/academic-workflows.md`](../ux/academic-workflows.md). Prototype dùng dữ liệu mẫu; chưa có tích hợp FLM/FAP thật.

@@ -1,6 +1,6 @@
 # DESIGN.md — FPTU Second Brain Mobile
 
-Tài liệu mô tả thiết kế đưa cho Google Stitch làm ngữ cảnh, đồng thời là nguồn gốc của Design System trong Figma (page 04, 05) và của bảng token → Flutter trong handoff. Mã định danh `SCR-xx`, `D-xx`, `BS-01`, `SN-xx`, `LD-xx`, `EM-xx`, `ER-xx` khớp với `ux/user-flow.md`.
+Tài liệu mô tả thiết kế ban đầu đưa cho Google Stitch làm ngữ cảnh, đồng thời là nguồn gốc của Design System trong Figma (page 04, 05) và bảng token → Flutter trong handoff. Tên `SCR-xx` ở đây là alias lịch sử của bộ 8 màn hình Lab 2; mã phân cấp hiện hành và crosswalk được ghi trong `design/screen-spec.md` và `ux/user-flow.md`.
 
 ---
 
@@ -8,9 +8,9 @@ Tài liệu mô tả thiết kế đưa cho Google Stitch làm ngữ cảnh, đ�
 
 - **Sản phẩm:** ứng dụng Android đồng hành cho sinh viên Kỹ thuật Phần mềm FPTU: tra cứu đề cương môn học ngoại tuyến, tổng hợp deadline, ghi chú nhanh vào Obsidian Vault, hỏi trợ lý AI về ghi chú của mình.
 - **Người dùng:** Nguyễn Minh Đức, 20 tuổi, thao tác một tay bằng ngón cái khi đang di chuyển, mạng thường chập chờn (xem `ux/persona.md`).
-- **Phạm vi persona:** thiết kế hiện tại phục vụ P02 · Nguyễn Minh Đức (primary); P01 và P03 là secondary personas, chưa được bao phủ bởi các màn hình/prototype hiện tại.
+- **Phạm vi persona:** ba flow Lab 2 gốc tiếp tục phục vụ P02 · Nguyễn Minh Đức (primary). Figma được mở rộng bằng Workflow 4–6 để hỗ trợ P01 (khám phá catalog/lộ trình) và P03 (prerequisite/chiến lược cuối khóa); các màn mở rộng dùng dữ liệu mẫu.
 - **Nền tảng:** di động Android, khung thiết kế chính **360 × 800 dp**, kiểm tra thêm ở **412 dp**. Chỉ **Light Theme**; dark theme nằm ngoài phạm vi.
-- **8 màn hình:** Trang chủ, Lộ trình, Chi tiết môn học, Việc cần làm, Soạn ghi chú, Ghi chú, Trợ lý AI, Cài đặt & Đồng bộ Vault. Điều hướng chính là Navigation Bar 4 mục (Trang chủ, Lộ trình, Việc cần làm, Ghi chú) kèm FAB "Ghi chú nhanh".
+- **8 màn hình cốt lõi Lab 2:** Trang chủ, Lộ trình, Chi tiết môn học, Việc cần làm, Soạn ghi chú, Ghi chú, Trợ lý AI, Cài đặt & Đồng bộ Vault. Figma có thêm Workflow 4–6 và 9 frame mở rộng; danh sách đầy đủ ở `design/screen-spec.md` và `ux/academic-workflows.md`. Điều hướng chính là Navigation Bar 4 mục (Trang chủ, Lộ trình, Việc cần làm, Ghi chú) kèm FAB "Ghi chú nhanh".
 
 ### Nên và không nên (dành cho Stitch)
 

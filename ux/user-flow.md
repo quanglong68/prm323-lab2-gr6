@@ -8,13 +8,31 @@
 
 ## 0. Phạm vi và Giả định của bản Mobile
 
-- **Vai trò của app:** ứng dụng đồng hành, **đọc và ghi trực tiếp** vào thư mục Obsidian Vault (`/storage/emulated/0/Documents/Obsidian/FPTU`) đã được đồng bộ sẵn giữa laptop và điện thoại (giả định trong persona).
-- **Việc chạy trên desktop, không có trên mobile:** cào dữ liệu FLM (đăng nhập cổng trường), vector hóa kho tri thức, tạo ngành/kỳ/môn, Hard Reset AI. Vì vậy mobile **không có màn hình đăng nhập FLM**; đề cương xuất hiện trong Vault dưới dạng file đã đồng bộ (nhãn `FLM SYNC` / `Đã tải về`).
+- **Vai trò của app:** ứng dụng đồng hành, đọc/ghi Obsidian Vault cục bộ và tra cứu catalog học tập đã tải. Catalog ngành/đề cương dự kiến được đồng bộ lên cloud từ nguồn FLM được phép; sinh viên chọn ngành/khóa muốn tải về máy. Prototype dùng dữ liệu mẫu, không kết nối FLM thật.
+- **Dữ liệu cá nhân:** FAP là tùy chọn và chỉ qua kênh chính thức được cấp quyền; bảng điểm/lịch/chuyên cần lưu cục bộ mặc định. Việc hỏi AI về dữ liệu cá nhân luôn có consent theo từng lần. Không cào dữ liệu FLM hoặc lưu mật khẩu đăng nhập.
+- **Việc ngoài mobile prototype:** đồng bộ catalog backend thật, tích hợp FAP thật, vector hóa kho tri thức, tạo ngành/kỳ/môn, Hard Reset AI. Các luồng này chỉ được mô tả ở mức sản phẩm/handoff; không khẳng định Figma đang kết nối hệ thống trường.
 - **Ngoại tuyến:** xem đề cương, xem và tick task, soạn ghi chú và quét lại chỉ mục Vault cục bộ đều dùng được vì chỉ đọc/ghi file trên thiết bị. **Trợ lý AI (`Gemini 1.5 Flash`) cần mạng để giải đáp câu hỏi mới.**
 - **Ngoài phạm vi (ghi nhận để tránh bị hỏi khó):** xử lý xung đột khi một file bị sửa đồng thời trên laptop và điện thoại (do dịch vụ đồng bộ đảm nhiệm); thông báo nhắc deadline ngoài app; dark theme; chèn liên kết `[[...]]`.
-- **Số lượng:** 8 màn hình độc lập (`SCR-01_Home` đến `SCR-08_SyncVault`), 3 flow chính có prototype và 1 nhánh bổ sung Flow 1A về hỏi AI; không tính dialog overlay `D-01_SyncConfirmation`, snackbar và biến thể lỗi `SCR-08_SyncError`.
+- **Số lượng:** 8 màn hình cốt lõi Lab 2, 3 flow gốc và nhánh hỏi AI Flow 1A; Figma được mở rộng thêm Workflow 4–6 với 9 frame mới và 3 starting points mới. Tổng cộng 6 starting points ở `06 Prototype`; dialog, loading và error states được tính riêng, không tính là màn hình độc lập của persona.
 
-- **Phân khúc persona:** prototype hiện tại được tối ưu và kiểm thử theo P02 · Nguyễn Minh Đức. P01 (sinh viên năm nhất) và P03 (sinh viên năm cuối) là persona bổ sung; các gợi ý FLM/FAP, prerequisite và mô phỏng GPA trong `persona.md` là cơ hội sản phẩm tương lai, chưa thuộc phạm vi 8 màn hình/3 prototype flow hiện tại.
+- **Phân khúc persona:** ba flow Lab 2 gốc tiếp tục ưu tiên P02 · Nguyễn Minh Đức. Workflow 4/5 mở rộng hỗ trợ P01; Workflow 4/6 hỗ trợ P03. Figma hiển thị các màn hình mở rộng bằng dữ liệu mẫu; bảng điểm, điều kiện cá nhân và lịch thật chỉ kết luận khi có dữ liệu/nguồn chính thức đúng ngành/khóa.
+
+### Crosswalk mã màn hình phân cấp
+
+Các màn hình gốc được đổi từ mã phẳng sang mã theo module trên Figma. Những mã phẳng còn sót trong sơ đồ Mermaid là bí danh lịch sử của ba flow Lab 2; mã hiện hành dùng trong file Figma và handoff là:
+
+| Bí danh flow gốc | Mã Figma hiện hành |
+|---|---|
+| `SCR-01_Home` | `SCR-01.01_Home` |
+| `SCR-02_Roadmap` | `SCR-02.01_Roadmap` |
+| `SCR-03_CourseDetail` | `SCR-02.02_CourseDetail` |
+| `SCR-04_Tasks` | `SCR-03.01_Tasks` |
+| `SCR-05_NoteEditor` | `SCR-04.01_NoteEditor` |
+| `SCR-06_Notes` | `SCR-04.02_Notes` |
+| `SCR-07_AskAI` | `SCR-05.01_AdvisorHub` |
+| `SCR-08_SyncVault` / `SCR-08_SyncError` | `SCR-06.01_SyncVault` / `SCR-06.02_SyncError` |
+
+Workflow 4–6 và các màn hình bổ sung được đặc tả ở [`academic-workflows.md`](academic-workflows.md).
 
 ---
 
@@ -75,14 +93,14 @@ App Root
 1. **Cài đặt & Đồng bộ không chiếm một tab đáy.** Đây là màn hình thiết lập đường dẫn Vault và đồng bộ chỉ mục, trong khi persona mở app 5–8 lần/ngày chỉ để xem việc khẩn cấp và tra cứu slot học. Cài đặt & Đồng bộ được đặt thành icon góc phải trên AppBar.
 2. **Ghi chú lên thành Tab 4.** Mục tiêu G3 ("tìm lại ghi chú mà không mở từng file") cần một điểm vào cấp cao nhất kèm thanh tìm kiếm và chip lọc môn học (`PRM323`, `SWP391`).
 3. **Các nút hành động chính đặt ở cạnh đáy màn hình (Vùng ngón cái).** Nút "Hỏi trợ lý AI về môn này" (`SCR-03`), "Lưu vào Vault" (`SCR-05`) và "Đồng bộ ngay bây giờ" (`SCR-08`) đều nằm ở nửa dưới màn hình, giúp thao tác một tay trên xe bus dễ dàng và không che khuất thanh Snackbar `HOÀN TÁC`.
-4. **Bỏ đăng nhập FLM khỏi mobile.** Phù hợp giả định của persona: Vault đã đồng bộ sẵn 42 ghi chú và 4 đề cương FLM, app mobile chỉ đọc/ghi cục bộ. Việc này loại bỏ hoàn toàn rủi ro hết phiên đăng nhập (session timeout) trên điện thoại.
+4. **Không đăng nhập/cào FLM trực tiếp từ mobile.** Catalog ngành/đề cương được đồng bộ lên cloud qua nguồn được phép; người dùng chọn catalog cần tải. FAP là kết nối cá nhân tùy chọn, chỉ triển khai qua kênh chính thức được trường cấp quyền. Cách này tách catalog khỏi dữ liệu transcript/lịch cá nhân.
 5. **Trợ lý AI giữ ngữ cảnh môn học.** Khi mở từ `SCR-03_CourseDetail`, màn hình `SCR-07_AskAI` tự động gắn sẵn chip `PRM323 · Gemini 1.5 Flash`, giúp sinh viên hỏi ngay mà không cần gõ lại tên môn.
 
 ---
 
 ## 2. Ba User Flow chính và nhánh AI Retrieval bổ sung
 
-Ba flow chính tương ứng với ba prototype start point trên Figma (`G1, M1` → Flow 1; `G2, M3` → Flow 2; `G4, M2` → Flow 3). Hỏi AI (`G3, M4`) là nhánh Flow 1A khởi chạy từ SCR-03, không phải prototype start point thứ tư.
+Ba flow Lab 2 gốc tương ứng với ba prototype start point đầu (`G1, M1` → Flow 1; `G2, M3` → Flow 2; `G4, M2` → Flow 3). Hỏi AI (`G3, M4`) là nhánh Flow 1A khởi chạy từ SCR-03, không phải start point độc lập. Ba start point bổ sung (Flow 4–6) được đặc tả trong [`academic-workflows.md`](academic-workflows.md).
 
 ---
 

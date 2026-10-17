@@ -7,7 +7,8 @@
 - Nội dung tối thiểu 14 sp; Navigation label 12 sp là ngoại lệ được ghi trong design brief. Touch target tối thiểu 48 × 48 dp; khoảng cách tối thiểu 8 dp.
 - Contrast chữ thường ≥ 4.5:1, chữ lớn/UI control ≥ 3:1; không dùng màu làm tín hiệu duy nhất.
 - Lưới 4 dp; lề 16 dp tại 360, 20 dp tại 412. Xem `design/DESIGN.md` để biết giá trị đầy đủ.
-- Flow prototype có 3 điểm bắt đầu. Hỏi AI là Flow 1A, nhánh từ SCR-03.
+- Prototype có 6 điểm bắt đầu: ba flow Lab 2 gốc và Workflow 4–6. Hỏi AI là nhánh Flow 1A từ chi tiết môn, không phải một start point riêng. Dữ liệu Figma mở rộng là dữ liệu mẫu.
+- Mã phẳng trong phần handoff của ba flow gốc là alias lịch sử. Mã hiện hành theo module là `SCR-01.01_Home`, `SCR-02.01_Roadmap`, `SCR-02.02_CourseDetail`, `SCR-03.01_Tasks`, `SCR-04.01_NoteEditor`, `SCR-04.02_Notes`, `SCR-05.01_AdvisorHub`, `SCR-06.01_SyncVault` và `SCR-06.02_SyncError`.
 
 ## Responsive từ 600 dp
 
@@ -56,8 +57,13 @@ Các bố cục rộng là yêu cầu handoff để triển khai/kiểm tra; Fig
 | EmptyState | custom icon + message + CTA | một hành động chính |
 | ErrorState | banner/page error + retry | giữ dữ liệu/input hiện có |
 | Chip/filter | FilterChip/ActionChip | selected có label/icon |
+| Consultation scope | FilterChip/ChoiceChip | 4 phạm vi: Môn, Kỳ, CTĐT, Điểm; một lựa chọn mặc định |
 | Progress | LinearProgressIndicator | kèm số liệu chữ |
 | Snackbar | ScaffoldMessenger | Undo không bị FAB/navigation che |
+| Program catalog | ListTile/Card + Checkbox/FilterChip | chọn ngành/khóa, tải catalog về thiết bị; trạng thái nguồn/phiên bản |
+| Curriculum prerequisite | ExpansionTile/graph/list rows | hiện mã môn, quan hệ prerequisite và nguồn; tách catalog khỏi transcript |
+| Share consent | AlertDialog | hiển thị các trường/mục đích; từ chối hoặc cho phép một lần |
+| Strategy result | Card + ListTile + source links | local/shared, học lại/cải thiện, tải môn, khung giờ; cảnh báo khi thiếu căn cứ |
 
 ## Screen-by-screen handoff
 
@@ -146,3 +152,20 @@ Mỗi mục nêu đủ Layout, Components, States, Interactions, Navigation và 
 ## Kiểm tra khi triển khai
 
 Đối chiếu Figma page 06 và `design/screen-spec.md`; kiểm tra back navigation, giữ input khi lỗi, retry, trạng thái loading, semantics, contrast và overflow tại các độ rộng đã nêu. 
+
+## Expanded workflow screen handoff
+
+| Screen | Layout / Flutter structure | Data & interaction contract |
+|---|---|---|
+| `SCR-00.01_AuthSetup` | Scaffold + onboarding card + primary/secondary buttons | Catalog cloud và FAP tùy chọn được giải thích riêng; không buộc đăng nhập FAP để tiếp tục. |
+| `SCR-00.02_ProgramCatalog` | Search/filter + selectable program cards + fixed download CTA | Catalog/nguồn/phiên bản; user chọn ngành/khóa, tải cache về máy. Prototype sample, không gọi FLM. |
+| `SCR-00.03_FAPConnect` | Privacy explainer + permission/connection card + connect/skip | Dùng OAuth/SSO hoặc SDK/kênh chính thức được cấp phép; không thu password; local encryption, disconnect/delete. Skip/connect quay lại Curriculum. |
+| `SCR-02.03_Curriculum` | Program header + progress + prerequisite list/tree + source labels | Curriculum catalog khác transcript cá nhân; FAP optional; không kết luận pass/fail khi thiếu dữ liệu. |
+| `SCR-05.01_AdvisorHub` | Chat Scaffold + horizontal scope chips + citations + composer | Môn/Kỳ/CTĐT/Điểm; AI requires network; cache local; mọi claim học vụ có source/version. |
+| `SCR-05.04_StrategySim` | Form/cards for goals, target term, inputs and source notes | Cho phép học lại/cải thiện, cân bằng tải, giờ trống, eligibility checks; thiếu dữ liệu thì disable conclusion. |
+| `DLG-05.04_ShareConsent` | AlertDialog/ModalBottomSheet | Show exact fields and purpose; opt-in per request; Decline stays local; do not persist consent. |
+| `SCR-05.07_StrategyLoading` | Centered progress/skeleton state | Simulated 1.2 s in Figma; cancellation returns to strategy form. |
+| `SCR-05.05_LocalStrategyResult` | Result cards + source links + next-step actions | Local rule engine, no AI/network; explicit sample/verified source labels; unknown result remains unknown. |
+| `SCR-05.06_SharedStrategyResult` | Result cards + citations + return-to-curriculum CTA | Send only consented fields for one request; label AI suggestion, link official verification; no automatic enrollment. |
+
+See [`ux/academic-workflows.md`](../ux/academic-workflows.md) for source and privacy rules and [`design/screen-spec.md`](../design/screen-spec.md) for screen-level details.

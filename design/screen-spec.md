@@ -1,6 +1,6 @@
 # ĐẶC TẢ CHI TIẾT 8 MÀN HÌNH HỆ THỐNG (SCREEN SPECIFICATIONS)
 
-Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, cấu trúc thành phần và ý đồ thiết kế của toàn bộ 8 màn hình trong ứng dụng **FPTU Second Brain Mobile** (sau 3 vòng lặp tinh chỉnh giao diện), ánh xạ trực tiếp với hồ sơ Primary Persona P02 · Nguyễn Minh Đức và 3 User Flows chính. P01/P03 là secondary personas được ghi trong `ux/persona.md`; các tính năng riêng của họ chưa nằm trong phạm vi screen spec này.
+Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, cấu trúc thành phần và ý đồ thiết kế của 8 màn hình cốt lõi Lab 2 cùng nhóm màn hình mở rộng Workflow 4–6 trong **FPTU Second Brain Mobile**. Ba flow gốc vẫn ưu tiên P02 · Nguyễn Minh Đức; các màn hình mở rộng bổ sung hỗ trợ P01/P03. Tất cả nội dung tích hợp học vụ trong Figma là prototype dùng dữ liệu mẫu, không khẳng định kết nối FLM/FAP thật. Xem [`ux/academic-workflows.md`](../ux/academic-workflows.md) để biết đầy đủ luồng, nguồn và ranh giới dữ liệu.
 
 ---
 
@@ -8,18 +8,20 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 | Mã màn hình | Tên màn hình | Cấp bậc điều hướng | Ánh xạ User Flow |
 | :---: | :--- | :--- | :--- |
-| **SCR-01** | Trang chủ (Dashboard) | Màn hình cấp cao nhất (Top-level Tab 1) | Flow 1, Flow 2 |
-| **SCR-02** | Lộ trình môn học (Timeline / Semester Courses) | Màn hình cấp cao nhất (Top-level Tab 2) | Flow 1 |
-| **SCR-03** | Chi tiết môn học (Course Details / FLM Syllabus) | Màn hình chi tiết con (Pushed from SCR-01/02) | Flow 1, Flow 1A |
-| **SCR-04** | Việc cần làm (Tasks & Deadlines) | Màn hình cấp cao nhất (Top-level Tab 3) | Flow 2 (Có nhánh phục hồi Undo) |
-| **SCR-05** | Soạn thảo ghi chú nhanh (Quick Note / Markdown Editor) | Màn hình độc lập (Modal / Fullscreen Editor) | Flow 2, Flow 3, Flow 1A (nguồn) |
-| **SCR-06** | Danh sách ghi chú Vault (Vault Notes Explorer) | Màn hình cấp cao nhất (Top-level Tab 4) | Flow 3, Flow 1A (tra cứu offline) |
-| **SCR-07** | Trợ lý AI môn học (AI Tutor Chat) | Màn hình hội thoại chuyên sâu (Pushed) | Flow 1A (Có nhánh lỗi mất mạng) |
-| **SCR-08** | Cài đặt & Đồng bộ Vault (Settings & Sync) | Màn hình cấu hình hệ thống (Pushed from Top Bar) | Cấu hình nền tảng / Flow 3 |
+| **SCR-01.01** | Trang chủ (Dashboard) | Màn hình cấp cao nhất (Top-level Tab 1) | Flow 1, Flow 2 |
+| **SCR-02.01** | Lộ trình môn học (Timeline / Semester Courses) | Màn hình cấp cao nhất (Top-level Tab 2) | Flow 1 |
+| **SCR-02.02** | Chi tiết môn học (Course Details / FLM Syllabus) | Màn hình chi tiết con (Pushed from SCR-01.01/02.01) | Flow 1, Flow 1A |
+| **SCR-03.01** | Việc cần làm (Tasks & Deadlines) | Màn hình cấp cao nhất (Top-level Tab 3) | Flow 2 (Có nhánh phục hồi Undo) |
+| **SCR-04.01** | Soạn thảo ghi chú nhanh (Quick Note / Markdown Editor) | Màn hình độc lập (Modal / Fullscreen Editor) | Flow 2, Flow 3, Flow 1A (nguồn) |
+| **SCR-04.02** | Danh sách ghi chú Vault (Vault Notes Explorer) | Màn hình cấp cao nhất (Top-level Tab 4) | Flow 3, Flow 1A (tra cứu offline) |
+| **SCR-05.01** | Tư vấn học vụ / Trợ lý AI (AdvisorHub) | Màn hình hội thoại chuyên sâu (Pushed) | Flow 1A, Workflow 5 |
+| **SCR-06.01** | Cài đặt & Đồng bộ Vault (Settings & Sync) | Màn hình cấu hình hệ thống (Pushed from Top Bar) | Cấu hình nền tảng / Flow 3 |
+
+Các mã ngắn `SCR-01`…`SCR-08` còn trong phần mô tả dưới đây là bí danh lịch sử của tài liệu Lab 2 ban đầu; mã hiện hành trên Figma dùng cấu trúc phân cấp như bảng trên. Tên file PNG trong `assets/figma/` giữ nguyên theo tên export ban đầu.
 
 ---
 
-## 1. SCR-01: Trang chủ (Dashboard)
+## 1. SCR-01.01: Trang chủ (Dashboard)
 
 - **Mục đích:** Cung cấp bức tranh toàn cảnh về tiến độ học tập trong ngày, cảnh báo tức thì các hạn chót khẩn cấp nhất, và làm điểm xuất phát truy cập nhanh vào môn học hoặc ghi chú.
 - **Thuộc User Flow:** Điểm bắt đầu (Starting Point) của **Flow 1** và **Flow 2**.
@@ -38,7 +40,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 2. SCR-02: Lộ trình môn học (Timeline / Semester Courses)
+## 2. SCR-02.01: Lộ trình môn học (Timeline / Semester Courses)
 
 - **Mục đích:** Hiển thị tổng quan các môn học sinh viên đang theo học trong kỳ hiện tại cùng trạng thái lưu trữ ngoại tuyến của từng bộ đề cương.
 - **Thuộc User Flow:** Bước trung gian của **Flow 1**.
@@ -56,7 +58,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 3. SCR-03: Chi tiết môn học (Course Details / FLM Syllabus)
+## 3. SCR-02.02: Chi tiết môn học (Course Details / FLM Syllabus)
 
 - **Mục đích:** Cung cấp toàn bộ lịch trình slot học chi tiết, tài liệu và đề cương FLM của môn học cụ thể được lưu cục bộ trong máy.
 - **Thuộc User Flow:** Điểm kết thúc của **Flow 1**, điểm bắt đầu của nhánh mở ghi chú/hỏi AI trong **Flow 1A** (nhánh từ Flow 1).
@@ -77,7 +79,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 4. SCR-04: Việc cần làm (Tasks & Deadlines)
+## 4. SCR-03.01: Việc cần làm (Tasks & Deadlines)
 
 - **Mục đích:** Quản lý toàn bộ danh sách việc cần làm, bài tập Lab và deadline theo thứ tự ưu tiên, tích hợp cơ chế hoàn tác khi tick nhầm.
 - **Thuộc User Flow:** Trung tâm của **Flow 2** (Flow có nhánh phục hồi lỗi Undo).
@@ -97,7 +99,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 5. SCR-05: Soạn thảo ghi chú nhanh (Quick Note Editor)
+## 5. SCR-04.01: Soạn thảo ghi chú nhanh (Quick Note Editor)
 
 - **Mục đích:** Cho phép ghi chép nhanh cú pháp Markdown, lưu trực tiếp vào thư mục Vault nội bộ của máy và chuyển đổi checklist thành việc cần làm.
 - **Thuộc User Flow:** Màn hình trung tâm của **Flow 3**.
@@ -117,7 +119,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 6. SCR-06: Danh sách ghi chú Vault (Vault Notes Explorer)
+## 6. SCR-04.02: Danh sách ghi chú Vault (Vault Notes Explorer)
 
 - **Mục đích:** Duyệt, lọc và tìm kiếm toàn bộ các file ghi chú Markdown `.md` có trong Obsidian Vault ngoại tuyến của sinh viên.
 - **Thuộc User Flow:** Điểm đến tra cứu tài liệu trong **Flow 3**.
@@ -134,7 +136,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 7. SCR-07: Trợ lý AI môn học (AI Tutor Chat)
+## 7. SCR-05.01: Tư vấn học vụ / Trợ lý AI (AdvisorHub)
 
 - **Mục đích:** Cung cấp giao diện hỏi đáp với mô hình Gemini 1.5 Flash dựa trên ngữ cảnh đề cương môn học và ghi chú cá nhân, có khả năng phản hồi khi mất kết nối.
 - **Thuộc User Flow:** Màn hình tương tác AI trong **Flow 1A** (nhánh từ Flow 1, có xử lý lỗi mất kết nối).
@@ -154,7 +156,7 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
 
 ---
 
-## 8. SCR-08: Cài đặt & Đồng bộ Vault (Settings & Sync)
+## 8. SCR-06.01: Cài đặt & Đồng bộ Vault (Settings & Sync)
 
 - **Mục đích:** Quản lý đường dẫn lưu trữ Vault cục bộ trên máy Android, cấu hình Gemini API Key và theo dõi dung lượng bộ nhớ đệm offline.
 - **Thuộc User Flow:** Màn hình cấu hình hỗ trợ toàn bộ hệ thống.
@@ -178,3 +180,26 @@ Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, 
   - **Khối Thông tin & Hỗ trợ:** Logo app F2B, phiên bản `v1.0.0-offline`, các liên kết hướng dẫn sử dụng, báo lỗi và chính sách riêng tư.
   - **Chân trang cam kết riêng tư:** Đoạn text minh bạch: "Ghi chú Obsidian & Đề cương FLM được lưu trữ cục bộ 100% trên thiết bị. Chỉ các truy vấn gửi tới Trợ lý AI mới được chuyển tiếp qua Gemini API...".
 - **Ý đồ thiết kế:** Phân nhóm trực quan bằng các card bo tròn riêng biệt, minh bạch hóa việc bảo mật dữ liệu học tập cá nhân của sinh viên.
+
+## 10. Màn hình mở rộng · Workflow 4–6
+
+Các frame dưới đây nằm trên `03 Final UI` và được lặp lại/nối trong `06 Prototype`. Kích thước mobile 360 × 800 dp; nội dung dài có thể cuộn. Dữ liệu học vụ thật chỉ dùng khi có quyền tích hợp và nguồn đúng ngành/khóa.
+
+| Mã màn hình | Persona / workflow | Mục đích, trạng thái và hành động chính |
+|---|---|---|
+| `SCR-00.01_AuthSetup` | P01 · Workflow 4 | Giải thích catalog học tập và FAP tùy chọn. Tiếp tục đến catalog mà không cần FAP; có thể bỏ qua kết nối. |
+| `SCR-00.02_ProgramCatalog` | P01 · Workflow 4 | Catalog cloud có các ngành/khóa; người dùng chọn chương trình để tải về thiết bị. Prototype hiển thị dữ liệu mẫu, nguồn và phiên bản; không nối FLM thật. |
+| `SCR-00.03_FAPConnect` | P01/P03 · Workflow 4 | Kết nối FAP qua kênh chính thức được cấp phép, không nhập mật khẩu vào app. Dữ liệu cá nhân (lịch/điểm/chuyên cần) tùy chọn, lưu cục bộ; `Để sau` quay lại Curriculum. |
+| `SCR-02.03_Curriculum` | P01/P03 · Workflow 4 | Lộ trình theo ngành/khóa, cây prerequisite, trạng thái catalog tách biệt với transcript cá nhân. Có lối hỏi AdvisorHub và kết nối FAP tùy chọn; nêu nguồn/phiên bản. |
+| `SCR-05.01_AdvisorHub` | P01/P02/P03 · Workflow 5 (2.1) | Chat/tư vấn có bốn scope chip `Môn`, `Kỳ`, `CTĐT`, `Điểm`; hiển thị trạng thái mạng, nguồn và giới hạn. Scope mặc định `Môn`; CTA mở Workflow 6. |
+| `SCR-05.04_StrategySim` | P03 · Workflow 6 (2.2) | Chọn mục tiêu học lại/cải thiện, cân bằng tải, giờ trống và kỳ dự kiến. Rà điều kiện thi/Capstone/OJT chỉ khi dữ liệu FAP và quy chế đúng ngành/khóa đã xác minh. |
+| `DLG-05.04_ShareConsent` | P03 · Workflow 6 | Overlay bắt buộc trước khi chia sẻ; nêu rõ dữ liệu/mục đích và hỏi đồng ý theo từng lần. `Không chia sẻ` → local result; `Cho phép lần này` → loading. Không tái dùng consent. |
+| `SCR-05.07_StrategyLoading` | P03 · Workflow 6 | Trạng thái chuyển tiếp sau consent, 1,2 giây trong prototype; sau đó đến kết quả AI hỗ trợ. Có hủy/quay lại chiến lược. |
+| `SCR-05.05_LocalStrategyResult` | P03 · Workflow 6 | Mô phỏng cục bộ, không gửi AI; kết quả dùng dữ liệu mẫu/đã lưu và quy tắc có nguồn. Báo chưa thể kết luận nếu thiếu dữ liệu. |
+| `SCR-05.06_SharedStrategyResult` | P03 · Workflow 6 | Kết quả AI chỉ dùng các trường đã cho phép trong lần đó; nêu học lại/cải thiện, cân bằng tải/khung giờ, nguồn và giới hạn. Xác nhận học vụ cuối tại FAP/đơn vị trường. |
+
+### Phạm vi quyết định học vụ
+
+- Không hard-code một ngưỡng điểm danh, điểm thành phần hay GPA cho mọi ngành/khóa. Dùng syllabus và quy chế có nguồn, phiên bản/ngày hiệu lực.
+- Không tuyên bố đã kiểm tra đủ điều kiện thi, Capstone/OJT nếu thiếu transcript cá nhân hoặc quy chế áp dụng. Giao diện phải thể hiện “kiểm tra sơ bộ/chưa đủ căn cứ”.
+- Nhánh AI chỉ chạy qua Internet và consent; nhánh từ chối chia sẻ giữ dữ liệu trên thiết bị. Catalog FLM cloud và dữ liệu cá nhân FAP là hai nguồn/luồng độc lập.

@@ -1,6 +1,6 @@
 # THIẾT KẾ UI/UX: QUYẾT ĐỊNH THIẾT KẾ VÀ CHECKLIST TRỢ NĂNG (WCAG 2.1 AA)
 
-Tài liệu này tổng hợp 10 quyết định thiết kế cốt lõi nhất được phản ánh trực tiếp trên toàn bộ 8 màn hình giao diện thực tế của ứng dụng **FPTU Second Brain Mobile** (sau 3 vòng lặp tinh chỉnh với Google Stitch), kèm bảng checklist kiểm định Trợ năng (WCAG 2.1 AA) và khả năng thích ứng màn hình (Responsive 360 dp & 412 dp).
+Tài liệu này tổng hợp 10 quyết định thiết kế cốt lõi được phản ánh trên 8 màn hình Lab 2 ban đầu của ứng dụng **FPTU Second Brain Mobile** (sau 3 vòng lặp tinh chỉnh với Google Stitch), kèm checklist trợ năng (WCAG 2.1 AA) và responsive 360/412 dp. Các mã ngắn trong bảng là alias lịch sử; mã Figma phân cấp có crosswalk trong screen spec. Figma hiện có thêm Workflow 4–6; các quyết định dữ liệu/quyền riêng tư được ghi ở [`ux/academic-workflows.md`](../ux/academic-workflows.md).
 
 ---
 
