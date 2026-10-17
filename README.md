@@ -7,7 +7,7 @@ Bộ hồ sơ thiết kế UX/UI cho ứng dụng Android hỗ trợ sinh viên 
 | Hạng mục | Nội dung |
 | --- | --- |
 | Figma | [PRM323 Lab 2 — FPTU Second Brain](https://www.figma.com/design/0gpT8zQmaDiCmcklbFuTSq/PRM323_Lab2_FPTU_Second_Brain) |
-| Persona | [ux/persona.md](ux/persona.md) |
+| Personas | [ux/persona.md](ux/persona.md) — P02 là Primary Persona; P01 năm nhất và P03 năm cuối là Secondary Personas bổ sung |
 | User flow | [ux/user-flow.md](ux/user-flow.md) — 3 prototype flow chính và nhánh AI Flow 1A |
 | Design brief/system | [design/DESIGN.md](design/DESIGN.md) |
 | Screen specification | [design/screen-spec.md](design/screen-spec.md) |
