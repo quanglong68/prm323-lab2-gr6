@@ -319,3 +319,18 @@ Phần mở rộng này xuất phát từ yêu cầu giảng viên và quyết �
 | Tránh đưa quy chế chưa xác minh thành kết luận | Không hard-code một ngưỡng qua môn/điểm danh cho mọi ngành; hiển thị nguồn/ngành/khóa/ngày hiệu lực và trạng thái thiếu dữ liệu | Screen text và tài liệu nhấn mạnh kết quả sơ bộ, dữ liệu mẫu và bước xác nhận cuối tại FAP/đơn vị trường |
 
 Nguồn FPTU/FLM công khai và giới hạn xác minh được ghi trong [`ux/academic-workflows.md`](../ux/academic-workflows.md). Prototype dùng dữ liệu mẫu; chưa có tích hợp FLM/FAP thật.
+
+## 6. Tinh chỉnh thị giác theo phản hồi giảng viên · 17/10/2026
+
+**Nguồn phản hồi:** giảng viên nhận xét giao diện nhiều màu, khó nhìn, nhiều chữ và thiếu icon. Đây là phản hồi của giảng viên và quyết định chỉnh sửa của nhóm; không ghi nhận như kết quả AI.
+
+**Quyết định:** giữ xanh dương làm màu hành động chính; chuyển các vùng màu phụ sang nền trắng/trung tính; dành đỏ cho trạng thái lỗi; rút gọn câu chữ nhưng giữ thông tin về quyền riêng tư, nguồn dữ liệu mẫu và phục hồi lỗi; dùng nhất quán Material Symbols Rounded.
+
+**Đã cập nhật trong Figma:**
+- `03 Final UI` và `06 Prototype`: cập nhật màu token và các màu tĩnh còn sót, rút gọn nội dung trên màn hình, thêm icon cho các khối tóm tắt học vụ, catalog, cây tiên quyết, đồng ý chia sẻ, chiến lược và đồng bộ.
+- `04 Design System`: cập nhật nhãn giá trị màu và hướng dẫn sử dụng màu/icon để khớp mode hiện tại.
+- `05 Components`: thêm board `10 · Iconography` với 10 component Material Symbols Rounded dùng lại được; icon được đặt vào các màn hình liên quan.
+
+**Đã giữ nguyên:** cấu trúc 6 workflow, nội dung quyết định, điều hướng, overlay consent, nhánh offline/AI và các tương tác prototype.
+
+**Kiểm tra trực quan:** đã xem lại AdvisorHub, consent dialog, SyncError và kết quả chiến lược; màu nền trung tính, icon không che nội dung, màn lỗi vẫn phân biệt rõ bằng nhãn + icon đỏ. Không tạo số liệu kiểm thử người dùng hoặc kết quả đánh giá tự động.

@@ -6,6 +6,7 @@
 - Material Design 3, light theme, Inter (fallback Roboto), tiếng Việt. Dùng SafeArea/MediaQuery cho system insets.
 - Nội dung tối thiểu 14 sp; Navigation label 12 sp là ngoại lệ được ghi trong design brief. Touch target tối thiểu 48 × 48 dp; khoảng cách tối thiểu 8 dp.
 - Contrast chữ thường ≥ 4.5:1, chữ lớn/UI control ≥ 3:1; không dùng màu làm tín hiệu duy nhất.
+- **Visual refresh hiện hành:** xanh `#1D4ED8` là màu nhấn; nền `#F8FAFC`, card trắng và container trung tính; đỏ `#B91C1C` chỉ cho lỗi. Warning/success dùng nền trung tính, luôn kèm nhãn và icon. Icon dùng Material Symbols Rounded 24 px; component icon được ghi trong Page 05 `10 · Iconography`. Hướng dẫn màu cũ trong `design/DESIGN.md` là bản legacy.
 - Lưới 4 dp; lề 16 dp tại 360, 20 dp tại 412. Xem `design/DESIGN.md` để biết giá trị đầy đủ.
 - Prototype có 6 điểm bắt đầu: ba flow Lab 2 gốc và Workflow 4–6. Hỏi AI là nhánh Flow 1A từ chi tiết môn, không phải một start point riêng. Dữ liệu Figma mở rộng là dữ liệu mẫu.
 - Mã phẳng trong phần handoff của ba flow gốc là alias lịch sử. Mã hiện hành theo module là `SCR-01.01_Home`, `SCR-02.01_Roadmap`, `SCR-02.02_CourseDetail`, `SCR-03.01_Tasks`, `SCR-04.01_NoteEditor`, `SCR-04.02_Notes`, `SCR-05.01_AdvisorHub`, `SCR-06.01_SyncVault` và `SCR-06.02_SyncError`.
@@ -24,13 +25,12 @@ Các bố cục rộng là yêu cầu handoff để triển khai/kiểm tra; Fig
 | Token | Flutter mapping | Giá trị/ghi chú |
 | --- | --- | --- |
 | color-primary / on-primary / primary-pressed | ColorScheme.primary / onPrimary; custom pressed | #1D4ED8 / #FFFFFF / #1E40AF |
-| primary-container / on-primary-container | primaryContainer / onPrimaryContainer | #DBEAFE / #1E3A8A |
-| secondary / secondary-container / on-secondary-container | secondary / secondaryContainer / onSecondaryContainer | #0F766E / #CCFBF1 / #115E59 |
-| surface / surface-container / surface-container-high | surface / surfaceContainerLowest / surfaceContainerHigh | #F8FAFC / #FFFFFF / #F1F5F9 |
+| primary-container / secondary-container / success-container / warning-container | primaryContainer + custom neutral containers | #F8FAFC |
+| secondary / success / on-success | secondary + custom semantic colors | #1D4ED8 / #1D4ED8 / #1D4ED8 |
+| surface / background / card | surface / scaffoldBackgroundColor / surfaceContainerLowest | #FFFFFF / #F8FAFC / #FFFFFF |
 | on-surface / on-surface-variant / outline / outline-variant | onSurface / onSurfaceVariant / outline / outlineVariant | #0F172A / #475569 / #64748B / #CBD5E1 (outline-variant chỉ trang trí) |
-| error / error-container / on-error-container | error + semantic colors | #DC2626 / #FEE2E2 / #991B1B |
-| warning / warning-container / on-warning-container | custom semantic colors | #B45309 / #FEF3C7 / #92400E |
-| success / success-container / on-success-container | custom semantic colors | #15803D / #DCFCE7 / #166534 |
+| error / error-container / on-error | error + semantic colors | #B91C1C / #FEF2F2 / #B91C1C |
+| warning / warning-container / on-warning | custom semantic colors | warning icon giữ màu semantic; nền #F8FAFC; chữ #475569 |
 | disabled-container / on-disabled / skeleton | custom states | #E2E8F0 / #94A3B8 / #E2E8F0 |
 | scrim / inverse-surface / inverse-on-surface / inverse-primary | scrim + inverse ColorScheme | #0F172A at 40%; #1E293B / #F8FAFC / #93C5FD |
 | headline-large / headline-medium | TextTheme.headlineLarge / headlineMedium | Inter 28/22 sp; line height 34/28 |
@@ -41,6 +41,7 @@ Các bố cục rộng là yêu cầu handoff để triển khai/kiểm tra; Fig
 | spacing-lg / xl / 2xl | constants | 20 / 24 / 32 dp |
 | radius-xs / sm / md / lg / xl / full | constants | 4 / 8 / 12 / 16 / 24 / 999 dp |
 | elevation tokens | CardTheme / state elevation | theo bảng elevation trong DESIGN.md |
+| iconography | Material Symbols Rounded | glyph 24 px, xanh primary; trạng thái lỗi dùng semantic error |
 
 ## Component → Flutter widget
 

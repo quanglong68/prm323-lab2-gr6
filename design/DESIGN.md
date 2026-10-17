@@ -2,6 +2,10 @@
 
 Tài liệu mô tả thiết kế ban đầu đưa cho Google Stitch làm ngữ cảnh, đồng thời là nguồn gốc của Design System trong Figma (page 04, 05) và bảng token → Flutter trong handoff. Tên `SCR-xx` ở đây là alias lịch sử của bộ 8 màn hình Lab 2; mã phân cấp hiện hành và crosswalk được ghi trong `design/screen-spec.md` và `ux/user-flow.md`.
 
+> **Cập nhật trực quan hiện hành (17/10/2026):** sau phản hồi giảng viên, bảng màu lịch sử bên dưới không còn mô tả chính xác Figma hiện tại. Figma dùng xanh dương `#1D4ED8` làm màu nhấn; nền `#F8FAFC` và bề mặt trắng/trung tính; đỏ `#B91C1C` chỉ cho lỗi. Warning/success container hiện trung tính; trạng thái vẫn có nhãn và icon. Dùng bảng **Token → Flutter** trong `handoff/flutter-handoff.md` làm mapping hiện hành. Page 05 có thư viện Material Symbols Rounded 24 px. Các giá trị màu trong bảng legacy bên dưới ghi lại hướng thiết kế ban đầu.
+
+
+
 ---
 
 ## 0. Bối cảnh Sản phẩm (cho công cụ AI)
@@ -22,6 +26,7 @@ Tài liệu mô tả thiết kế ban đầu đưa cho Google Stitch làm ngữ 
 | Hành động chính nằm ở nửa dưới màn hình | Đặt nút quan trọng ở góc trên |
 | Dữ liệu mẫu bằng tiếng Việt, mã môn thật (ví dụ PRM323) | Văn bản giả kiểu "Lorem ipsum" |
 
+
 ---
 
 ## 1. Phong cách Thiết kế và Giọng văn
@@ -36,6 +41,7 @@ Tài liệu mô tả thiết kế ban đầu đưa cho Google Stitch làm ngữ 
 - **Hướng giải pháp:** thông báo lỗi không đổ lỗi cho người dùng, nêu nguyên nhân bằng ngôn ngữ tự nhiên và luôn có nút hành động (ví dụ "Không có kết nối mạng. Bạn có thể kiểm tra Wi-Fi/4G rồi thử lại").
 - **Không dùng màu đơn độc:** trạng thái và mức khẩn cấp luôn có nhãn chữ và icon ("Quá hạn", "Hôm nay", "Còn 2 ngày").
 - **Định dạng ngày:** `dd/mm/yyyy`. Ngôn ngữ giao diện: tiếng Việt.
+
 
 ---
 
@@ -113,6 +119,7 @@ Màu gốc (`error`, `warning`, `success`) dùng cho icon, viền và chỉ báo
 
 Màu cam FPT `#F26F21` chỉ đạt **2.97:1** với nền trắng (cũng 2.97:1 với chữ trắng trên nền cam), thấp hơn ngưỡng 4.5:1 cho chữ thường nên không thể dùng làm nền nút Filled có chữ trắng hoặc làm màu chữ. Bản mobile dùng `color-primary` `#1D4ED8` (6.70:1). Cam FPT có thể xuất hiện ở logo hoặc hình minh họa, không dùng cho chữ và điều khiển.
 
+
 ---
 
 ## 3. Typography Tokens
@@ -135,6 +142,7 @@ Màu cam FPT `#F26F21` chỉ đạt **2.97:1** với nền trắng (cũng 2.97:1
 | `type-label-small` | 12 sp | Medium 500 | 16 sp | **Chỉ** nhãn Navigation Bar | `labelSmall` |
 
 Thời gian đồng bộ, số slot và các chú thích khác dùng `type-body-medium` (14 sp).
+
 
 ---
 
@@ -160,6 +168,7 @@ Lưới cơ sở 4 dp, nhịp chính 8 dp (mọi giá trị là bội của 4).
 - **Vùng an toàn:** dùng `SafeArea` / `MediaQuery.padding` của hệ thống, không cố định số.
 - **Màn rộng từ 600 dp trở lên** (không thiết kế, chỉ mô tả trong handoff): Navigation Bar chuyển thành Navigation Rail và nội dung giới hạn chiều rộng.
 
+
 ---
 
 ## 5. Bo góc và Độ nổi
@@ -183,6 +192,7 @@ Lưới cơ sở 4 dp, nhịp chính 8 dp (mọi giá trị là bội của 4).
 | `elevation-1` | 1 dp | `0 1px 3px rgba(15,23,42,0.08)` | AppBar khi cuộn, Card khi được kéo lên |
 | `elevation-2` | 3 dp | `0 4px 6px -1px rgba(15,23,42,0.10)` | FAB |
 | `elevation-3` | 6 dp | `0 10px 15px -3px rgba(15,23,42,0.12)` | Bottom Sheet, Dialog, Snackbar |
+
 
 ---
 
@@ -288,6 +298,7 @@ Lỗi tên file ở SCR-05 dùng biến thể **Error của Text Field** (mục 
 - **Banner ngoại tuyến:** nền `color-warning-container`, icon `color-warning`, chữ `color-on-warning-container` "Đang ngoại tuyến, dữ liệu cập nhật lần cuối dd/mm", `radius-md`.
 - **Progress Bar** (tiến độ kiến thức): `radius-xs`, đầy là `color-primary`, nền `color-surface-container-high`, luôn kèm chữ phần trăm.
 - **Chat Bubble:** câu hỏi người dùng nền `color-primary` chữ `color-on-primary`; câu trả lời AI nền `color-surface-container` viền `color-outline-variant` chữ `color-on-surface` (`type-body-large`); thẻ trích dẫn nguồn là Chip nền `color-secondary-container`, vùng chạm 48 dp.
+
 
 ---
 
