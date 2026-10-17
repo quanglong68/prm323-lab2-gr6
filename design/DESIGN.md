@@ -245,7 +245,7 @@ Thư viện component
 
 ### 6.5. App Bar
 - Chiều cao 56 dp, padding ngang `spacing-md`.
-- **Top-level:** tiêu đề căn trái (tên ngành hoặc tên màn hình, `type-headline-medium`); ở Trang chủ có icon Cài đặt (SCR-08) góc phải, vùng chạm 48 × 48 dp.
+- **Top-level:** tiêu đề căn trái (tên ngành hoặc tên màn hình, `type-headline-medium`); ở Trang chủ có icon Cài đặt (SCR-06.01) góc phải, vùng chạm 48 × 48 dp.
 - **Level-2 với action:** nút Back bên trái (48 × 48 dp), tiêu đề `type-title-large`, tối đa hai action bên phải (Search, Filter, More; mỗi cái 48 × 48 dp). Nền `color-surface`; khi cuộn dùng `elevation-1`.
 
 ### 6.6. Dialog
@@ -254,9 +254,9 @@ Thư viện component
 - **D-02 Error:** tiêu đề "Không thể ghi vào Vault", mô tả nguyên nhân, hai nút: "Thử lại" (Filled) và "Hủy" (Text).
 
 ### 6.7. Loading State
-- **LD-01 Skeleton:** khối `color-skeleton` bo góc theo hình dạng dòng việc và Card môn, shimmer nhẹ. Dùng ở SCR-01 và SCR-04.
+- **LD-01 Skeleton:** khối `color-skeleton` bo góc theo hình dạng dòng việc và Card môn, shimmer nhẹ. Dùng ở SCR-01.01 và SCR-04.
 - **LD-02 Search Pulse:** vòng sáng nhịp điệu `color-primary-container` kèm "AI đang tìm trong ghi chú của bạn...". Dùng ở SCR-07.
-- **LD-03 Spinner:** vòng xoay 24 dp `color-primary`, kèm chữ "Đang quét Vault..." Dùng ở SCR-08; hoàn tất hiện "Đã cập nhật N file".
+- **LD-03 Spinner:** vòng xoay 24 dp `color-primary`, kèm chữ "Đang quét Vault..." Dùng ở SCR-06.01; hoàn tất hiện "Đã cập nhật N file".
 - Khi hệ thống bật giảm chuyển động, thay shimmer và pulse bằng trạng thái tĩnh.
 
 ### 6.8. Empty State (EM-01..04)
@@ -264,21 +264,21 @@ Khối căn giữa gồm: (1) icon 64 × 64 dp màu `color-on-surface-variant`; 
 
 | Mã | Màn hình | Ví dụ nội dung | Hành động |
 | :--- | :--- | :--- | :--- |
-| EM-01 | SCR-01 | "Chưa kết nối Vault" | "Mở Cài đặt" |
-| EM-02 | SCR-03 | "Môn này chưa có đề cương" | "Tạo ghi chú cho môn này" |
-| EM-03 | SCR-04 | "Hôm nay bạn không có deadline" | "Xem sắp tới" |
-| EM-04 | SCR-06 | "Chưa có ghi chú nào" | "Tạo ghi chú" |
+| EM-01 | SCR-01.01 | "Chưa kết nối Vault" | "Mở Cài đặt" |
+| EM-02 | SCR-02.02 | "Môn này chưa có đề cương" | "Tạo ghi chú cho môn này" |
+| EM-03 | SCR-03.01 | "Hôm nay bạn không có deadline" | "Xem sắp tới" |
+| EM-04 | SCR-04.02 | "Chưa có ghi chú nào" | "Tạo ghi chú" |
 
 ### 6.9. Error State (ER-01..03)
 Khối gồm: (1) icon cảnh báo `color-error`; (2) thông điệp nêu rõ nguyên nhân; (3) nút "Thử lại" (Filled) và một nút phụ (Text). **Nội dung người dùng đã gõ được giữ nguyên.**
 
 | Mã | Màn hình | Nguyên nhân | Hành động chính | Hành động phụ |
 | :--- | :--- | :--- | :--- | :--- |
-| ER-01 | SCR-07 | "Không có kết nối mạng. Bạn có thể kiểm tra Wi-Fi/4G rồi thử lại" | "Thử lại" | "Quay lại" |
-| ER-02 | SCR-07 | "AI chưa sẵn sàng: thiếu API Key hoặc đã hết hạn mức" | "Mở Cài đặt" | "Quay lại" |
-| ER-03 | SCR-08 | "Không tìm thấy thư mục Vault" | "Chọn lại thư mục" | "Hủy" |
+| ER-01 | SCR-05.01 | "Không có kết nối mạng. Bạn có thể kiểm tra Wi-Fi/4G rồi thử lại" | "Thử lại" | "Quay lại" |
+| ER-02 | SCR-05.01 | "AI chưa sẵn sàng: thiếu API Key hoặc đã hết hạn mức" | "Mở Cài đặt" | "Quay lại" |
+| ER-03 | SCR-06.01 | "Không tìm thấy thư mục Vault" | "Chọn lại thư mục" | "Hủy" |
 
-Lỗi tên file ở SCR-05 dùng biến thể **Error của Text Field** (mục 6.2), không dùng khối Error State.
+Lỗi tên file ở SCR-04.01 dùng biến thể **Error của Text Field** (mục 6.2), không dùng khối Error State.
 
 ### 6.10. Component bổ trợ
 - **Chip:** chiều cao hiển thị 32 dp, **vùng chạm mở rộng 48 dp**, `radius-full`, chữ `type-label-large`; đang chọn dùng `color-primary-container` và `color-on-primary-container`, kèm dấu tick.
