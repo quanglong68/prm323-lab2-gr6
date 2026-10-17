@@ -1,6 +1,6 @@
 # ĐẶC TẢ CHI TIẾT 8 MÀN HÌNH HỆ THỐNG (SCREEN SPECIFICATIONS)
 
-Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, cấu trúc thành phần và ý đồ thiết kế của toàn bộ 8 màn hình trong ứng dụng **FPTU Second Brain Mobile** (sau 3 vòng lặp tinh chỉnh giao diện), ánh xạ trực tiếp với hồ sơ Persona Nguyễn Minh Đức và 3 User Flows chính.
+Tài liệu này quy định mục đích sử dụng, nội dung hiển thị, cấu trúc thành phần và ý đồ thiết kế của toàn bộ 8 màn hình trong ứng dụng **FPTU Second Brain Mobile** (sau 3 vòng lặp tinh chỉnh giao diện), ánh xạ trực tiếp với hồ sơ Primary Persona P02 · Nguyễn Minh Đức và 3 User Flows chính. P01/P03 là secondary personas được ghi trong `ux/persona.md`; các tính năng riêng của họ chưa nằm trong phạm vi screen spec này.
 
 ---
 
