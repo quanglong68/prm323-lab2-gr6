@@ -16,7 +16,7 @@ Các bố cục rộng là yêu cầu handoff để triển khai/kiểm tra; Fig
 
 - Từ 600 dp: BottomNavigationBar chuyển thành NavigationRail; nội dung một cột, căn giữa, giới hạn khoảng 840 dp; lề 24–32 dp.
 - Từ 840 dp: Roadmap có thể dùng danh sách môn + chi tiết hai pane; Notes dùng danh sách + nội dung ghi chú hai pane. Ở 600–839 dp dùng một pane.
-- SCR-05 giới hạn vùng soạn khoảng 720 dp; dialog căn giữa tối đa khoảng 560 dp.
+- SCR-04.01 giới hạn vùng soạn khoảng 720 dp; dialog căn giữa tối đa khoảng 560 dp.
 - Giữ target 48 dp và cho phép cuộn khi text scale tăng. Rà soát tràn chữ tiếng Việt tại 360, 412, 600 và 840 dp.
 
 ## Token → Flutter
@@ -69,15 +69,15 @@ Các bố cục rộng là yêu cầu handoff để triển khai/kiểm tra; Fig
 
 Mỗi mục nêu đủ Layout, Components, States, Interactions, Navigation và Constraints. PNG là tham chiếu Figma final.
 
-### SCR-01 — Home
+### SCR-01.01 — Home
 - **Layout:** trang cuộn gồm lời chào, trạng thái Vault, deadline khẩn cấp, thẻ Vault; navigation cố định.
 - **Components:** AppBar action đồng bộ/cài đặt, deadline cards, Vault card, NavigationBar.
 - **States:** populated, skeleton loading, Vault chưa kết nối/empty, offline banner.
-- **Interactions:** tất cả deadline → SCR-04; course → SCR-03; sync/settings → SCR-08.
-- **Navigation:** start mặc định; tabs đến SCR-02/SCR-04/SCR-06.
+- **Interactions:** tất cả deadline → SCR-03.01; course → SCR-02.02; sync/settings → SCR-08.
+- **Navigation:** start mặc định; tabs đến SCR-02.01/SCR-03.01/SCR-06.
 - **Constraints:** ngày và trạng thái không bị cắt; icon + label. Ref: `assets/figma/SCR-01_Home.png`.
 
-### SCR-02 — Roadmap
+### SCR-02.01 — Roadmap
 - **Layout:** chọn kỳ/tìm kiếm, tiến độ tuần, danh sách CourseCard cuộn.
 - **Components:** term chips, SearchField, chart, CourseCard.
 - **States:** populated, loading, empty, pressed.
@@ -85,67 +85,67 @@ Mỗi mục nêu đủ Layout, Components, States, Interactions, Navigation và 
 - **Navigation:** tab 2, back theo quy tắc chung.
 - **Constraints:** biểu đồ có số liệu text; trạng thái không chỉ dựa vào màu. Ref: `assets/figma/SCR-02_Roadmap.png`.
 
-### SCR-03 — Course Detail
+### SCR-02.02 — Course Detail
 - **Layout:** thông tin môn/tiến độ, cảnh báo offline, tabs nội bộ và actions.
 - **Components:** AppBar, course/progress cards, tabs, Ask AI, Documents.
 - **States:** populated, thiếu syllabus/empty, offline.
-- **Interactions:** Ask AI → SCR-07 (Flow 1A); Documents → SCR-06 lọc PRM323.
-- **Navigation:** push từ SCR-01/02; back về origin.
+- **Interactions:** Ask AI → SCR-05.01 (Flow 1A); Documents → SCR-04.02 lọc PRM323.
+- **Navigation:** push từ SCR-01.01/02; back về origin.
 - **Constraints:** giữ course context; không yêu cầu đăng nhập FLM trên mobile. Ref: `assets/figma/SCR-03_CourseDetail.png`.
 
-### SCR-04 — Tasks
+### SCR-03.01 — Tasks
 - **Layout:** filters, semester progress, urgent tasks đầu danh sách, nhóm upcoming/completed.
 - **Components:** chips, TaskItem có checkbox/detail hit target riêng, Snackbar, FAB nếu hiện diện.
 - **States:** populated, loading, empty theo filter, completed + Undo.
-- **Interactions:** chạm nội dung task → SCR-05; checkbox đổi trạng thái và mở Undo 8 giây.
+- **Interactions:** chạm nội dung task → SCR-04.01; checkbox đổi trạng thái và mở Undo 8 giây.
 - **Navigation:** tab 3; editor quay về context trước hoặc Notes.
 - **Constraints:** checkbox 48 × 48 dp; Snackbar không bị FAB che; Undo khôi phục đúng trạng thái. Ref: `assets/figma/SCR-04_Tasks.png`.
 
-### SCR-05 — Note Editor
+### SCR-04.01 — Note Editor
 - **Layout:** editor toàn màn hình; metadata/title, Markdown edit/preview, toolbar đáy có Save.
 - **Components:** AppBar/back, course/tag chips, editor, preview, checklist action, format toolbar, Save.
 - **States:** create, edit, autosaved, invalid filename, save failure.
-- **Interactions:** soạn Markdown/checklist; lưu → SCR-06; back về origin.
+- **Interactions:** soạn Markdown/checklist; lưu → SCR-04.02; back về origin.
 - **Navigation:** mở từ task/note; hỗ trợ nhiều nguồn vào.
 - **Constraints:** keyboard không che Save; làm rõ autosave và explicit save; hỗ trợ text scale. Ref: `assets/figma/SCR-05_NoteEditor.png`.
 
-### SCR-06 — Notes
+### SCR-04.02 — Notes
 - **Layout:** Vault status, search, subject filters, list và helper callout.
 - **Components:** SearchField, filter chips, NoteCards gắn USER NOTE/FLM SYNC, FAB nếu có.
 - **States:** populated, filtered, no results, no notes.
-- **Interactions:** note → SCR-05; tìm/lọc; tạo note.
+- **Interactions:** note → SCR-04.01; tìm/lọc; tạo note.
 - **Navigation:** tab 4; đích xem Vault offline trong Flow 1A.
 - **Constraints:** phân biệt loại note bằng chữ/icon; title dài được wrap. Ref: `assets/figma/SCR-06_Notes.png`.
 
-### SCR-07 — Ask AI
+### SCR-05.01 — Ask AI
 - **Layout:** context/model AppBar, connection banner, chat/citations, prompts, composer đáy.
 - **Components:** chat bubbles, citation card, retry banner, prompt chips, composer/send.
 - **States:** suggestions, loading, answer, no sources, network/config error.
 - **Interactions:** gửi câu hỏi; citation mở nguồn; retry gửi lại câu hỏi đã giữ.
-- **Navigation:** Flow 1A từ SCR-03; back giữ question và course context.
+- **Navigation:** Flow 1A từ SCR-02.02; back giữ question và course context.
 - **Constraints:** AI cần mạng; Vault vẫn tra cứu offline; không báo AI chạy offline. Ref: `assets/figma/SCR-07_AskAI.png`.
 
-### SCR-08 — Sync Vault
+### SCR-06.01 — Sync Vault
 - **Layout:** Vault path/status, rescan controls, AI config, capacity.
 - **Components:** AppBar, path selector, switch, sync button, API key field, status card.
 - **States:** connected, confirmation overlay, loading, success, inaccessible Vault.
 - **Interactions:** sync now → D-01; confirm chạy sync; cancel đóng; failure → error state.
-- **Navigation:** từ action trên SCR-01; retry từ error trở lại đây.
+- **Navigation:** từ action trên SCR-01.01; retry từ error trở lại đây.
 - **Constraints:** bảo vệ API key; thông báo chính xác nơi lưu và yêu cầu mạng. Ref: `assets/figma/SCR-08_SyncVault.png`.
 
 ### D-01 — Sync confirmation
-- **Layout:** modal căn giữa trên SCR-08, mô tả + 2 actions.
+- **Layout:** modal căn giữa trên SCR-06.01, mô tả + 2 actions.
 - **Components:** AlertDialog, cancel/confirm, scrim.
 - **States:** mở, dismissed, confirming.
 - **Interactions:** cancel/back/outside dismiss; confirm bắt đầu đồng bộ.
-- **Navigation:** dismiss trả về SCR-08 nền.
+- **Navigation:** dismiss trả về SCR-06.01 nền.
 - **Constraints:** focus semantics, label rõ, contrast đạt chuẩn. Ref: `assets/figma/D-01_SyncConfirmation.png`.
 
-### SCR-08_SyncError — Sync failure
+### SCR-06.02_SyncError — Sync failure
 - **Layout:** nguyên nhân lỗi, cam kết dữ liệu cục bộ còn nguyên, retry.
 - **Components:** error icon/text, retry, optional choose-folder action.
 - **States:** permission/path error, retrying, recovered.
-- **Interactions:** Retry → SCR-08; choose folder mở picker khi implement.
+- **Interactions:** Retry → SCR-06.01; choose folder mở picker khi implement.
 - **Navigation:** đến sau sync thất bại; Back theo flow app.
 - **Constraints:** nêu nguyên nhân và hành động; không dùng riêng màu đỏ. Ref: `assets/figma/SCR-08_SyncError.png`.
 
