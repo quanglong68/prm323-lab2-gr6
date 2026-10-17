@@ -101,13 +101,13 @@
 
 - **Mã & mức ưu tiên:** `P03 · Secondary Persona`.
 - **Họ tên giả định:** Trần Thảo Vy, 22 tuổi.
-- **Ngành theo mô tả giảng viên:** Thiết kế Mỹ thuật số (GD) / Ngôn ngữ Anh, Kỳ 8–9. Cần xác nhận một ngành cụ thể nếu đây là hồ sơ người dùng thật; giữ nguyên mô tả gộp từ yêu cầu hiện tại.
+- **Ngành:** Ngôn ngữ Anh, Kỳ 8–9 (đã xác nhận).
 - **Archetype:** *“Sinh viên cuối khóa cần rà điều kiện tốt nghiệp và chọn phương án cải thiện GPA”*.
 - **Quote giả lập:** *“Trước khi làm Capstone, mình muốn biết còn thiếu môn tiên quyết nào và học cải thiện môn nào sẽ có ích nhất.”* (Câu minh họa, không phải trích dẫn phỏng vấn.)
 
 | Trường (Field) | Nội dung chi tiết |
 | :--- | :--- |
-| **01. Identity & Archetype** | Trần Thảo Vy, 22 tuổi, sinh viên năm cuối Kỳ 8–9; ngành được cung cấp là GD / Ngôn ngữ Anh (cần làm rõ một ngành). Đang chuẩn bị Capstone và xét điều kiện tốt nghiệp. |
+| **01. Identity & Archetype** | Trần Thảo Vy, 22 tuổi, sinh viên năm cuối ngành Ngôn ngữ Anh, Kỳ 8–9. Đang chuẩn bị Capstone và xét điều kiện tốt nghiệp. |
 | **02. Persona Priority** | **Secondary Persona.** Đại diện nhu cầu rà soát chương trình học cuối khóa. Các nhu cầu này định hướng nghiên cứu tương lai, không hàm ý prototype hiện có đã kết nối bảng điểm hoặc khung chương trình. |
 | **03. Usage Context** | Trước Capstone hoặc khi chuẩn bị xét tốt nghiệp, cần đối chiếu tiến độ đã học với khung chương trình và điều kiện môn tiên quyết. Thiết bị, cách theo dõi hiện tại và thời điểm cụ thể chưa được cung cấp. |
 | **04. Goals** | Xác định môn còn nợ/rớt; biết môn tiên quyết nào phải hoàn tất trước Capstone; cân nhắc môn nên học cải thiện để nâng GPA. |
@@ -118,7 +118,7 @@
 | **09. Constraints** | Cần bảng điểm chính xác, khung chương trình đúng ngành/khóa và quy tắc tiên quyết/GPA hiện hành. Dữ liệu học tập nhạy cảm; cần người dùng cấp quyền, xem nguồn tính toán và tự xác nhận trước khi dựa vào kết quả. |
 | **10. Key Scenarios** | Trước đăng ký Capstone: so sánh bảng điểm với khung chương trình để phát hiện môn tiên quyết còn thiếu. Trước đăng ký kỳ tiếp theo: mô phỏng một số lựa chọn học lại/cải thiện và xem tác động dự kiến đến GPA. |
 | **11. Success Criteria** | Bản nháp mục tiêu kiểm thử: người dùng nhận diện đúng môn còn thiếu từ dữ liệu và khung chương trình đã xác minh; hiểu giả định và kết quả của từng kịch bản GPA. Các ngưỡng chính xác cần thống nhất với quy chế chính thức và usability test. |
-| **12. Evidence & Status** | **Proto-Persona**, dựa trên mô tả giảng viên cung cấp; chưa có transcript, bảng điểm mẫu hoặc xác minh khung chương trình. Giả định cần kiểm chứng: ngành/khóa cụ thể, cách tính GPA, dữ liệu hệ thống có thể truy cập và mức độ ưu tiên của từng mục tiêu. |
+| **12. Evidence & Status** | **Proto-Persona**, dựa trên mô tả giảng viên cung cấp; chưa có transcript, bảng điểm mẫu hoặc xác minh khung chương trình. Giả định cần kiểm chứng: khóa cụ thể, cách tính GPA, dữ liệu hệ thống có thể truy cập và mức độ ưu tiên của từng mục tiêu. |
 
 **Nhu cầu tính năng chuyên biệt (đề xuất, chưa triển khai):**
 
