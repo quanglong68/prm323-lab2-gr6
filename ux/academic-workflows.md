@@ -20,11 +20,11 @@ Tài liệu này mô tả ba workflow mở rộng được bổ sung sau ba flow
 |---|---|---|
 | 1 | `SCR-00.01_AuthSetup` | Giải thích catalog học tập và FAP tùy chọn; tiếp tục không cần đăng nhập FAP. |
 | 2 | `SCR-00.02_ProgramCatalog` | Xem danh sách ngành/khóa trong catalog cloud; chọn một hoặc nhiều chương trình để tải về máy. Prototype hiển thị dữ liệu mẫu và nói rõ chưa nối FLM thật. |
-| 3 | `SCR-01.01_Home` | Trở về trang chủ sau khi chọn/tải catalog; dữ liệu ngành học không bị trình bày như bảng điểm cá nhân. |
-| 4 | `SCR-02.03_Curriculum` | Xem tiến độ catalog và cây prerequisite theo ngành/khóa; bộ dữ liệu này không tự khẳng định môn cá nhân đã đạt. |
+| 3 | `SCR-01.01_Home` | Hiển thị ngành/khóa và kỳ hiện tại như dữ liệu catalog mẫu; GPA và tín chỉ cá nhân ghi rõ cần kết nối FAP, không bịa dữ liệu khi chưa cấp quyền. |
+| 4 | `SCR-02.03_Curriculum` | Xem tiến độ catalog và cây prerequisite theo ngành/khóa; có điều khiển lọc trực quan “Chỉ hiện môn tiên quyết”. Prototype dùng danh sách minh họa; không tự khẳng định môn cá nhân đã đạt. |
 | 5 | `SCR-02.02_CourseDetail` | Mở chi tiết đề cương, slot, đánh giá và quan hệ môn học. |
 
-**Nhánh tùy chọn FAP:** từ `SCR-02.03_Curriculum` mở `SCR-00.03_FAPConnect` để xem lịch/bảng điểm/chuyên cần cá nhân nếu có tích hợp chính thức. Có thể bỏ qua; nếu không có quyền tích hợp thì dùng dữ liệu mẫu hoặc quay lại lộ trình.
+**Nhánh tùy chọn FAP:** từ `SCR-02.03_Curriculum` mở `SCR-00.03_FAPConnect` để xem lịch/bảng điểm/chuyên cần cá nhân nếu có tích hợp chính thức. Có thể bỏ qua; nếu không có quyền tích hợp thì dùng dữ liệu mẫu hoặc quay lại lộ trình. Trên Figma, thẻ hồ sơ Home và điều khiển lọc prerequisite đã được thêm vào cả `03 Final UI` lẫn `06 Prototype`.
 
 **Giá trị giữ chân:** năm nhất có lý do quay lại để xem catalog offline, tiến độ môn, yêu cầu từng môn và hỏi tư vấn theo cấp độ. Dữ liệu thật luôn được phân biệt bằng nguồn/trạng thái kết nối.
 
@@ -49,7 +49,7 @@ Khi mất mạng, người dùng vẫn xem được cache/câu trả lời đã 
 
 1. Người dùng chọn mục tiêu/kỳ dự kiến: học lại, cải thiện điểm, cân bằng tải môn, tìm giờ trống hoặc rà điều kiện.
 2. Bấm “Phân tích chiến lược” để mở overlay bắt buộc `DLG-05.04_ShareConsent`. Overlay nêu dữ liệu gửi và mục đích; dữ liệu cá nhân lưu cục bộ mặc định.
-3. **Từ chối chia sẻ:** `SCR-05.05_LocalStrategyResult` tính theo dữ liệu trên thiết bị/dữ liệu mẫu và quy tắc đã xác minh. Không gửi dữ liệu lên AI.
+3. **Từ chối chia sẻ:** `SCR-05.05_LocalStrategyResult` tính theo dữ liệu trên thiết bị/dữ liệu mẫu và quy tắc đã xác minh. Không gửi dữ liệu lên AI. Gợi ý thời khóa biểu chỉ được đưa ra nếu có lịch cá nhân đã xác nhận trong máy; nếu không, báo thiếu dữ liệu.
 4. **Đồng ý một lần:** chỉ các trường được nêu trong consent (ví dụ mã môn, điểm đã xác nhận, kỳ dự kiến) được gửi cho yêu cầu này; tên/MSSV/mật khẩu không gửi. Chuyển `SCR-05.07_StrategyLoading` trong 1,2 giây rồi đến `SCR-05.06_SharedStrategyResult`. Consent không được lưu để dùng lại.
 5. Kết quả có bốn nhóm: mô phỏng điểm/học lại/cải thiện; cân bằng tải nhiều môn; gợi ý khung giờ trống từ thời khóa biểu đã xác nhận; rà soát sơ bộ điều kiện thi, prerequisite, Capstone/OJT. Nếu thiếu dữ liệu hoặc quy chế đúng ngành/khóa, hệ thống phải báo chưa thể kết luận và liên kết nguồn.
 
@@ -60,8 +60,8 @@ Khi mất mạng, người dùng vẫn xem được cache/câu trả lời đã 
 | Nơi | Nội dung cần thấy |
 |---|---|
 | `01 User Flow` | Ba board Academic Expansion · Workflow 4/5/6, nhánh FAP tùy chọn, consent hai nhánh và nguồn/giới hạn. |
-| `03 Final UI` | Các frame `SCR-00.01`, `SCR-00.02`, `SCR-00.03`, `SCR-02.03`, `SCR-05.04`, `DLG-05.04`, `SCR-05.05`, `SCR-05.06`, `SCR-05.07`; AdvisorHub có selector bốn cấp. |
-| `06 Prototype` | Sáu starting points tổng cộng: ba flow Lab 2 ban đầu và ba workflow mới. Flow 6 chạy consent → local result hoặc loading 1,2 giây → AI-supported result. |
+| `03 Final UI` | Các frame `SCR-00.01`, `SCR-00.02`, `SCR-00.03`, `SCR-01.01` (thẻ hồ sơ mẫu), `SCR-02.03` (điều khiển lọc prerequisite), `SCR-05.04`, `DLG-05.04`, `SCR-05.05`, `SCR-05.06`, `SCR-05.07`; AdvisorHub có selector bốn cấp. |
+| `06 Prototype` | Sáu starting points tổng cộng: ba flow Lab 2 ban đầu và ba workflow mới. Home có thẻ hồ sơ mẫu, Curriculum có điều khiển lọc prerequisite; Flow 6 chạy consent → local result hoặc loading 1,2 giây → AI-supported result. |
 
 ## Nguồn tham chiếu chính thức và giới hạn
 
