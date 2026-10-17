@@ -16,7 +16,7 @@
 | **08. Motivations** | Tra cứu nhanh; kiểm soát ghi chú cá nhân; nhận biết rõ trạng thái offline/đồng bộ; phục hồi được khi chạm nhầm. |
 | **09. Constraints** | App mobile đọc/ghi Vault cục bộ; đề cương được sync sẵn, không tự cào FLM. AI cần Internet/API. Thiết kế hướng thao tác một tay, tiếng Việt rõ trên Android. Baseline accessibility: tương phản AA, chữ ≥14 sp, target ≥48 dp. Quyền truy cập dữ liệu phải minh bạch. |
 | **10. Key Scenarios** | **Tra cứu:** giữa buổi học, mở Home xem task đến hạn rồi mở roadmap/course detail đã tải. **Ghi và phục hồi:** tạo checklist, lưu Vault; nếu sync lỗi thì xem nguyên nhân, thử lại và giữ nội dung. Scenarios dựa trên các flow hiện tại, cần test với người dùng. |
-| **11. Success Criteria** | Mục tiêu test (chưa phải kết quả): **M1** mở SCR-03 trong ≤8 giây/≤3 chạm; **M2** lưu note ở SCR-05 trong ≤15 giây; **M3** 5/5 người thử hoàn tác/xử lý lỗi sync đúng; **M4** 5/5 hiểu lỗi AI và thử lại không mất câu hỏi. Báo kết quả sau khi thực sự test. |
+| **11. Success Criteria** | Mục tiêu test (chưa phải kết quả): **M1** mở SCR-02.02 trong ≤8 giây/≤3 chạm; **M2** lưu note ở SCR-04.01 trong ≤15 giây; **M3** 5/5 người thử hoàn tác/xử lý lỗi sync đúng; **M4** 5/5 hiểu lỗi AI và thử lại không mất câu hỏi. Báo kết quả sau khi thực sự test. |
 | **12. Evidence & Status** | Proto-Persona tổng hợp từ scope/Figma/tài liệu project, chưa validated. Chỉ gắn mã OBS/peer khi có ghi chú ẩn danh, ngày và nguồn. Tần suất 5–8 lần/ngày, 42 note, session timeout, bus và workaround cần xác minh trước khi coi là finding. |
 
 ## Lab 2 · Tuổi, vai trò, thiết bị và accessibility
@@ -29,9 +29,9 @@
 
 | Need | UI/giả thuyết hiện có | Kiểm chứng |
 |---|---|---|
-| Tra cứu slot offline | SCR-01 → SCR-02 → SCR-03, nhãn tải về/offline | M1: thời gian và số chạm |
-| Không bỏ sót việc, cứu thao tác nhầm | SCR-04, nhóm deadline, SN-01 Undo | Nhận diện task và hoàn tác |
-| Ghi note, phục hồi sync | SCR-05 → SCR-06; SCR-08 → D-01 → error/retry | M2/M3: lưu, xử lý lỗi, giữ nội dung |
-| Hỏi AI có căn cứ | SCR-07, giữ câu hỏi khi mất mạng, nguồn trích dẫn | M4: hiểu trạng thái và phục hồi |
+| Tra cứu slot offline | SCR-01.01 → SCR-02.01 → SCR-02.02, nhãn tải về/offline | M1: thời gian và số chạm |
+| Không bỏ sót việc, cứu thao tác nhầm | SCR-03.01, nhóm deadline, SN-01 Undo | Nhận diện task và hoàn tác |
+| Ghi note, phục hồi sync | SCR-04.01 → SCR-04.02; SCR-06.01 → D-01 → error/retry | M2/M3: lưu, xử lý lỗi, giữ nội dung |
+| Hỏi AI có căn cứ | SCR-05.01, giữ câu hỏi khi mất mạng, nguồn trích dẫn | M4: hiểu trạng thái và phục hồi |
 
 **Liên quan:** [Mục lục/coverage/research backlog](../persona.md).
